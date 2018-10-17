@@ -15,6 +15,9 @@
 		A1A918C62177A90B003646C7 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918C52177A90B003646C7 /* PostCell.swift */; };
 		A1A918C82177AFFE003646C7 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918C72177AFFE003646C7 /* FriendCell.swift */; };
 		A1A918CA2177B01A003646C7 /* FriendsCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918C92177B01A003646C7 /* FriendsCollectionController.swift */; };
+		A1A918D12177F2FB003646C7 /* ProfilePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D02177F2FB003646C7 /* ProfilePostCell.swift */; };
+		A1A918D62177F614003646C7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D52177F614003646C7 /* ProfileViewController.swift */; };
+		A1A918D82177FCC8003646C7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D72177FCC8003646C7 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		A1A918C52177A90B003646C7 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		A1A918C72177AFFE003646C7 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		A1A918C92177B01A003646C7 /* FriendsCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCollectionController.swift; sourceTree = "<group>"; };
+		A1A918D02177F2FB003646C7 /* ProfilePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostCell.swift; sourceTree = "<group>"; };
+		A1A918D52177F614003646C7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = FoodGram/Profile/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
+		A1A918D72177FCC8003646C7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = Tabs/Search/SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +68,12 @@
 			children = (
 				A14DAB1621765E1D00368668 /* AppDelegate.swift */,
 				A14DAB1C21765E1D00368668 /* Main.storyboard */,
+				A1A918D72177FCC8003646C7 /* SearchViewController.swift */,
 				A1A918CD2177F1FE003646C7 /* Tabs */,
 				A14DAB1F21765E2000368668 /* Assets.xcassets */,
 				A14DAB2121765E2000368668 /* LaunchScreen.storyboard */,
 				A14DAB2421765E2000368668 /* Info.plist */,
+				A1A918D22177F300003646C7 /* Profile */,
 			);
 			path = FoodGram;
 			sourceTree = "<group>";
@@ -95,6 +103,15 @@
 				A1A918CC2177F1EE003646C7 /* Timeline */,
 			);
 			path = Tabs;
+			sourceTree = "<group>";
+		};
+		A1A918D22177F300003646C7 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A1A918D52177F614003646C7 /* ProfileViewController.swift */,
+				A1A918D02177F2FB003646C7 /* ProfilePostCell.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,7 +187,10 @@
 			files = (
 				A14DAB1721765E1D00368668 /* AppDelegate.swift in Sources */,
 				A1A918C42177A8E7003646C7 /* TimelineViewController.swift in Sources */,
+				A1A918D82177FCC8003646C7 /* SearchViewController.swift in Sources */,
+				A1A918D12177F2FB003646C7 /* ProfilePostCell.swift in Sources */,
 				A1A918CA2177B01A003646C7 /* FriendsCollectionController.swift in Sources */,
+				A1A918D62177F614003646C7 /* ProfileViewController.swift in Sources */,
 				A1A918C62177A90B003646C7 /* PostCell.swift in Sources */,
 				A1A918C82177AFFE003646C7 /* FriendCell.swift in Sources */,
 			);

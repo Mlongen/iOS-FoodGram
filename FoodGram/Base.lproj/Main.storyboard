@@ -72,6 +72,7 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
+                        <segue destination="lNa-CE-wxG" kind="relationship" relationship="viewControllers" id="s4A-us-h8M"/>
                         <segue destination="yVq-wU-oCC" kind="relationship" relationship="viewControllers" id="9uE-rJ-NHc"/>
                         <segue destination="vEt-gz-VjV" kind="relationship" relationship="viewControllers" id="dSV-Gb-RNy"/>
                     </connections>
@@ -80,10 +81,26 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="PWx-W5-JK6">
+            <objects>
+                <viewController id="lNa-CE-wxG" customClass="SearchViewController" customModule="FoodGram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XfM-Kv-KwH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="iHC-yl-rsF"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="w1m-UJ-NXz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6ev-1U-Pli" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-97" y="748"/>
+        </scene>
         <!--Username-->
         <scene sceneID="Ej2-pz-Ifp">
             <objects>
-                <viewController id="Uqj-nr-Yf3" sceneMemberID="viewController">
+                <viewController id="Uqj-nr-Yf3" customClass="ProfileViewController" customModule="FoodGram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hvn-ZZ-iGU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -101,7 +118,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7jV-8P-LGA">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfilePostCell" id="7jV-8P-LGA" customClass="ProfilePostCell" customModule="FoodGram" customModuleProvider="target">
                                         <rect key="frame" x="1.6666666666666667" y="0.0" width="372" height="133"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -124,14 +141,22 @@
                                         </view>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="Mmp-3r-Ay4" firstAttribute="leading" secondItem="MBe-E0-MtB" secondAttribute="trailing" constant="22" id="6wU-4n-K0w"/>
                                             <constraint firstItem="MBe-E0-MtB" firstAttribute="leading" secondItem="7jV-8P-LGA" secondAttribute="leadingMargin" constant="3" id="Dgc-aw-SKM"/>
                                             <constraint firstItem="MBe-E0-MtB" firstAttribute="top" secondItem="7jV-8P-LGA" secondAttribute="topMargin" constant="-24" id="URE-Jf-fI5"/>
-                                            <constraint firstItem="MBe-E0-MtB" firstAttribute="top" secondItem="Mmp-3r-Ay4" secondAttribute="top" id="kVY-0g-joD"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Mmp-3r-Ay4" secondAttribute="bottom" constant="58" id="Xsh-Xw-j5u"/>
+                                            <constraint firstItem="Mmp-3r-Ay4" firstAttribute="leading" secondItem="MBe-E0-MtB" secondAttribute="trailing" constant="22" id="hcO-IZ-YFk"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="MBe-E0-MtB" secondAttribute="bottom" constant="15" id="kp2-wS-epX"/>
+                                            <constraint firstItem="Mmp-3r-Ay4" firstAttribute="top" secondItem="MBe-E0-MtB" secondAttribute="top" id="tFS-iq-Scz"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="postImg" destination="MBe-E0-MtB" id="RJy-Ki-M3a"/>
+                                            <outlet property="restaurantName" destination="Mmp-3r-Ay4" id="129-AI-rQ3"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Uqj-nr-Yf3" id="1or-Jc-AIu"/>
+                                </connections>
                             </collectionView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="jU3-00-R7H">
                                 <rect key="frame" x="16" y="108" width="103" height="87"/>
@@ -163,6 +188,9 @@
                         <viewLayoutGuide key="safeArea" id="0Pp-tY-uSF"/>
                     </view>
                     <navigationItem key="navigationItem" title="Username" id="RMz-x8-L23"/>
+                    <connections>
+                        <outlet property="profilePostsCollection" destination="Eca-y9-lgr" id="zCb-qz-YpN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eP2-GV-2LZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -209,14 +237,13 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HeS-85-kSf">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pidsufbiudsj fbodsnfoidiofjo disdsfnbidsuhil" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HeS-85-kSf">
                                             <rect key="frame" x="20" y="247" width="263" height="40"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="Mqs-VP-0pT"/>
                                             </constraints>
-                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="6"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                     </subviews>
@@ -254,9 +281,6 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Feed" id="R5P-aJ-zd1"/>
-                    <connections>
-                        <segue destination="Uqj-nr-Yf3" kind="push" identifier="detailFromTimeline" id="2GI-1G-D5T"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hGB-59-NZ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -371,7 +395,4 @@
         <image name="placeholder" width="120" height="120"/>
         <image name="smiley-smile" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="2GI-1G-D5T"/>
-    </inferredMetricsTieBreakers>
 </document>
