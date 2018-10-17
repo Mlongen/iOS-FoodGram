@@ -1,0 +1,375 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A14DAB1721765E1D00368668 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DAB1621765E1D00368668 /* AppDelegate.swift */; };
+		A14DAB1E21765E1D00368668 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB1C21765E1D00368668 /* Main.storyboard */; };
+		A14DAB2021765E2000368668 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB1F21765E2000368668 /* Assets.xcassets */; };
+		A14DAB2321765E2000368668 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB2121765E2000368668 /* LaunchScreen.storyboard */; };
+		A1A918C42177A8E7003646C7 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918C32177A8E7003646C7 /* TimelineViewController.swift */; };
+		A1A918C62177A90B003646C7 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918C52177A90B003646C7 /* PostCell.swift */; };
+		A1A918C82177AFFE003646C7 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918C72177AFFE003646C7 /* FriendCell.swift */; };
+		A1A918CA2177B01A003646C7 /* FriendsCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918C92177B01A003646C7 /* FriendsCollectionController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A14DAB1321765E1D00368668 /* FoodGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A14DAB1621765E1D00368668 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A14DAB1D21765E1D00368668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A14DAB1F21765E2000368668 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A14DAB2221765E2000368668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A14DAB2421765E2000368668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1A918C32177A8E7003646C7 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		A1A918C52177A90B003646C7 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		A1A918C72177AFFE003646C7 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		A1A918C92177B01A003646C7 /* FriendsCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCollectionController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A14DAB1021765E1D00368668 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A14DAB0A21765E1D00368668 = {
+			isa = PBXGroup;
+			children = (
+				A14DAB1521765E1D00368668 /* FoodGram */,
+				A14DAB1421765E1D00368668 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A14DAB1421765E1D00368668 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A14DAB1321765E1D00368668 /* FoodGram.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A14DAB1521765E1D00368668 /* FoodGram */ = {
+			isa = PBXGroup;
+			children = (
+				A14DAB1621765E1D00368668 /* AppDelegate.swift */,
+				A14DAB1C21765E1D00368668 /* Main.storyboard */,
+				A1A918CD2177F1FE003646C7 /* Tabs */,
+				A14DAB1F21765E2000368668 /* Assets.xcassets */,
+				A14DAB2121765E2000368668 /* LaunchScreen.storyboard */,
+				A14DAB2421765E2000368668 /* Info.plist */,
+			);
+			path = FoodGram;
+			sourceTree = "<group>";
+		};
+		A1A918CB2177F1D7003646C7 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				A1A918C72177AFFE003646C7 /* FriendCell.swift */,
+				A1A918C92177B01A003646C7 /* FriendsCollectionController.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		A1A918CC2177F1EE003646C7 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				A1A918C32177A8E7003646C7 /* TimelineViewController.swift */,
+				A1A918C52177A90B003646C7 /* PostCell.swift */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		A1A918CD2177F1FE003646C7 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				A1A918CB2177F1D7003646C7 /* Friends */,
+				A1A918CC2177F1EE003646C7 /* Timeline */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A14DAB1221765E1D00368668 /* FoodGram */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A14DAB2721765E2000368668 /* Build configuration list for PBXNativeTarget "FoodGram" */;
+			buildPhases = (
+				A14DAB0F21765E1D00368668 /* Sources */,
+				A14DAB1021765E1D00368668 /* Frameworks */,
+				A14DAB1121765E1D00368668 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FoodGram;
+			productName = FoodGram;
+			productReference = A14DAB1321765E1D00368668 /* FoodGram.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A14DAB0B21765E1D00368668 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "Marcelo Longen";
+				TargetAttributes = {
+					A14DAB1221765E1D00368668 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+				};
+			};
+			buildConfigurationList = A14DAB0E21765E1D00368668 /* Build configuration list for PBXProject "FoodGram" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A14DAB0A21765E1D00368668;
+			productRefGroup = A14DAB1421765E1D00368668 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A14DAB1221765E1D00368668 /* FoodGram */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A14DAB1121765E1D00368668 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A14DAB2321765E2000368668 /* LaunchScreen.storyboard in Resources */,
+				A14DAB2021765E2000368668 /* Assets.xcassets in Resources */,
+				A14DAB1E21765E1D00368668 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A14DAB0F21765E1D00368668 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A14DAB1721765E1D00368668 /* AppDelegate.swift in Sources */,
+				A1A918C42177A8E7003646C7 /* TimelineViewController.swift in Sources */,
+				A1A918CA2177B01A003646C7 /* FriendsCollectionController.swift in Sources */,
+				A1A918C62177A90B003646C7 /* PostCell.swift in Sources */,
+				A1A918C82177AFFE003646C7 /* FriendCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A14DAB1C21765E1D00368668 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A14DAB1D21765E1D00368668 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A14DAB2121765E2000368668 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A14DAB2221765E2000368668 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A14DAB2521765E2000368668 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A14DAB2621765E2000368668 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A14DAB2821765E2000368668 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FoodGram/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.marcelolongen.FoodGram;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A14DAB2921765E2000368668 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FoodGram/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.marcelolongen.FoodGram;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A14DAB0E21765E1D00368668 /* Build configuration list for PBXProject "FoodGram" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A14DAB2521765E2000368668 /* Debug */,
+				A14DAB2621765E2000368668 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A14DAB2721765E2000368668 /* Build configuration list for PBXNativeTarget "FoodGram" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A14DAB2821765E2000368668 /* Debug */,
+				A14DAB2921765E2000368668 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A14DAB0B21765E1D00368668 /* Project object */;
+}
