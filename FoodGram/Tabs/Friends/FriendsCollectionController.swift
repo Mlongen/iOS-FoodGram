@@ -18,6 +18,8 @@ class FriendsCollectionController: UICollectionViewController {
         let width = (view.frame.size.width - 20) / 3
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
+        
+        
 
     }
 
@@ -35,6 +37,18 @@ class FriendsCollectionController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
+        
+        cell.layer.cornerRadius = 10
+        cell.layer.masksToBounds = true
+        cell.layer.backgroundColor = UIColor.white.cgColor
+        cell.layer.shadowColor = UIColor.white.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)//CGSizeMake(0, 2.0);
+        cell.layer.shadowRadius = 1.0
+        cell.layer.shadowOpacity = 0.2
+        cell.layer.masksToBounds = false
+        cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
+        
+
         // Configure the cell
     
         return cell

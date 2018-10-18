@@ -60,7 +60,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r3O-bj-WXB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-735.20000000000005" y="-0.73891625615763545"/>
+            <point key="canvasLocation" x="-1884" y="0.0"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -75,11 +75,12 @@
                         <segue destination="lNa-CE-wxG" kind="relationship" relationship="viewControllers" id="s4A-us-h8M"/>
                         <segue destination="yVq-wU-oCC" kind="relationship" relationship="viewControllers" id="9uE-rJ-NHc"/>
                         <segue destination="vEt-gz-VjV" kind="relationship" relationship="viewControllers" id="dSV-Gb-RNy"/>
+                        <segue destination="r6J-tD-ApV" kind="relationship" relationship="viewControllers" id="2gM-hH-1F7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-892" y="0.0"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="PWx-W5-JK6">
@@ -95,7 +96,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ev-1U-Pli" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-97" y="748"/>
+            <point key="canvasLocation" x="129" y="1531"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="IMC-pU-dVL">
+            <objects>
+                <viewController id="r6J-tD-ApV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eKK-Cw-uiv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="lWZ-FG-7iz"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="circle-user-7" selectedImage="circle-user-7" id="OSJ-FQ-30m"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PhA-qk-ry2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="129" y="518"/>
         </scene>
         <!--Username-->
         <scene sceneID="Ej2-pz-Ifp">
@@ -194,7 +211,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eP2-GV-2LZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3452" y="59.852216748768477"/>
+            <point key="canvasLocation" x="2782" y="-915"/>
         </scene>
         <!--Feed-->
         <scene sceneID="g79-Al-P7q">
@@ -284,7 +301,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hGB-59-NZ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1401" y="-809"/>
+            <point key="canvasLocation" x="1258" y="-1371"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yWi-Db-J48">
@@ -303,7 +320,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pNo-EG-gXN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="666" y="-809"/>
+            <point key="canvasLocation" x="130" y="-1370"/>
         </scene>
         <!--Friends-->
         <scene sceneID="xYn-nk-hGZ">
@@ -312,7 +329,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="wfV-Ap-jzP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.16078431369999999" green="0.23921568630000001" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MEJ-Dg-8IS">
                             <size key="itemSize" width="124" height="124"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -368,7 +385,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUI-65-I9K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2052" y="-1.4778325123152709"/>
+            <point key="canvasLocation" x="1257" y="-512"/>
         </scene>
         <!--Friends-->
         <scene sceneID="Yw2-BR-m8H">
@@ -387,10 +404,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vV3-Ie-cHK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1109.5999999999999" y="-1.4778325123152709"/>
+            <point key="canvasLocation" x="129" y="-512"/>
         </scene>
     </scenes>
     <resources>
+        <image name="circle-user-7" width="30" height="30"/>
         <image name="food" width="1131" height="754"/>
         <image name="placeholder" width="120" height="120"/>
         <image name="smiley-smile" width="30" height="30"/>
