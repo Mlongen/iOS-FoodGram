@@ -11,6 +11,11 @@
 		A14DAB1E21765E1D00368668 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB1C21765E1D00368668 /* Main.storyboard */; };
 		A14DAB2021765E2000368668 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB1F21765E2000368668 /* Assets.xcassets */; };
 		A14DAB2321765E2000368668 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB2121765E2000368668 /* LaunchScreen.storyboard */; };
+		A17D07E32192227A005FB743 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D07E22192227A005FB743 /* User.swift */; };
+		A17D07E5219222D8005FB743 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D07E4219222D8005FB743 /* Friend.swift */; };
+		A17D07E721922315005FB743 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D07E621922315005FB743 /* Notification.swift */; };
+		A17D07E921922351005FB743 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D07E821922351005FB743 /* Post.swift */; };
+		A17D07EC21922441005FB743 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D07EB21922441005FB743 /* Database.swift */; };
 		A1A918C42177A8E7003646C7 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918C32177A8E7003646C7 /* TimelineViewController.swift */; };
 		A1A918C62177A90B003646C7 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918C52177A90B003646C7 /* PostCell.swift */; };
 		A1A918C82177AFFE003646C7 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918C72177AFFE003646C7 /* FriendCell.swift */; };
@@ -27,6 +32,11 @@
 		A14DAB1F21765E2000368668 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A14DAB2221765E2000368668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A14DAB2421765E2000368668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A17D07E22192227A005FB743 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A17D07E4219222D8005FB743 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		A17D07E621922315005FB743 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		A17D07E821922351005FB743 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		A17D07EB21922441005FB743 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		A1A918C32177A8E7003646C7 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		A1A918C52177A90B003646C7 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		A1A918C72177AFFE003646C7 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
@@ -68,6 +78,7 @@
 			children = (
 				A14DAB1621765E1D00368668 /* AppDelegate.swift */,
 				A14DAB1C21765E1D00368668 /* Main.storyboard */,
+				A17D07EA219223AA005FB743 /* Objects */,
 				A1A918D72177FCC8003646C7 /* SearchViewController.swift */,
 				A1A918CD2177F1FE003646C7 /* Tabs */,
 				A14DAB1F21765E2000368668 /* Assets.xcassets */,
@@ -76,6 +87,18 @@
 				A1A918D22177F300003646C7 /* Profile */,
 			);
 			path = FoodGram;
+			sourceTree = "<group>";
+		};
+		A17D07EA219223AA005FB743 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				A17D07E22192227A005FB743 /* User.swift */,
+				A17D07E821922351005FB743 /* Post.swift */,
+				A17D07E621922315005FB743 /* Notification.swift */,
+				A17D07E4219222D8005FB743 /* Friend.swift */,
+				A17D07EB21922441005FB743 /* Database.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 		A1A918CB2177F1D7003646C7 /* Friends */ = {
@@ -188,10 +211,15 @@
 				A14DAB1721765E1D00368668 /* AppDelegate.swift in Sources */,
 				A1A918C42177A8E7003646C7 /* TimelineViewController.swift in Sources */,
 				A1A918D82177FCC8003646C7 /* SearchViewController.swift in Sources */,
+				A17D07E921922351005FB743 /* Post.swift in Sources */,
+				A17D07E5219222D8005FB743 /* Friend.swift in Sources */,
 				A1A918D12177F2FB003646C7 /* ProfilePostCell.swift in Sources */,
 				A1A918CA2177B01A003646C7 /* FriendsCollectionController.swift in Sources */,
+				A17D07E32192227A005FB743 /* User.swift in Sources */,
 				A1A918D62177F614003646C7 /* ProfileViewController.swift in Sources */,
+				A17D07E721922315005FB743 /* Notification.swift in Sources */,
 				A1A918C62177A90B003646C7 /* PostCell.swift in Sources */,
+				A17D07EC21922441005FB743 /* Database.swift in Sources */,
 				A1A918C82177AFFE003646C7 /* FriendCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
