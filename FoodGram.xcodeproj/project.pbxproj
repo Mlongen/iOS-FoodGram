@@ -11,6 +11,7 @@
 		A14DAB1E21765E1D00368668 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB1C21765E1D00368668 /* Main.storyboard */; };
 		A14DAB2021765E2000368668 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB1F21765E2000368668 /* Assets.xcassets */; };
 		A14DAB2321765E2000368668 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB2121765E2000368668 /* LaunchScreen.storyboard */; };
+		A15F02FE2193710000080858 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15F02FD2193710000080858 /* AddPostViewController.swift */; };
 		A17D07E32192227A005FB743 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D07E22192227A005FB743 /* User.swift */; };
 		A17D07E5219222D8005FB743 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D07E4219222D8005FB743 /* Friend.swift */; };
 		A17D07E721922315005FB743 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D07E621922315005FB743 /* Notification.swift */; };
@@ -32,6 +33,7 @@
 		A14DAB1F21765E2000368668 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A14DAB2221765E2000368668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A14DAB2421765E2000368668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A15F02FD2193710000080858 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		A17D07E22192227A005FB743 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A17D07E4219222D8005FB743 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		A17D07E621922315005FB743 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
@@ -43,7 +45,7 @@
 		A1A918C92177B01A003646C7 /* FriendsCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCollectionController.swift; sourceTree = "<group>"; };
 		A1A918D02177F2FB003646C7 /* ProfilePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostCell.swift; sourceTree = "<group>"; };
 		A1A918D52177F614003646C7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = FoodGram/Profile/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
-		A1A918D72177FCC8003646C7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = Tabs/Search/SearchViewController.swift; sourceTree = "<group>"; };
+		A1A918D72177FCC8003646C7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,14 +81,30 @@
 				A14DAB1621765E1D00368668 /* AppDelegate.swift */,
 				A14DAB1C21765E1D00368668 /* Main.storyboard */,
 				A17D07EA219223AA005FB743 /* Objects */,
-				A1A918D72177FCC8003646C7 /* SearchViewController.swift */,
 				A1A918CD2177F1FE003646C7 /* Tabs */,
 				A14DAB1F21765E2000368668 /* Assets.xcassets */,
 				A14DAB2121765E2000368668 /* LaunchScreen.storyboard */,
-				A14DAB2421765E2000368668 /* Info.plist */,
 				A1A918D22177F300003646C7 /* Profile */,
+				A14DAB2421765E2000368668 /* Info.plist */,
 			);
 			path = FoodGram;
+			sourceTree = "<group>";
+		};
+		A15F02FF2193710900080858 /* Add post */ = {
+			isa = PBXGroup;
+			children = (
+				A15F02FD2193710000080858 /* AddPostViewController.swift */,
+			);
+			path = "Add post";
+			sourceTree = "<group>";
+		};
+		A15F03002193711700080858 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				A1A918D72177FCC8003646C7 /* SearchViewController.swift */,
+			);
+			name = Search;
+			path = ../Search;
 			sourceTree = "<group>";
 		};
 		A17D07EA219223AA005FB743 /* Objects */ = {
@@ -122,8 +140,10 @@
 		A1A918CD2177F1FE003646C7 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				A15F03002193711700080858 /* Search */,
 				A1A918CB2177F1D7003646C7 /* Friends */,
 				A1A918CC2177F1EE003646C7 /* Timeline */,
+				A15F02FF2193710900080858 /* Add post */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -214,6 +234,7 @@
 				A17D07E921922351005FB743 /* Post.swift in Sources */,
 				A17D07E5219222D8005FB743 /* Friend.swift in Sources */,
 				A1A918D12177F2FB003646C7 /* ProfilePostCell.swift in Sources */,
+				A15F02FE2193710000080858 /* AddPostViewController.swift in Sources */,
 				A1A918CA2177B01A003646C7 /* FriendsCollectionController.swift in Sources */,
 				A17D07E32192227A005FB743 /* User.swift in Sources */,
 				A1A918D62177F614003646C7 /* ProfileViewController.swift in Sources */,

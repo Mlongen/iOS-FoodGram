@@ -21,4 +21,12 @@ class Database: NSObject {
         self.friendPosts = [Post]()
         self.notifications = [Notification]()
     }
+    
+    
+    func addFriendPosts()
+    {
+        let newPost = Post(postId: UUID(), userId: UUID(), image: UIImage(named: "placeholder"), postDescription: "lala", creationDate: Date(), price: 10, location: "location", rating: 8, likes: [UUID()])
+        
+        friendPosts.append(newPost)
+    }
 }

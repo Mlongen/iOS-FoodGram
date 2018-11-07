@@ -12,13 +12,17 @@ private let reuseIdentifier = "PostCell"
 
 class TimelineViewController: UICollectionViewController {
 
-    
+    var database: Database!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let width = (view.frame.size.width - 20)
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
+        
+        database = Database(thisUserDBContext: UUID())
+        database.addFriendPosts()
+        database.addFriendPosts()
     }
 
 
@@ -31,7 +35,7 @@ class TimelineViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 3
+        return database.friendPosts.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -40,6 +44,10 @@ class TimelineViewController: UICollectionViewController {
         
         //configure cell
         
+        let index = indexPath.item
+        cell.descriptionLabel.text = database.friendPosts[index].postDescription
+        cell.foodPic.image = database.friendPosts[index].image
+        cell.rating.text = "Rating: " + String(database.friendPosts[index].rating) + "/10"
         
         return cell
     }

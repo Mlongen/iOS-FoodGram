@@ -16,10 +16,11 @@ class Post: NSObject {
     var creationDate: Date
     var price: Int
     var location: String
+    var rating: Int
     var likes: [UUID]
     
     
-    init(postId: UUID, userId: UUID, image: UIImage?, postDescription: String, creationDate: Date, price: Int, location: String, likes: [UUID]) {
+    init(postId: UUID, userId: UUID, image: UIImage?, postDescription: String, creationDate: Date, price: Int, location: String, rating: Int, likes: [UUID]) {
         self.postId = postId
         self.userId = userId
         self.image = image
@@ -27,6 +28,7 @@ class Post: NSObject {
         self.creationDate = creationDate
         self.price = price
         self.location = location
+        self.rating = rating
         self.likes = [UUID]()
     }
 
