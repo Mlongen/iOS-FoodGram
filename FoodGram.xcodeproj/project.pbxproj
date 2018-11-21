@@ -12,11 +12,13 @@
 		A14DAB2021765E2000368668 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB1F21765E2000368668 /* Assets.xcassets */; };
 		A14DAB2321765E2000368668 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB2121765E2000368668 /* LaunchScreen.storyboard */; };
 		A15F02FE2193710000080858 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15F02FD2193710000080858 /* AddPostViewController.swift */; };
-		A17D07E32192227A005FB743 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D07E22192227A005FB743 /* User.swift */; };
+		A175467A21A5C5170001A203 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A175467921A5C5170001A203 /* GoogleService-Info.plist */; };
+		A175467C21A5C6670001A203 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A175467B21A5C6670001A203 /* LoginController.swift */; };
+		A17D07E32192227A005FB743 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D07E22192227A005FB743 /* AppUser.swift */; };
 		A17D07E5219222D8005FB743 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D07E4219222D8005FB743 /* Friend.swift */; };
 		A17D07E721922315005FB743 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D07E621922315005FB743 /* Notification.swift */; };
 		A17D07E921922351005FB743 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D07E821922351005FB743 /* Post.swift */; };
-		A17D07EC21922441005FB743 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D07EB21922441005FB743 /* Database.swift */; };
+		A17D07EC21922441005FB743 /* MyDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17D07EB21922441005FB743 /* MyDatabase.swift */; };
 		A1A918C42177A8E7003646C7 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918C32177A8E7003646C7 /* TimelineViewController.swift */; };
 		A1A918C62177A90B003646C7 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918C52177A90B003646C7 /* PostCell.swift */; };
 		A1A918C82177AFFE003646C7 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918C72177AFFE003646C7 /* FriendCell.swift */; };
@@ -24,9 +26,13 @@
 		A1A918D12177F2FB003646C7 /* ProfilePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D02177F2FB003646C7 /* ProfilePostCell.swift */; };
 		A1A918D62177F614003646C7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D52177F614003646C7 /* ProfileViewController.swift */; };
 		A1A918D82177FCC8003646C7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D72177FCC8003646C7 /* SearchViewController.swift */; };
+		B6C1CBD46B5E147D52C8FC10 /* Pods_FoodGram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E6A5A7EF14384DA2F03AE3 /* Pods_FoodGram.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01E6A5A7EF14384DA2F03AE3 /* Pods_FoodGram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodGram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		069806C08C4012A37230107E /* Pods-FoodGram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodGram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram.debug.xcconfig"; sourceTree = "<group>"; };
+		5F50A0F73558CA7EF89D55B3 /* Pods-FoodGram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodGram.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram.release.xcconfig"; sourceTree = "<group>"; };
 		A14DAB1321765E1D00368668 /* FoodGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14DAB1621765E1D00368668 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A14DAB1D21765E1D00368668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -34,11 +40,13 @@
 		A14DAB2221765E2000368668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A14DAB2421765E2000368668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A15F02FD2193710000080858 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
-		A17D07E22192227A005FB743 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A175467921A5C5170001A203 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A175467B21A5C6670001A203 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		A17D07E22192227A005FB743 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		A17D07E4219222D8005FB743 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		A17D07E621922315005FB743 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		A17D07E821922351005FB743 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		A17D07EB21922441005FB743 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		A17D07EB21922441005FB743 /* MyDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDatabase.swift; sourceTree = "<group>"; };
 		A1A918C32177A8E7003646C7 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		A1A918C52177A90B003646C7 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		A1A918C72177AFFE003646C7 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
@@ -53,17 +61,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6C1CBD46B5E147D52C8FC10 /* Pods_FoodGram.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		554CA2EAB801BCCDA2DDE2D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				01E6A5A7EF14384DA2F03AE3 /* Pods_FoodGram.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A14DAB0A21765E1D00368668 = {
 			isa = PBXGroup;
 			children = (
 				A14DAB1521765E1D00368668 /* FoodGram */,
 				A14DAB1421765E1D00368668 /* Products */,
+				ED1CF589CB68BAB41B963C91 /* Pods */,
+				554CA2EAB801BCCDA2DDE2D5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,7 +98,9 @@
 			isa = PBXGroup;
 			children = (
 				A14DAB1621765E1D00368668 /* AppDelegate.swift */,
+				A175467921A5C5170001A203 /* GoogleService-Info.plist */,
 				A14DAB1C21765E1D00368668 /* Main.storyboard */,
+				A175467B21A5C6670001A203 /* LoginController.swift */,
 				A17D07EA219223AA005FB743 /* Objects */,
 				A1A918CD2177F1FE003646C7 /* Tabs */,
 				A14DAB1F21765E2000368668 /* Assets.xcassets */,
@@ -110,11 +131,11 @@
 		A17D07EA219223AA005FB743 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				A17D07E22192227A005FB743 /* User.swift */,
+				A17D07E22192227A005FB743 /* AppUser.swift */,
 				A17D07E821922351005FB743 /* Post.swift */,
 				A17D07E621922315005FB743 /* Notification.swift */,
 				A17D07E4219222D8005FB743 /* Friend.swift */,
-				A17D07EB21922441005FB743 /* Database.swift */,
+				A17D07EB21922441005FB743 /* MyDatabase.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -157,6 +178,15 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		ED1CF589CB68BAB41B963C91 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				069806C08C4012A37230107E /* Pods-FoodGram.debug.xcconfig */,
+				5F50A0F73558CA7EF89D55B3 /* Pods-FoodGram.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,9 +194,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A14DAB2721765E2000368668 /* Build configuration list for PBXNativeTarget "FoodGram" */;
 			buildPhases = (
+				63D0FF2E4A1A74C9C7FE2889 /* [CP] Check Pods Manifest.lock */,
 				A14DAB0F21765E1D00368668 /* Sources */,
 				A14DAB1021765E1D00368668 /* Frameworks */,
 				A14DAB1121765E1D00368668 /* Resources */,
+				20E911AAC884B6897B4C4EE7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -216,12 +248,66 @@
 			buildActionMask = 2147483647;
 			files = (
 				A14DAB2321765E2000368668 /* LaunchScreen.storyboard in Resources */,
+				A175467A21A5C5170001A203 /* GoogleService-Info.plist in Resources */,
 				A14DAB2021765E2000368668 /* Assets.xcassets in Resources */,
 				A14DAB1E21765E1D00368668 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		20E911AAC884B6897B4C4EE7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63D0FF2E4A1A74C9C7FE2889 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FoodGram-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A14DAB0F21765E1D00368668 /* Sources */ = {
@@ -232,15 +318,16 @@
 				A1A918C42177A8E7003646C7 /* TimelineViewController.swift in Sources */,
 				A1A918D82177FCC8003646C7 /* SearchViewController.swift in Sources */,
 				A17D07E921922351005FB743 /* Post.swift in Sources */,
+				A175467C21A5C6670001A203 /* LoginController.swift in Sources */,
 				A17D07E5219222D8005FB743 /* Friend.swift in Sources */,
 				A1A918D12177F2FB003646C7 /* ProfilePostCell.swift in Sources */,
 				A15F02FE2193710000080858 /* AddPostViewController.swift in Sources */,
 				A1A918CA2177B01A003646C7 /* FriendsCollectionController.swift in Sources */,
-				A17D07E32192227A005FB743 /* User.swift in Sources */,
+				A17D07E32192227A005FB743 /* AppUser.swift in Sources */,
 				A1A918D62177F614003646C7 /* ProfileViewController.swift in Sources */,
 				A17D07E721922315005FB743 /* Notification.swift in Sources */,
 				A1A918C62177A90B003646C7 /* PostCell.swift in Sources */,
-				A17D07EC21922441005FB743 /* Database.swift in Sources */,
+				A17D07EC21922441005FB743 /* MyDatabase.swift in Sources */,
 				A1A918C82177AFFE003646C7 /* FriendCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,6 +472,7 @@
 		};
 		A14DAB2821765E2000368668 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 069806C08C4012A37230107E /* Pods-FoodGram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -402,6 +490,7 @@
 		};
 		A14DAB2921765E2000368668 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F50A0F73558CA7EF89D55B3 /* Pods-FoodGram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
