@@ -9,18 +9,18 @@
 import UIKit
 
 class Post: NSObject {
-    var postId: UUID
-    var userId: UUID
-    var image: UIImage?
+    var postId: String
+    var userId: String
+    var image: String
     var postDescription: String
     var creationDate: Date
     var price: Int
     var location: String
     var rating: Int
-    var likes: [UUID]
+    var likes: [String]
     
     
-    init(postId: UUID, userId: UUID, image: UIImage?, postDescription: String, creationDate: Date, price: Int, location: String, rating: Int, likes: [UUID]) {
+    init(postId: String, userId: String, image: String, postDescription: String, creationDate: Date, price: Int, location: String, rating: Int) {
         self.postId = postId
         self.userId = userId
         self.image = image
@@ -29,7 +29,7 @@ class Post: NSObject {
         self.price = price
         self.location = location
         self.rating = rating
-        self.likes = [UUID]()
+        self.likes = [String]()
     }
 
 }

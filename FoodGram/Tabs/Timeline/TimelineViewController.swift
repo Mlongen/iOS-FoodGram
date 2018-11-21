@@ -49,7 +49,7 @@ class TimelineViewController: UICollectionViewController {
         
         let index = indexPath.item
         cell.descriptionLabel.text = database.friendPosts[index].postDescription
-        cell.foodPic.image = database.friendPosts[index].image
+//        cell.foodPic.image = database.friendPosts[index].image
         cell.rating.text = "Rating: " + String(database.friendPosts[index].rating) + "/10"
         
         return cell
