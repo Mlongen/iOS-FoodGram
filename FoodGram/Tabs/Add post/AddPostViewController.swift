@@ -8,11 +8,14 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseStorage
 
 
 class AddPostViewController: UIViewController {
     var ref: DatabaseReference!
     var myDB: MyDatabase!
+    var storageRef: StorageReference!
+
 
     
     @IBOutlet weak var restaurantName: UITextField!
@@ -31,18 +34,48 @@ class AddPostViewController: UIViewController {
         super.viewDidLoad()
         self.myDB = MyDatabase.shared
         ref = Database.database().reference().child("posts").child(myDB.thisUserDBContext)
+        self.storageRef = Storage.storage().reference()
         
         
         // Do any additional setup after loading the view.
     }
     
+    fileprivate func upload(_ image: UIImage, _ postId: String, _ userId: String, _ postDescription: String, _ formattedDate: String, _ price: Int, _ location: String, _ rating: Int) {
+        if let imageData = image.pngData(){
+            storageRef.child(postId).putData(imageData, metadata: nil) { (metadata, error) in
+                if(error != nil){
+                    print(error!)
+                    return
+                }
+                
+                // Fetch the download URL
+                self.storageRef.child(postId).downloadURL { url, error in
+                    if let error = error {
+                        
+                        print(error)
+                        return
+                    } else {
+                        // Get the download URL
+                        let urlStr:String = (url?.absoluteString ?? "")
+                        self.ref.child("postID").setValue(postId)
+                        self.ref.child("userID").setValue(userId)
+                        self.ref.child("image").setValue(urlStr)
+                        self.ref.child("postDescription").setValue(postDescription)
+                        self.ref.child("creationDate").setValue(formattedDate)
+                        self.ref.child("price").setValue(price)
+                        self.ref.child("location").setValue(location)
+                        self.ref.child("rating").setValue(rating)
+                    }
+                }
+            }
+        }
+    }
+    
     @IBAction func addPost(_ sender: Any) {
-        let uuid = UUID().uuidString
-        let userID = myDB.thisUserDBContext
+        let postId = UUID().uuidString
+        let userId = myDB.thisUserDBContext
         
         let image = #imageLiteral(resourceName: "food")
-        let imageData = convertImageToBase64(image: image)
-        
         let postDescription = "description"
         let creationDate = Date()
         let formatter = DateFormatter()
@@ -52,19 +85,15 @@ class AddPostViewController: UIViewController {
         let location = "location"
         let rating = 10
     
+        upload(image, postId, userId, postDescription, formattedDate, price, location, rating)
+    }
         
-        ref.child("postID").setValue(uuid)
-        ref.child("userID").setValue(userID)
-//        ref.child("image").setValue(imageData)
-        ref.child("postDescription").setValue(postDescription)
-        ref.child("creationDate").setValue(formattedDate)
-        ref.child("price").setValue(price)
-        ref.child("location").setValue(location)
-        ref.child("rating").setValue(rating)
+        
+        
         
         
 
-    }
+    
     
     func convertImageToBase64(image: UIImage) -> String {
         let imageData = image.pngData()!
