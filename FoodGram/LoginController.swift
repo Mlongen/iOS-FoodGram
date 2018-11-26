@@ -10,7 +10,22 @@ import UIKit
 import Firebase
 
 class LoginController: UIViewController {
+    
+    var database: MyDatabase!
 
+    @IBAction func signInBtn(_ sender: Any) {
+        
+        Auth.auth().signIn(withEmail: "marcelolongen@gmail.com", password: "123456") { (authResult, error) in
+            // ...
+            guard let user = authResult?.user else { return }
+            self.database = MyDatabase.shared
+            self.database.thisUserDBContext = user.uid
+            self.database.readFriendPosts()
+            
+            self.performSegue(withIdentifier: "showTab",sender: self)
+        }
+        
+    }
     @IBOutlet weak var createAccBtn: UIButton!
     @IBAction func createAccAction(_ sender: Any) {
         Auth.auth().createUser(withEmail: "marcelolongen@gmail.com", password: "123456") { (authResult, error) in

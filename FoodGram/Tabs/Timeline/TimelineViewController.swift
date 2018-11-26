@@ -8,12 +8,14 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 private let reuseIdentifier = "PostCell"
 
 class TimelineViewController: UICollectionViewController {
 
     var database: MyDatabase!
+    var ref: DatabaseReference!
     var userID: String!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +25,7 @@ class TimelineViewController: UICollectionViewController {
         layout.itemSize = CGSize(width: width, height: width)
         print(Auth.auth().currentUser!.uid)
         database = MyDatabase.shared
-        database.thisUserDBContext = userID
-        database.addFriendPosts()
-        database.addFriendPosts()
+        database.readFriendPosts()
     }
 
 
