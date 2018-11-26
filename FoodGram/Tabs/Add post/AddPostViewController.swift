@@ -75,7 +75,7 @@ class AddPostViewController: UIViewController {
         let postId = UUID().uuidString
         let userId = myDB.thisUserDBContext
         
-        let image = #imageLiteral(resourceName: "food")
+        let image = #imageLiteral(resourceName: "food-1")
         let postDescription = "description"
         let creationDate = Date()
         let formatter = DateFormatter()
@@ -87,14 +87,7 @@ class AddPostViewController: UIViewController {
     
         upload(image, postId, userId, postDescription, formattedDate, price, location, rating)
     }
-        
-        
-        
-        
-        
 
-    
-    
     func convertImageToBase64(image: UIImage) -> String {
         let imageData = image.pngData()!
         return imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)

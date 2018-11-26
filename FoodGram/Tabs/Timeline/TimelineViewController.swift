@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import SDWebImage
 
 private let reuseIdentifier = "PostCell"
 
@@ -49,7 +50,11 @@ class TimelineViewController: UICollectionViewController {
         
         let index = indexPath.item
         cell.descriptionLabel.text = database.friendPosts[index].postDescription
-//        cell.foodPic.image = database.friendPosts[index].image
+        let imageUrl = database.friendPosts[index].image
+        let url = URL(string: imageUrl)
+        cell.foodPic.sd_setImage(with: url, completed: { [weak self] (image, error, cacheType, imageURL) in
+            cell.foodPic.image = image
+        })
         cell.rating.text = "Rating: " + String(database.friendPosts[index].rating) + "/10"
         
         return cell
