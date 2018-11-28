@@ -14,5 +14,5 @@ target 'FoodGram' do
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
-
+  pod 'Presentr'
 end

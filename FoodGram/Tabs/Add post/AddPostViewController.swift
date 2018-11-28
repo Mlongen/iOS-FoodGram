@@ -65,6 +65,7 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     @IBOutlet weak var postButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         self.myDB = MyDatabase.shared
         ref = Database.database().reference().child("posts").child(myDB.thisUserDBContext)
         self.storageRef = Storage.storage().reference()
@@ -161,4 +162,10 @@ extension AddPostViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
         picker.dismiss(animated: true, completion: nil)
     }
+}
+
+extension AddPostViewController {
+    
+    
+    
 }

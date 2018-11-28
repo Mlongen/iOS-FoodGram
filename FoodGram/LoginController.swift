@@ -42,7 +42,7 @@ class LoginController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.setToolbarHidden(true, animated: false)
 
         // Do any additional setup after loading the view.
     }

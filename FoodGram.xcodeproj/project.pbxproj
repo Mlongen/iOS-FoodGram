@@ -26,6 +26,8 @@
 		A1A918D12177F2FB003646C7 /* ProfilePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D02177F2FB003646C7 /* ProfilePostCell.swift */; };
 		A1A918D62177F614003646C7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D52177F614003646C7 /* ProfileViewController.swift */; };
 		A1A918D82177FCC8003646C7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D72177FCC8003646C7 /* SearchViewController.swift */; };
+		A1B8DFA921AF10F7009C186F /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B8DFA821AF10F7009C186F /* NotificationTableViewController.swift */; };
+		A1B8DFAD21AF154F009C186F /* AddPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B8DFAC21AF154F009C186F /* AddPostController.swift */; };
 		B6C1CBD46B5E147D52C8FC10 /* Pods_FoodGram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E6A5A7EF14384DA2F03AE3 /* Pods_FoodGram.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,8 @@
 		A1A918D02177F2FB003646C7 /* ProfilePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostCell.swift; sourceTree = "<group>"; };
 		A1A918D52177F614003646C7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = FoodGram/Profile/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		A1A918D72177FCC8003646C7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		A1B8DFA821AF10F7009C186F /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
+		A1B8DFAC21AF154F009C186F /* AddPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +103,10 @@
 			children = (
 				A14DAB1621765E1D00368668 /* AppDelegate.swift */,
 				A175467921A5C5170001A203 /* GoogleService-Info.plist */,
+				A1B8DFA821AF10F7009C186F /* NotificationTableViewController.swift */,
 				A14DAB1C21765E1D00368668 /* Main.storyboard */,
 				A175467B21A5C6670001A203 /* LoginController.swift */,
+				A1B8DFAC21AF154F009C186F /* AddPostController.swift */,
 				A17D07EA219223AA005FB743 /* Objects */,
 				A1A918CD2177F1FE003646C7 /* Tabs */,
 				A14DAB1F21765E2000368668 /* Assets.xcassets */,
@@ -295,6 +301,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -305,6 +312,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -346,6 +354,7 @@
 				A14DAB1721765E1D00368668 /* AppDelegate.swift in Sources */,
 				A1A918C42177A8E7003646C7 /* TimelineViewController.swift in Sources */,
 				A1A918D82177FCC8003646C7 /* SearchViewController.swift in Sources */,
+				A1B8DFAD21AF154F009C186F /* AddPostController.swift in Sources */,
 				A17D07E921922351005FB743 /* Post.swift in Sources */,
 				A175467C21A5C6670001A203 /* LoginController.swift in Sources */,
 				A17D07E5219222D8005FB743 /* Friend.swift in Sources */,
@@ -357,6 +366,7 @@
 				A17D07E721922315005FB743 /* Notification.swift in Sources */,
 				A1A918C62177A90B003646C7 /* PostCell.swift in Sources */,
 				A17D07EC21922441005FB743 /* MyDatabase.swift in Sources */,
+				A1B8DFA921AF10F7009C186F /* NotificationTableViewController.swift in Sources */,
 				A1A918C82177AFFE003646C7 /* FriendCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -82,6 +82,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - Presentr (1.9)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
@@ -94,6 +95,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
+  - Presentr
   - SDWebImage
 
 SPEC REPOS:
@@ -114,6 +116,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - Presentr
     - SDWebImage
 
 SPEC CHECKSUMS:
@@ -133,8 +136,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Presentr: 7078d7eb5d1661ebeaae60c9e42a1e534de1b993
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
 
-PODFILE CHECKSUM: 355f5e71814bd356aba73e12ff0fe0c30f4bac6e
+PODFILE CHECKSUM: 01cb6d4274f758d27bd7a5b16aacaab6e6a199b6
 
 COCOAPODS: 1.5.3

@@ -10,17 +10,39 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import SDWebImage
+import Presentr
 
 private let reuseIdentifier = "PostCell"
 
 class TimelineViewController: UICollectionViewController {
 
     var database: MyDatabase!
+    
+    lazy var addPostController: AddPostViewController = {
+        let addPostController = self.storyboard?.instantiateViewController(withIdentifier: "AddPostViewController")
+        return addPostController as! AddPostViewController
+    }()
+    @IBOutlet weak var notificationsButton: UIBarButtonItem!
+    let presenter: Presentr = {
+        let width = ModalSize.full
+        let height = ModalSize.full
+        let center = ModalCenterPosition.customOrigin(origin: CGPoint(x: 0, y:80))
+        let customType = PresentationType.custom(width: width, height: height, center: center)
+        
+        let customPresenter = Presentr(presentationType: customType)
+        customPresenter.transitionType = .coverVerticalFromTop
+        customPresenter.dismissTransitionType = .crossDissolve
+        customPresenter.roundCorners = true
+        customPresenter.backgroundOpacity = 0.5
+        customPresenter.dismissOnSwipe = true
+        customPresenter.dismissOnSwipeDirection = .top
+        return customPresenter
+    }()
     var ref: DatabaseReference!
     var userID: String!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let width = (view.frame.size.width - 20)
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
@@ -37,6 +59,7 @@ class TimelineViewController: UICollectionViewController {
     }
 
 
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return database.friendPosts.count
@@ -59,4 +82,21 @@ class TimelineViewController: UICollectionViewController {
         
         return cell
     }
+
+    
+}
+
+
+extension TimelineViewController{
+
+    
+    @IBAction func notificationBTNTapped(_ sender: Any) {
+        let controller = NotificationTableViewController()
+        customPresentViewController(presenter, viewController: controller, animated: true, completion: nil)
+    }
+    
+    @IBAction func addBtnTapped(_ sender: Any) {
+        customPresentViewController(presenter, viewController: addPostController, animated: true, completion: nil)
+    }
+    
 }
