@@ -11,15 +11,20 @@ import FirebaseDatabase
 import FirebaseStorage
 import GooglePlaces
 import GooglePlacePicker
+import AVFoundation
+import CoreServices
 
 
+class AddPictureControllerDelegate: AppDelegate {
+    
+}
 
 class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDelegate {
     var ref: DatabaseReference!
     var myDB: MyDatabase!
     var storageRef: StorageReference!
 
-
+    weak var delegate: AddPictureControllerDelegate!
     @IBAction func pickPlace(_ sender: Any) {
         let config = GMSPlacePickerConfig(viewport: nil)
         let placePicker = GMSPlacePickerViewController(config: config)
@@ -37,7 +42,26 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     
     @IBOutlet weak var nameLabel: UILabel!
     
+    @IBOutlet weak var cameraBTN: UIButton! {
+        didSet {
+            cameraBTN.isEnabled = UIImagePickerController.isSourceTypeAvailable(.photoLibrary)
+        }
+    }
     
+    @IBAction func cameraBTNTapped(_ sender: Any) {
+        let picker = UIImagePickerController()
+        
+        //        2. setup variables (config)
+        picker.sourceType = .photoLibrary
+        picker.mediaTypes = [kUTTypeImage as String]
+        picker.allowsEditing = true
+        
+        //        3. to get the photo taken, we need to set the delegate of the picker to self
+        picker.delegate = self
+        
+        //        4. present the picker
+        present(picker, animated: true, completion: nil)
+    }
     @IBOutlet weak var postButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,5 +139,26 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
         
         print("No place selected")
         self.nameLabel.text = "No place selected"
+    }
+    
+    
+}
+
+extension AddPostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        //      1. get the photo
+        if let photo = (info[.editedImage] ?? info[.originalImage]) as? UIImage {
+            
+            //      2. display in UImageView
+            self.cameraBTN.setImage(photo, for: .normal)
+            
+            //store image to core data
+        }
+        picker.dismiss(animated: true, completion: nil)
     }
 }
