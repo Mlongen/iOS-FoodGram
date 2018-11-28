@@ -11,4 +11,8 @@ target 'FoodGram' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'SDWebImage'
+  pod 'GooglePlaces'
+  pod 'GooglePlacePicker'
+  pod 'GoogleMaps'
+
 end

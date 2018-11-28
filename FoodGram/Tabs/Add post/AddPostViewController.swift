@@ -9,24 +9,33 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseStorage
+import GooglePlaces
+import GooglePlacePicker
 
 
-class AddPostViewController: UIViewController {
+
+class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDelegate {
     var ref: DatabaseReference!
     var myDB: MyDatabase!
     var storageRef: StorageReference!
 
 
+    @IBAction func pickPlace(_ sender: Any) {
+        let config = GMSPlacePickerConfig(viewport: nil)
+        let placePicker = GMSPlacePickerViewController(config: config)
+        
+        placePicker.delegate = self
+        
+        present(placePicker, animated: true, completion: nil)
+    }
     
     @IBOutlet weak var restaurantName: UITextField!
-    
     @IBOutlet weak var amount: UISlider!
-    
-    
     @IBOutlet weak var rating: UISlider!
     @IBOutlet weak var postDescription: UITextField!
     @IBOutlet weak var image: UIImageView!
     
+    @IBOutlet weak var nameLabel: UILabel!
     
     
     @IBOutlet weak var postButton: UIButton!
@@ -38,6 +47,12 @@ class AddPostViewController: UIViewController {
         
         
         // Do any additional setup after loading the view.
+    }
+    
+    func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
+        viewController.dismiss(animated: true, completion: nil)
+        print("Place name \(place.name)")
+        self.nameLabel.text = place.name
     }
     
     fileprivate func upload(_ image: UIImage, _ postId: String, _ userId: String, _ postDescription: String, _ formattedDate: String, _ price: Int, _ location: String, _ rating: Int) {
@@ -94,4 +109,11 @@ class AddPostViewController: UIViewController {
     }
     
 
+    func placePickerDidCancel(_ viewController: GMSPlacePickerViewController) {
+        // Dismiss the place picker, as it cannot dismiss itself.
+        viewController.dismiss(animated: true, completion: nil)
+        
+        print("No place selected")
+        self.nameLabel.text = "No place selected"
+    }
 }
