@@ -15,4 +15,7 @@ target 'FoodGram' do
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
   pod 'Presentr'
+  pod 'AwaitKit'
+  pod 'SearchTextField'
+  pod 'Cely'
 end

@@ -8,12 +8,21 @@
 
 import UIKit
 import Firebase
+import AwaitKit
 
 class LoginController: UIViewController {
     
     var database: MyDatabase!
     var ref: DatabaseReference!
 
+    @IBOutlet weak var userNameField: UITextField!
+    
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    
+    @IBOutlet weak var confirmPasswordField: UITextField!
+    @IBOutlet weak var confirmPasswordLabel: UILabel!
+    
     @IBAction func signInBtn(_ sender: Any) {
         
         Auth.auth().signIn(withEmail: "marcelolongen@gmail.com", password: "123456") { (authResult, error) in
@@ -21,9 +30,26 @@ class LoginController: UIViewController {
             guard let user = authResult?.user else { return }
             self.database = MyDatabase.shared
             self.database.thisUserDBContext = user.uid
-            self.database.readFriendPosts()
             
-            self.performSegue(withIdentifier: "showTab",sender: self)
+
+            self.database.readFriendPosts()
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                if (self.database.hasLoaded > 0)
+                {
+                    self.performSegue(withIdentifier: "showTab",sender: self)
+                } else {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        if (self.database.hasLoaded > 0)
+                        {
+                            self.performSegue(withIdentifier: "showTab",sender: self)
+                        } else {
+                            
+                        }
+                    }
+                }
+            }
+            
         }
         
     }
@@ -43,7 +69,8 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(true, animated: false)
-
+            confirmPasswordField.removeFromSuperview()
+            confirmPasswordLabel.removeFromSuperview()
         // Do any additional setup after loading the view.
     }
     

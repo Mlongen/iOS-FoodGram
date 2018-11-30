@@ -15,9 +15,9 @@ class FriendsCollectionController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let width = (view.frame.size.width - 20) / 3
+        let width = (view.frame.size.width - 20)
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: width, height: width)
+        layout.itemSize = CGSize(width: width, height: width / 4)
         
         
 

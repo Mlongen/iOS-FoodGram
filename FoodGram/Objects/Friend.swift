@@ -9,10 +9,10 @@
 import UIKit
 
 class Friend: NSObject {
-    var friendUserID: UUID
+    var friendUserID: String
     var status: String
     
-   init(friendUserID: UUID, status: String) {
+   init(friendUserID: String, status: String) {
         self.friendUserID = friendUserID
         self.status = status
     }

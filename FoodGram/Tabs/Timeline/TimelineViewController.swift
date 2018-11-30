@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import SDWebImage
 import Presentr
+import AwaitKit
 
 private let reuseIdentifier = "PostCell"
 
@@ -21,6 +22,10 @@ class TimelineViewController: UICollectionViewController {
     lazy var addPostController: AddPostViewController = {
         let addPostController = self.storyboard?.instantiateViewController(withIdentifier: "AddPostViewController")
         return addPostController as! AddPostViewController
+    }()
+    lazy var notificationController: NotificationViewController = {
+        let notificationController = self.storyboard?.instantiateViewController(withIdentifier: "NavController")
+        return notificationController as! NotificationViewController
     }()
     @IBOutlet weak var notificationsButton: UIBarButtonItem!
     let presenter: Presentr = {
@@ -47,11 +52,19 @@ class TimelineViewController: UICollectionViewController {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
         print(Auth.auth().currentUser!.uid)
+       
         database = MyDatabase.shared
-        database.readFriendPosts()
+
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        collectionView.refreshControl = refresh
     }
 
 
+    @objc func refresh(){
+        collectionView.refreshControl?.endRefreshing()
+    }
+    
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -86,13 +99,10 @@ class TimelineViewController: UICollectionViewController {
     
 }
 
-
 extension TimelineViewController{
-
     
     @IBAction func notificationBTNTapped(_ sender: Any) {
-        let controller = NotificationTableViewController()
-        customPresentViewController(presenter, viewController: controller, animated: true, completion: nil)
+        customPresentViewController(presenter, viewController:  notificationController, animated: true, completion: nil)
     }
     
     @IBAction func addBtnTapped(_ sender: Any) {

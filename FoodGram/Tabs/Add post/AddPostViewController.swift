@@ -65,9 +65,8 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     @IBOutlet weak var postButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         self.myDB = MyDatabase.shared
-        ref = Database.database().reference().child("posts").child(myDB.thisUserDBContext)
+        ref = Database.database().reference().child("users").child(myDB.thisUserDBContext)
         self.storageRef = Storage.storage().reference()
         
         
@@ -81,33 +80,31 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     }
     
     fileprivate func upload(_ image: UIImage, _ postId: String, _ userId: String, _ postDescription: String, _ formattedDate: String, _ price: Int, _ location: String, _ rating: Int) {
+        let imagePath = Storage.storage().reference().child(postId)
         if let imageData = image.pngData(){
-            storageRef.child(postId).putData(imageData, metadata: nil) { (metadata, error) in
+            imagePath.putData(imageData, metadata: nil) { (metadata, error) in
                 if(error != nil){
                     print(error!)
                     return
                 }
-                
                 // Fetch the download URL
-                self.storageRef.child(postId).downloadURL { url, error in
+                imagePath.downloadURL { (url, error) in
                     if let error = error {
-                        
                         print(error)
                         return
                     } else {
                         // Get the download URL
                         let urlStr:String = (url?.absoluteString ?? "")
-                        self.ref.child("postID").setValue(postId)
-                        self.ref.child("userID").setValue(userId)
-                        self.ref.child("image").setValue(urlStr)
-                        self.ref.child("postDescription").setValue(postDescription)
-                        self.ref.child("creationDate").setValue(formattedDate)
-                        self.ref.child("price").setValue(price)
-                        self.ref.child("location").setValue(location)
-                        self.ref.child("rating").setValue(rating)
+                        self.ref.child("posts").child(postId).child("userID").setValue(userId)
+                        self.ref.child("posts").child(postId).child("image").setValue(urlStr)
+                        self.ref.child("posts").child(postId).child("postDescription").setValue(postDescription)
+                        self.ref.child("posts").child(postId).child("creationDate").setValue(formattedDate)
+                        self.ref.child("posts").child(postId).child("price").setValue(price)
+                        self.ref.child("posts").child(postId).child("location").setValue(location)
+                        self.ref.child("posts").child(postId).child("rating").setValue(rating)
                     }
                 }
-            }
+                }
         }
     }
     
@@ -115,7 +112,7 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
         let postId = UUID().uuidString
         let userId = myDB.thisUserDBContext
         
-        let image = #imageLiteral(resourceName: "food-1")
+        let image = #imageLiteral(resourceName: "food")
         let postDescription = "description"
         let creationDate = Date()
         let formatter = DateFormatter()

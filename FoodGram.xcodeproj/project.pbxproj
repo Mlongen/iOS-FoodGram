@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A104ACB221AF974100F68894 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104ACB121AF974100F68894 /* NotificationViewController.swift */; };
 		A14DAB1721765E1D00368668 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DAB1621765E1D00368668 /* AppDelegate.swift */; };
 		A14DAB1E21765E1D00368668 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB1C21765E1D00368668 /* Main.storyboard */; };
 		A14DAB2021765E2000368668 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB1F21765E2000368668 /* Assets.xcassets */; };
 		A14DAB2321765E2000368668 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB2121765E2000368668 /* LaunchScreen.storyboard */; };
+		A15A99AA21AF99D10009E9C3 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A99A921AF99D10009E9C3 /* NotificationCell.swift */; };
 		A15F02FE2193710000080858 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15F02FD2193710000080858 /* AddPostViewController.swift */; };
 		A175467A21A5C5170001A203 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A175467921A5C5170001A203 /* GoogleService-Info.plist */; };
 		A175467C21A5C6670001A203 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A175467B21A5C6670001A203 /* LoginController.swift */; };
@@ -26,8 +28,6 @@
 		A1A918D12177F2FB003646C7 /* ProfilePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D02177F2FB003646C7 /* ProfilePostCell.swift */; };
 		A1A918D62177F614003646C7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D52177F614003646C7 /* ProfileViewController.swift */; };
 		A1A918D82177FCC8003646C7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D72177FCC8003646C7 /* SearchViewController.swift */; };
-		A1B8DFA921AF10F7009C186F /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B8DFA821AF10F7009C186F /* NotificationTableViewController.swift */; };
-		A1B8DFAD21AF154F009C186F /* AddPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B8DFAC21AF154F009C186F /* AddPostController.swift */; };
 		B6C1CBD46B5E147D52C8FC10 /* Pods_FoodGram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E6A5A7EF14384DA2F03AE3 /* Pods_FoodGram.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,12 +35,14 @@
 		01E6A5A7EF14384DA2F03AE3 /* Pods_FoodGram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodGram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		069806C08C4012A37230107E /* Pods-FoodGram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodGram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram.debug.xcconfig"; sourceTree = "<group>"; };
 		5F50A0F73558CA7EF89D55B3 /* Pods-FoodGram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodGram.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram.release.xcconfig"; sourceTree = "<group>"; };
+		A104ACB121AF974100F68894 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		A14DAB1321765E1D00368668 /* FoodGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14DAB1621765E1D00368668 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A14DAB1D21765E1D00368668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A14DAB1F21765E2000368668 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A14DAB2221765E2000368668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A14DAB2421765E2000368668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A15A99A921AF99D10009E9C3 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		A15F02FD2193710000080858 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		A175467921A5C5170001A203 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A175467B21A5C6670001A203 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -56,8 +58,6 @@
 		A1A918D02177F2FB003646C7 /* ProfilePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostCell.swift; sourceTree = "<group>"; };
 		A1A918D52177F614003646C7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = FoodGram/Profile/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		A1A918D72177FCC8003646C7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		A1B8DFA821AF10F7009C186F /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
-		A1B8DFAC21AF154F009C186F /* AddPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,17 +102,17 @@
 			isa = PBXGroup;
 			children = (
 				A14DAB1621765E1D00368668 /* AppDelegate.swift */,
+				A15A99A921AF99D10009E9C3 /* NotificationCell.swift */,
 				A175467921A5C5170001A203 /* GoogleService-Info.plist */,
-				A1B8DFA821AF10F7009C186F /* NotificationTableViewController.swift */,
 				A14DAB1C21765E1D00368668 /* Main.storyboard */,
 				A175467B21A5C6670001A203 /* LoginController.swift */,
-				A1B8DFAC21AF154F009C186F /* AddPostController.swift */,
 				A17D07EA219223AA005FB743 /* Objects */,
 				A1A918CD2177F1FE003646C7 /* Tabs */,
 				A14DAB1F21765E2000368668 /* Assets.xcassets */,
 				A14DAB2121765E2000368668 /* LaunchScreen.storyboard */,
 				A1A918D22177F300003646C7 /* Profile */,
 				A14DAB2421765E2000368668 /* Info.plist */,
+				A104ACB121AF974100F68894 /* NotificationViewController.swift */,
 			);
 			path = FoodGram;
 			sourceTree = "<group>";
@@ -299,10 +299,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AwaitKit/AwaitKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Cely/Cely.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -310,10 +314,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AwaitKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cely.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SearchTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -353,8 +361,8 @@
 			files = (
 				A14DAB1721765E1D00368668 /* AppDelegate.swift in Sources */,
 				A1A918C42177A8E7003646C7 /* TimelineViewController.swift in Sources */,
+				A104ACB221AF974100F68894 /* NotificationViewController.swift in Sources */,
 				A1A918D82177FCC8003646C7 /* SearchViewController.swift in Sources */,
-				A1B8DFAD21AF154F009C186F /* AddPostController.swift in Sources */,
 				A17D07E921922351005FB743 /* Post.swift in Sources */,
 				A175467C21A5C6670001A203 /* LoginController.swift in Sources */,
 				A17D07E5219222D8005FB743 /* Friend.swift in Sources */,
@@ -366,8 +374,8 @@
 				A17D07E721922315005FB743 /* Notification.swift in Sources */,
 				A1A918C62177A90B003646C7 /* PostCell.swift in Sources */,
 				A17D07EC21922441005FB743 /* MyDatabase.swift in Sources */,
-				A1B8DFA921AF10F7009C186F /* NotificationTableViewController.swift in Sources */,
 				A1A918C82177AFFE003646C7 /* FriendCell.swift in Sources */,
+				A15A99AA21AF99D10009E9C3 /* NotificationCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
