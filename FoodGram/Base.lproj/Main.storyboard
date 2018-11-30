@@ -174,7 +174,7 @@
                         <outlet property="confirmPasswordLabel" destination="ozm-gg-J4X" id="Tzo-BV-eEP"/>
                         <outlet property="createAccBtn" destination="xUH-go-x4c" id="POk-jv-AYY"/>
                         <outlet property="emailField" destination="xSU-KS-GuZ" id="Acs-Ph-F64"/>
-                        <outlet property="passwordField" destination="h2U-Og-GKG" id="mkP-9I-Ryp"/>
+                        <outlet property="passwordField" destination="1A2-rw-4rc" id="nEz-wB-u0p"/>
                         <outlet property="userNameField" destination="buw-bo-KtK" id="VU4-eR-ujq"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="showTab" id="XXj-Lo-Gwf"/>
                     </connections>

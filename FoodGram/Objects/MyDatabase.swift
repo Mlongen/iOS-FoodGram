@@ -20,7 +20,7 @@ class MyDatabase: NSObject {
     var selfPosts: [Post]
     var friendPosts: [Post]
     var friends: [Friend]
-    var all
+
     
     var notifications: [Notification]
     
@@ -36,7 +36,7 @@ class MyDatabase: NSObject {
     }
     
     
-    f
+    
     
     func addFriendPosts()
     {
@@ -94,10 +94,10 @@ class MyDatabase: NSObject {
         
     }
     
-    func addUserToDB(_ user: Firebase.User) {
+    func addUserToDB(_ user: Firebase.User, username: String) {
         self.ref = Database.database().reference().child("users").child(user.uid)
         self.ref.child("userID").setValue(user.uid)
-        self.ref.child("userName").setValue("marcelolongen")
+        self.ref.child("userName").setValue(username)
         let creationDate = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MMM-yyyy"
