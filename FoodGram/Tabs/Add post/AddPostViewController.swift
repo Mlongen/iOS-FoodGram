@@ -32,7 +32,6 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     @IBAction func pickPlace(_ sender: Any) {
         let config = GMSPlacePickerConfig(viewport: nil)
         let placePicker = GMSPlacePickerViewController(config: config)
-        
         placePicker.delegate = self
         
         present(placePicker, animated: true, completion: nil)
@@ -76,8 +75,8 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     
     func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
         viewController.dismiss(animated: true, completion: nil)
-        print("Place name \(place.name)")
         self.nameLabel.text = place.name
+        
     }
     
     fileprivate func upload(_ image: UIImage, _ postId: String, _ userId: String, _ postDescription: String, _ formattedDate: String, _ price: Int, _ location: String, _ rating: Int) {

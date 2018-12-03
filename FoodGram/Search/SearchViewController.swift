@@ -7,37 +7,38 @@
 //
 
 import UIKit
-import SearchTextField
+import RAMReel
+import NotificationBannerSwift
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController,UICollectionViewDelegate {
     
-
+    var dataSource: SimplePrefixQueryDataSource!
+    var data: [String]!
+    var ramReel: RAMReel<RAMCell, RAMTextField, SimplePrefixQueryDataSource>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Connect your IBOutlet...
-       
+        data = Array(MyDatabase.shared.allUsers.keys)
+        dataSource = SimplePrefixQueryDataSource(data)
         
-        // ...or create it manually
-        let mySearchTextField = SearchTextField(frame: CGRect(x: 10, y: 100, width: 200, height: 40))
+        ramReel = RAMReel(frame: view.bounds, dataSource: dataSource, placeholder: "Start by typing…", attemptToDodgeKeyboard: false) {
+            print("Plain:", $0)
+        }
         
-        // Set the array of strings you want to suggest
-        mySearchTextField.filterStrings(["Red", "Blue", "Yellow"])
+        ramReel.hooks.append {
+            let r = $0
+            if (self.data.contains(r)) {
+                let banner = NotificationBanner(title: "User \(r) exists", subtitle: nil, style: .success)
+                banner.show()
+            } else {
+                let banner = NotificationBanner(title: "User \(r) does not exist", subtitle: nil, style: .danger)
+                banner.show()
+            }
+        }
         
-       mySearchTextField.inlineMode = true
+        view.addSubview(ramReel.view)
 
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

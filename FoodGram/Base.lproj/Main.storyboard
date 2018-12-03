@@ -535,6 +535,21 @@
             </objects>
             <point key="canvasLocation" x="3949.5999999999999" y="218.7192118226601"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="RzG-KV-VVh">
+            <objects>
+                <viewController storyboardIdentifier="SearchController" id="cbr-Wn-JdS" customClass="SearchViewController" customModule="FoodGram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DZ4-cv-9Oh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="knQ-xE-9Nn"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PmN-bX-ARA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3574" y="-512"/>
+        </scene>
         <!--List-->
         <scene sceneID="8mX-IL-nt4">
             <objects>
@@ -840,7 +855,13 @@
                             <outlet property="delegate" destination="l1B-t0-vmu" id="Vo3-oq-J7A"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Friends" id="rwj-8q-E98"/>
+                    <navigationItem key="navigationItem" title="Friends" id="rwj-8q-E98">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="hdH-8t-buV">
+                            <connections>
+                                <action selector="openSearchController:" destination="l1B-t0-vmu" id="Ubq-oh-7AS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="Uqj-nr-Yf3" kind="show" identifier="detailFromFriendList" id="Db8-pz-BVt"/>
                     </connections>

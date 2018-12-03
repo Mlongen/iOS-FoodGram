@@ -104,6 +104,7 @@ PODS:
   - PromiseKit/UIKit (6.5.2):
     - PromiseKit/CorePromise
   - PryntTrimmerView (3.0.0)
+  - RAMReel (4.0.0)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
@@ -128,6 +129,7 @@ DEPENDENCIES:
   - iOSDropDown
   - NotificationBannerSwift
   - Presentr
+  - RAMReel
   - SDWebImage
   - SearchTextField
   - YPImagePicker
@@ -159,6 +161,7 @@ SPEC REPOS:
     - Presentr
     - PromiseKit
     - PryntTrimmerView
+    - RAMReel
     - SDWebImage
     - SearchTextField
     - SnapKit
@@ -191,12 +194,13 @@ SPEC CHECKSUMS:
   Presentr: 7078d7eb5d1661ebeaae60c9e42a1e534de1b993
   PromiseKit: 27c1601bfb73405871b805bcb8cf7e55c4dad3db
   PryntTrimmerView: 53ac64053c7ce63cb3e27f54090f52da0734891d
+  RAMReel: 815addc9594886e6816b891a1559058f05ff9580
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SearchTextField: a0992739d4b05dcbb40fb3a5cc6526bd991bdd23
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SteviaLayout: dd74d1abd127bbf0ce346ac9430441684fe427d0
   YPImagePicker: 26d5bf7bfe1cffd1c5eedea3ac60422b314e2a42
 
-PODFILE CHECKSUM: 77640d3b645533443d09bdf6730e582765f5b732
+PODFILE CHECKSUM: 5ff1decbae172f53db2ff75b1a66b69d5af4d2db
 
 COCOAPODS: 1.5.3

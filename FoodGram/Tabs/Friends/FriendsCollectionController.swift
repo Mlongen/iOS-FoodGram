@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Presentr
 
 private let reuseIdentifier = "FriendCell"
 
@@ -21,6 +22,32 @@ class FriendsCollectionController: UICollectionViewController {
         
         
 
+    }
+    lazy var searchController: SearchViewController = {
+        let searchController = self.storyboard?.instantiateViewController(withIdentifier: "SearchController")
+        return searchController as! SearchViewController
+    }()
+    
+
+    @IBAction func openSearchController(_ sender: Any) {
+        let presenter: Presentr = {
+            
+            let width = ModalSize.fluid(percentage: 0.95)
+            let height = ModalSize.fluid(percentage: 0.3)
+            let center = ModalCenterPosition.topCenter
+            let customType = PresentationType.custom(width: width, height: height, center: center)
+            
+            let customPresenter = Presentr(presentationType: customType)
+            customPresenter.transitionType = .coverVerticalFromTop
+            customPresenter.dismissTransitionType = .crossDissolve
+            customPresenter.roundCorners = true
+            customPresenter.backgroundOpacity = 0.5
+            customPresenter.dismissOnSwipe = true
+            customPresenter.dismissOnSwipeDirection = .top
+            customPresenter.accessibilityScroll(UIAccessibilityScrollDirection.down)
+            return customPresenter
+        }()
+        customPresentViewController(presenter, viewController:  searchController, animated: true, completion: nil)
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {

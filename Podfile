@@ -22,5 +22,6 @@ target 'FoodGram' do
   pod 'iOSDropDown'
   pod 'Cosmos'
   pod 'NotificationBannerSwift'
+  pod 'RAMReel'
   
 end
