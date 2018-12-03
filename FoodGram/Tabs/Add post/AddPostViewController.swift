@@ -13,7 +13,10 @@ import GooglePlaces
 import GooglePlacePicker
 import AVFoundation
 import CoreServices
-
+import YPImagePicker
+import iOSDropDown
+import Cosmos
+import NotificationBannerSwift
 
 class AddPictureControllerDelegate: AppDelegate {
     
@@ -24,6 +27,7 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     var myDB: MyDatabase!
     var storageRef: StorageReference!
 
+    var picker: YPImagePicker!
     weak var delegate: AddPictureControllerDelegate!
     @IBAction func pickPlace(_ sender: Any) {
         let config = GMSPlacePickerConfig(viewport: nil)
@@ -41,7 +45,7 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     @IBOutlet weak var image: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
-    
+
     @IBOutlet weak var cameraBTN: UIButton! {
         didSet {
             cameraBTN.isEnabled = UIImagePickerController.isSourceTypeAvailable(.photoLibrary)
@@ -49,27 +53,22 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     }
     
     @IBAction func cameraBTNTapped(_ sender: Any) {
-        let picker = UIImagePickerController()
-        
-        //        2. setup variables (config)
-        picker.sourceType = .photoLibrary
-        picker.mediaTypes = [kUTTypeImage as String]
-        picker.allowsEditing = true
-        
-        //        3. to get the photo taken, we need to set the delegate of the picker to self
-        picker.delegate = self
-        
-        //        4. present the picker
-        present(picker, animated: true, completion: nil)
+        self.presentImagePicker()
     }
     @IBOutlet weak var postButton: UIButton!
+    
+    
+    
+    @IBOutlet weak var dropDown: DropDown!
     override func viewDidLoad() {
         super.viewDidLoad()
+        dropDown.optionArray = ["$5", "$10", "$15", "$20", "$30", "$35+"]
+        dropDown.listHeight = 300
         self.myDB = MyDatabase.shared
         ref = Database.database().reference().child("users").child(myDB.thisUserDBContext)
         self.storageRef = Storage.storage().reference()
-        
-        
+
+        // The list of array to display. Can be changed dynamically
         // Do any additional setup after loading the view.
     }
     
@@ -123,6 +122,9 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
         let rating = 10
     
         upload(image, postId, userId, postDescription, formattedDate, price, location, rating)
+        let banner = NotificationBanner(title: "Post uploaded successfully!", subtitle: "Your friends will be able to see it in a few seconds.", style: .success)
+        banner.show()
+        self.dismiss(animated: true, completion: nil)
     }
 
     func convertImageToBase64(image: UIImage) -> String {
@@ -138,8 +140,6 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
         print("No place selected")
         self.nameLabel.text = "No place selected"
     }
-    
-    
 }
 
 extension AddPostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -164,5 +164,39 @@ extension AddPostViewController: UIImagePickerControllerDelegate, UINavigationCo
 extension AddPostViewController {
     
     
+    func presentImagePicker(){
+        var config = YPImagePickerConfiguration()
+        config.library.mediaType = .photo
+        config.library.onlySquare  = false
+        config.onlySquareImagesFromCamera = true
+        config.targetImageSize = .original
+        config.usesFrontCamera = true
+        config.showsFilters = true
+        
+        config.shouldSaveNewPicturesToAlbum = true
+        config.albumName = "MyGreatAppName"
+        config.screens = [.library, .photo]
+        config.startOnScreen = .library
+        config.showsCrop = .rectangle(ratio: (4/3))
+        config.wordings.libraryTitle = "Gallery"
+        config.hidesStatusBar = false
+        config.library.maxNumberOfItems = 1
+        config.library.minNumberOfItems = 1
+        config.library.numberOfItemsInRow = 3
+        config.library.spacingBetweenItems = 2
+        config.isScrollToChangeModesEnabled = false
+        
+        // Build a picker with your configuration
+        self.picker = YPImagePicker(configuration: config)
+        present(self.picker, animated: true, completion: nil)
+        self.picker.didFinishPicking { [unowned self] items, _ in
+            if let photo = items.singlePhoto {
+                self.cameraBTN.setImage(photo.image, for: .normal)
+            }
+        
+            self.picker.dismiss(animated: true, completion: nil)
+    }
     
+    
+}
 }

@@ -20,6 +20,7 @@ class MyDatabase: NSObject {
     var selfPosts: [Post]
     var friendPosts: [Post]
     var friends: [Friend]
+    var allUsers: [String: String]
 
     
     var notifications: [Notification]
@@ -32,6 +33,8 @@ class MyDatabase: NSObject {
         self.friendPosts = [Post]()
         self.notifications = [Notification]()
         self.hasLoaded = 0
+        allUsers = [String: String]()
+        
 
     }
     
@@ -65,6 +68,22 @@ class MyDatabase: NSObject {
 //        })
 //
 //    }
+    
+    func readAllUsers()
+    {
+        self.ref = Database.database().reference().child("users")
+        self.ref.observe(DataEventType.value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshots {
+                    if let value = snap.value as? Dictionary<String, AnyObject> {
+                        let userID = value["userID"] as? String ?? ""
+                        let thisUser = value["userName"] as? String ?? ""
+                        self.allUsers[thisUser] = userID
+                    }
+                }
+            }
+        })
+    }
     func readFriendPosts()
     {
         self.ref = Database.database().reference().child("users").child(self.thisUserDBContext).child("posts")
@@ -83,13 +102,13 @@ class MyDatabase: NSObject {
                         let rating = value["rating"] as? NSInteger ?? 0
                         
                         
-                        self.hasLoaded += 1
                         let newPost = Post(postId: postID, userId: userID, image: image, postDescription: postDescription, creationDate: Date(), price: price, location: location, rating: rating)
                         
                         self.friendPosts.append(newPost)
                     }
                 }
             }
+            self.hasLoaded += 1
         })
         
     }
@@ -103,7 +122,7 @@ class MyDatabase: NSObject {
         formatter.dateFormat = "dd-MMM-yyyy"
         let formattedDate = formatter.string(from: creationDate)
         self.ref.child("dateOfCreation").setValue(formattedDate)
-        self.ref.child("email").setValue("marcelo.longen@gmail.com")
+        self.ref.child("email").setValue(user.email)
         self.ref.child("profileImg").setValue("image")
         self.ref.child("friends").setValue([Friend]())
         self.ref.child("notifications").setValue([Notification]())

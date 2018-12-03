@@ -4,6 +4,7 @@ PODS:
   - Cely (2.0.3):
     - Cely/Core (= 2.0.3)
   - Cely/Core (2.0.3)
+  - Cosmos (17.0.0)
   - Firebase/Auth (5.12.0):
     - Firebase/CoreOnly
     - FirebaseAuth (= 5.0.5)
@@ -81,12 +82,17 @@ PODS:
   - GoogleUtilities/UserDefaults (5.3.4):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.0)
+  - iOSDropDown (0.2.6)
   - leveldb-library (1.20)
+  - MarqueeLabel/Swift (3.2.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - NotificationBannerSwift (1.8.0):
+    - MarqueeLabel/Swift (~> 3.2.0)
+    - SnapKit (~> 4.0.1)
   - Presentr (1.9)
   - PromiseKit (6.5.2):
     - PromiseKit/CorePromise (= 6.5.2)
@@ -97,14 +103,21 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.5.2):
     - PromiseKit/CorePromise
+  - PryntTrimmerView (3.0.0)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
   - SearchTextField (1.2.2)
+  - SnapKit (4.0.1)
+  - SteviaLayout (4.4.0)
+  - YPImagePicker (3.5.2):
+    - PryntTrimmerView (~> 3.0.0)
+    - SteviaLayout (~> 4.4.0)
 
 DEPENDENCIES:
   - AwaitKit
   - Cely
+  - Cosmos
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -112,14 +125,18 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
+  - iOSDropDown
+  - NotificationBannerSwift
   - Presentr
   - SDWebImage
   - SearchTextField
+  - YPImagePicker
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AwaitKit
     - Cely
+    - Cosmos
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -134,16 +151,24 @@ SPEC REPOS:
     - GooglePlaces
     - GoogleUtilities
     - GTMSessionFetcher
+    - iOSDropDown
     - leveldb-library
+    - MarqueeLabel
     - nanopb
+    - NotificationBannerSwift
     - Presentr
     - PromiseKit
+    - PryntTrimmerView
     - SDWebImage
     - SearchTextField
+    - SnapKit
+    - SteviaLayout
+    - YPImagePicker
 
 SPEC CHECKSUMS:
   AwaitKit: a6d0b0b6d603cedda8ef1c1c249b8d6730359917
   Cely: e3e3c51cb50e6ec1e7bb323dee103b056452319c
+  Cosmos: 309e489f21ffc91a1eeecfebef7f817cd2fcfba6
   Firebase: 9190018e296139d938b99521cde0c15a6e8d2946
   FirebaseAnalytics: 63202d2665de4e6adcbdce189135255d8b5962ba
   FirebaseAuth: 9299ab178271bec7426967b05b2718bb6fc31f17
@@ -158,13 +183,20 @@ SPEC CHECKSUMS:
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
   GoogleUtilities: abb092d2c12e817fa3e0e7b274987dd72fb86ec3
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
+  iOSDropDown: 90608a7270234c503260ef13314907b6703b39aa
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  MarqueeLabel: 440a502b91a9179bd98f9fff00ba1150650a1c0e
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  NotificationBannerSwift: 49fc4be7fabada55b189b50e72184c92edd5f7f7
   Presentr: 7078d7eb5d1661ebeaae60c9e42a1e534de1b993
   PromiseKit: 27c1601bfb73405871b805bcb8cf7e55c4dad3db
+  PryntTrimmerView: 53ac64053c7ce63cb3e27f54090f52da0734891d
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SearchTextField: a0992739d4b05dcbb40fb3a5cc6526bd991bdd23
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SteviaLayout: dd74d1abd127bbf0ce346ac9430441684fe427d0
+  YPImagePicker: 26d5bf7bfe1cffd1c5eedea3ac60422b314e2a42
 
-PODFILE CHECKSUM: 505f4c7ab731bbdd226e510ce8d3057d919c3721
+PODFILE CHECKSUM: 77640d3b645533443d09bdf6730e582765f5b732
 
 COCOAPODS: 1.5.3

@@ -18,4 +18,9 @@ target 'FoodGram' do
   pod 'AwaitKit'
   pod 'SearchTextField'
   pod 'Cely'
+  pod 'YPImagePicker'
+  pod 'iOSDropDown'
+  pod 'Cosmos'
+  pod 'NotificationBannerSwift'
+  
 end

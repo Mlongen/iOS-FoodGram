@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import AwaitKit
+import NotificationBannerSwift
 
 class LoginController: UIViewController {
     
@@ -24,9 +25,25 @@ class LoginController: UIViewController {
     @IBOutlet weak var confirmPasswordLabel: UILabel!
     
     @IBOutlet weak var passwordField: UITextField!
+    fileprivate func loadingData() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if (self.database.hasLoaded > 0)
+            {
+                self.performSegue(withIdentifier: "showTab",sender: self)
+            } else {
+                self.loadingData()
+            }
+        }
+    }
+    
     @IBAction func signInBtn(_ sender: Any) {
         
-        Auth.auth().signIn(withEmail: "marcelolongen@gmail.com", password: "123456") { (authResult, error) in
+        
+        let email = emailField?.text
+        let password = passwordField?.text
+        
+        if (email != nil), (password != nil) {
+        Auth.auth().signIn(withEmail: email!, password: password!) { (authResult, error) in
             // ...
             guard let user = authResult?.user else { return }
             self.database = MyDatabase.shared
@@ -34,25 +51,16 @@ class LoginController: UIViewController {
             
 
             self.database.readFriendPosts()
+            self.database.readAllUsers()
+            
+            let banner = NotificationBanner(title: "Succesfully logged in.", subtitle: nil, style: .success)
+            banner.show()
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                if (self.database.hasLoaded > 0)
-                {
-                    self.performSegue(withIdentifier: "showTab",sender: self)
-                } else {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        if (self.database.hasLoaded > 0)
-                        {
-                            self.performSegue(withIdentifier: "showTab",sender: self)
-                        } else {
-                            
-                        }
-                    }
-                }
-            }
+            self.loadingData()
             
         }
         
+    }
     }
     
     @IBOutlet weak var createAccBtn: UIButton!
@@ -71,6 +79,11 @@ class LoginController: UIViewController {
                 guard let user = authResult?.user else { return }
                 MyDatabase.shared.thisUserDBContext = user.uid
                 MyDatabase.shared.addUserToDB(user, username: username!)
+                self.database.readAllUsers()
+                
+                let banner = NotificationBanner(title: "User created succesfully", subtitle: "Logging in...", style: .success)
+                banner.show()
+                
                 self.performSegue(withIdentifier: "showTab",sender: self)
             }
         }

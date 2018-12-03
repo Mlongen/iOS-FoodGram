@@ -31,13 +31,14 @@ class FriendsCollectionController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 16
+        return MyDatabase.shared.allUsers.count
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
-        
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FriendCell
+    
+        let index = indexPath.item
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
         cell.layer.backgroundColor = UIColor.white.cgColor
@@ -48,6 +49,9 @@ class FriendsCollectionController: UICollectionViewController {
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         
+        let usersArray = Array(MyDatabase.shared.allUsers)
+        cell.userName.text = usersArray[index].key
+        
 
         // Configure the cell
     
@@ -55,7 +59,20 @@ class FriendsCollectionController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "detailFromFriendList", sender: indexPath)
+        
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! FriendCell
+        performSegue(withIdentifier: "detailFromFriendList", sender: cell)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if (segue.identifier == "detailFromFriendList") {
+            if let dest = segue.destination as? ProfileViewController, let cell = sender as? FriendCell {
+                dest.thisUser = cell.userName.text!
 }
+}
+}
+}
+
+
