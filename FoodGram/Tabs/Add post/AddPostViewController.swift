@@ -44,6 +44,8 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     @IBOutlet weak var postDescription: UITextField!
     @IBOutlet weak var image: UIImageView!
     
+    
+    
     @IBOutlet weak var nameLabel: UILabel!
 
     @IBOutlet weak var cameraBTN: UIButton! {
@@ -193,10 +195,7 @@ extension AddPostViewController {
             if let photo = items.singlePhoto {
                 self.cameraBTN.setImage(photo.image, for: .normal)
             }
-        
             self.picker.dismiss(animated: true, completion: nil)
+        }
     }
-    
-    
-}
 }

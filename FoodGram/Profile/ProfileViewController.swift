@@ -7,15 +7,37 @@
 //
 
 import UIKit
-
+import FirebaseDatabase
+import NotificationBannerSwift
 
 class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
     private let reuseIdentifier = "ProfilePostCell"
     var thisUser: String = "test"
     
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userNameTitle: UINavigationItem!
     
+    @IBAction func addFriend(_ sender: Any) {
+
+        let userID = MyDatabase.shared.allUsers[thisUser] as! String
+
+        let mySelfUsername = MyDatabase.shared.allUsers.someKey(forValue: MyDatabase.shared.thisUserDBContext) as! String
+
+        
+        let notificationsRef = Database.database().reference().child("users").child(userID).child("notifications").child(UUID().uuidString)
+        
+        notificationsRef.child("createdByUser").setValue(mySelfUsername)
+        notificationsRef.child("createdByID").setValue(MyDatabase.shared.thisUserDBContext)
+        notificationsRef.child("content").setValue("\(mySelfUsername) has added you as a friend.")
+        notificationsRef.child("type").setValue("FriendRequest")
+        notificationsRef.child("status").setValue("Pending")
+        
+        let banner = NotificationBanner(title: "Friendship request sent", subtitle: nil, style: .success)
+        banner.show()
+
+        
+    }
     @IBOutlet weak var profilePostsCollection: UICollectionView!
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -23,6 +45,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
@@ -38,4 +62,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         // Do any additional setup after loading the view.
     }
     
+}
+
+extension Dictionary where Value: Equatable {
+    func someKey(forValue val: Value) -> Key? {
+        return first(where: { $1 == val })?.key
+    }
 }

@@ -10,13 +10,17 @@ import UIKit
 
 class Notification: NSObject {
 
-    var createdBy: UUID
+    var notificationID: String
+    var createdByUser: String
+    var createdByID: String
     var content: String
     var type: String
     var status: String
     
-    init(createdBy: UUID, content: String, type: String, status: String) {
-        self.createdBy = createdBy
+    init(notificationID: String, createdByUser: String, createdByID: String, content: String, type: String, status: String) {
+        self.notificationID = notificationID
+        self.createdByUser = createdByUser
+        self.createdByID = createdByID
         self.content = content
         self.type = type
         self.status = status

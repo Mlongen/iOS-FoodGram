@@ -484,6 +484,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILT-aW-YxH">
                                                 <rect key="frame" x="64" y="53.333333333333343" width="72" height="33.666666666666657"/>
                                                 <state key="normal" title="Add friend"/>
+                                                <connections>
+                                                    <action selector="addFriend:" destination="Uqj-nr-Yf3" eventType="touchUpInside" id="lxO-MQ-vQe"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
