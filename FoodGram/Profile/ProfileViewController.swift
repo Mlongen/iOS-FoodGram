@@ -25,8 +25,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         let mySelfUsername = MyDatabase.shared.allUsers.someKey(forValue: MyDatabase.shared.thisUserDBContext) as! String
 
         
-        let notificationsRef = Database.database().reference().child("users").child(userID).child("notifications").child(UUID().uuidString)
-        
+        let notID = UUID().uuidString
+        let notificationsRef = Database.database().reference().child("users").child(userID).child("notifications").child(notID)
+        notificationsRef.child("notificationID").setValue(notID)
         notificationsRef.child("createdByUser").setValue(mySelfUsername)
         notificationsRef.child("createdByID").setValue(MyDatabase.shared.thisUserDBContext)
         notificationsRef.child("content").setValue("\(mySelfUsername) has added you as a friend.")

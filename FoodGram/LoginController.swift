@@ -57,6 +57,7 @@ class LoginController: UIViewController {
             banner.show()
 
             self.loadingData()
+            self.database.readNotifications()
             
         }
         

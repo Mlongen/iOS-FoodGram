@@ -18,6 +18,7 @@ private let reuseIdentifier = "PostCell"
 class TimelineViewController: UICollectionViewController {
 
     var database: MyDatabase!
+    static var isNotification: Bool!
     
     lazy var addPostController: AddPostViewController = {
         let addPostController = self.storyboard?.instantiateViewController(withIdentifier: "AddPostViewController")
@@ -28,21 +29,7 @@ class TimelineViewController: UICollectionViewController {
         return notificationController as! NotificationViewController
     }()
     @IBOutlet weak var notificationsButton: UIBarButtonItem!
-    let presenter: Presentr = {
-        let width = ModalSize.full
-        let height = ModalSize.full
-        let center = ModalCenterPosition.customOrigin(origin: CGPoint(x: 0, y:80))
-        let customType = PresentationType.custom(width: width, height: height, center: center)
-        
-        let customPresenter = Presentr(presentationType: customType)
-        customPresenter.transitionType = .coverVerticalFromTop
-        customPresenter.dismissTransitionType = .crossDissolve
-        customPresenter.roundCorners = true
-        customPresenter.backgroundOpacity = 0.5
-        customPresenter.dismissOnSwipe = true
-        customPresenter.dismissOnSwipeDirection = .top
-        return customPresenter
-    }()
+    
     var ref: DatabaseReference!
     var userID: String!
     override func viewDidLoad() {
@@ -102,10 +89,43 @@ class TimelineViewController: UICollectionViewController {
 extension TimelineViewController{
     
     @IBAction func notificationBTNTapped(_ sender: Any) {
+        let presenter: Presentr = {
+            
+            let width = ModalSize.fluid(percentage: 0.8)
+            let height = ModalSize.fluid(percentage: 0.5)
+            let center = ModalCenterPosition.center
+            let customType = PresentationType.custom(width: width, height: height, center: center)
+            
+            let customPresenter = Presentr(presentationType: customType)
+            customPresenter.transitionType = .coverVerticalFromTop
+            customPresenter.dismissTransitionType = .crossDissolve
+            customPresenter.roundCorners = true
+            customPresenter.backgroundOpacity = 0.5
+            customPresenter.dismissOnSwipe = true
+            customPresenter.dismissOnSwipeDirection = .top
+            customPresenter.accessibilityScroll(UIAccessibilityScrollDirection.down)
+            return customPresenter
+        }()
         customPresentViewController(presenter, viewController:  notificationController, animated: true, completion: nil)
     }
     
     @IBAction func addBtnTapped(_ sender: Any) {
+        let presenter: Presentr = {
+            
+            let width = ModalSize.fluid(percentage: 0.8)
+            let height = ModalSize.fluid(percentage: 0.85)
+            let center = ModalCenterPosition.center
+            let customType = PresentationType.custom(width: width, height: height, center: center)
+            
+            let customPresenter = Presentr(presentationType: customType)
+            customPresenter.transitionType = .coverVerticalFromTop
+            customPresenter.dismissTransitionType = .crossDissolve
+            customPresenter.roundCorners = true
+            customPresenter.backgroundOpacity = 0.5
+            customPresenter.dismissOnSwipe = true
+            customPresenter.dismissOnSwipeDirection = .top
+            return customPresenter
+        }()
         customPresentViewController(presenter, viewController: addPostController, animated: true, completion: nil)
     }
     

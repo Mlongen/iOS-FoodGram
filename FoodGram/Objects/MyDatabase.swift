@@ -45,30 +45,37 @@ class MyDatabase: NSObject {
     {
     }
     
-//    func readFriends()
-//    {
-////        self.ref = Database.database().reference().child("users").child(self.thisUserDBContext)
-////
-////        ef.observe(DataEventType.value, with: { (snapshot) in
-////
-////            let value = snapshot.value as? NSDictionary
-////            let postID = value?["postID"] as? String ?? ""
-////            let userID = self.thisUserDBContext
-////            let image = #imageLiteral(resourceName: "food")
-////            let postDescription = value?["post description"] as? String ?? ""
-////            let creationDate = Date()
-////            let price = value?["price"] as? NSInteger ?? 0
-////            let location = value?["location"] as? String ?? ""
-////            let rating = value?["rating"] as? NSInteger ?? 0
-////
-////            let newPost = Post(postId: postID, userId: userID, image: "image", postDescription: postDescription, creationDate: Date(), price: price, location: location, rating: rating)
-////
-////            self.friendPosts.append(newPost)
-////
-//        })
-//
-//    }
     
+//    var notificationID: String
+//    var createdByUser: String
+//    var createdByID: String
+//    var content: String
+//    var type: String
+//    var status: String
+    
+    
+    func readNotifications()
+    {
+        self.ref = Database.database().reference().child("users").child(self.thisUserDBContext).child("notifications")
+        self.ref.observe(DataEventType.value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshots {
+                    if let value = snap.value as? Dictionary<String, AnyObject> {
+                        let notificationID = value["notificationID"] as? String
+                        let content = value["content"] as? String
+                        let createdByID = value["createdByID"] as? String
+                        let createdByUser = value["createdByUser"] as? String
+                        let status = value["status"] as? String
+                        let type = value["type"] as? String
+                        
+                        let notification = Notification(notificationID: notificationID!, createdByUser: createdByUser!, createdByID: createdByID!, content: content!, type: type!, status: status!)
+                        
+                        MyDatabase.shared.notifications.append(notification)
+                    }
+                }
+            }
+        })
+    }
     func readAllUsers()
     {
         self.ref = Database.database().reference().child("users")
@@ -100,7 +107,6 @@ class MyDatabase: NSObject {
                         let price = value["price"] as? NSInteger ?? 0
                         let location = value["location"] as? String ?? ""
                         let rating = value["rating"] as? NSInteger ?? 0
-                        
                         
                         let newPost = Post(postId: postID, userId: userID, image: image, postDescription: postDescription, creationDate: Date(), price: price, location: location, rating: rating)
                         
