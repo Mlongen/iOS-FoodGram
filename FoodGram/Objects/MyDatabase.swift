@@ -168,6 +168,8 @@ class MyDatabase: NSObject {
                         let urlStr:String = (url?.absoluteString ?? "")
                                 var DBref = Database.database().reference().child("users").child(userID)
                                 DBref.child("profileImg").setValue(urlStr)
+                        
+                        
                     }
                 }
             }

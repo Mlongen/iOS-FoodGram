@@ -175,7 +175,7 @@ extension AddPostViewController {
         config.library.mediaType = .photo
         config.library.onlySquare  = false
         config.onlySquareImagesFromCamera = true
-        config.targetImageSize = .cappedTo(size: 500.0)
+        config.targetImageSize = .cappedTo(size: 400.0)
         config.usesFrontCamera = true
         config.showsFilters = true
         

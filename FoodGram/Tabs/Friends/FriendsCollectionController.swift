@@ -8,6 +8,7 @@
 
 import UIKit
 import Presentr
+import SDWebImage
 
 private let reuseIdentifier = "FriendCell"
 
@@ -79,6 +80,16 @@ class FriendsCollectionController: UICollectionViewController {
         let usersArray = Array(MyDatabase.shared.allUsers)
         cell.userName.text = usersArray[index].key
         
+        cell.profilePic.layer.cornerRadius =  cell.profilePic.frame.size.width / 2
+        cell.profilePic.clipsToBounds = true
+        
+        
+        MyDatabase.shared.getProfilePicByID(userID: MyDatabase.shared.getUserIDByName(userID: usersArray[index].key)) { (urlStr) in
+            let url = URL(string: urlStr)
+            cell.profilePic.sd_setImage(with: url, completed: { [weak self] (image, error, cacheType, imageURL) in
+                cell.profilePic.image = image
+            })
+        }
 
         // Configure the cell
     

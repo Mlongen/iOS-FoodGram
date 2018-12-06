@@ -85,9 +85,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     func presentImagePicker(){
         var config = YPImagePickerConfiguration()
         config.library.mediaType = .photo
-        config.library.onlySquare  = false
+        config.library.onlySquare  = true
         config.onlySquareImagesFromCamera = true
-        config.targetImageSize = .original
+        config.targetImageSize = .cappedTo(size: 400.0)
         config.usesFrontCamera = true
         config.showsFilters = true
         
@@ -110,6 +110,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         picker.didFinishPicking { [unowned self] items, _ in
             if let photo = items.singlePhoto {
                 MyDatabase.shared.changeProfilePic(userID: MyDatabase.shared.getUserIDByName(userID: self.thisUser), picture: photo.image)
+                self.profilePic.image = photo.image
             }
             picker.dismiss(animated: true, completion: nil)
         }
