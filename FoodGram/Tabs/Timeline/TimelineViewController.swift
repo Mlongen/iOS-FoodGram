@@ -12,6 +12,7 @@ import FirebaseAuth
 import SDWebImage
 import Presentr
 import AwaitKit
+import Hero
 
 private let reuseIdentifier = "PostCell"
 
@@ -24,6 +25,7 @@ class TimelineViewController: UICollectionViewController {
         let addPostController = self.storyboard?.instantiateViewController(withIdentifier: "AddPostViewController")
         return addPostController as! AddPostViewController
     }()
+    
     lazy var notificationController: NotificationViewController = {
         let notificationController = self.storyboard?.instantiateViewController(withIdentifier: "NavController")
         return notificationController as! NotificationViewController
@@ -34,10 +36,9 @@ class TimelineViewController: UICollectionViewController {
     var userID: String!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let width = (view.frame.size.width - 20)
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: width, height: width)
+        layout.itemSize = CGSize(width: width, height: width + 30)
         print(Auth.auth().currentUser!.uid)
        
         database = MyDatabase.shared
@@ -49,17 +50,20 @@ class TimelineViewController: UICollectionViewController {
 
 
     @objc func refresh(){
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            if (self.database.hasLoaded > 0)
+        MyDatabase.shared.friendPosts.removeAll()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
+            
+            if (MyDatabase.shared.hasLoaded > 0)
             {
+                MyDatabase.shared.readFriendPosts()
                 print(MyDatabase.shared.friendPosts.count)
+                self.collectionView.reloadData()
                 self.collectionView.refreshControl?.endRefreshing()
             } else {
-
             }
         }
         
-       
+        
     }
     
 
@@ -90,6 +94,13 @@ class TimelineViewController: UICollectionViewController {
         cell.foodPic.sd_setImage(with: url, completed: { [weak self] (image, error, cacheType, imageURL) in
             cell.foodPic.image = image
         })
+//        let profileImageUrl = database.friendPosts[index].pro
+//        let url = URL(string: imageUrl)
+        cell.profilePic.sd_setImage(with: url, completed: { [weak self] (image, error, cacheType, imageURL) in
+            cell.foodPic.image = image
+        })
+        cell.profilePic.layer.cornerRadius =  cell.profilePic.frame.size.width / 2
+        cell.profilePic.clipsToBounds = true
         cell.rating.text = "Rating: " + String(database.friendPosts[index].rating) + "/10"
         
         return cell
@@ -98,6 +109,7 @@ class TimelineViewController: UICollectionViewController {
     
 }
 
+//bar buttons
 extension TimelineViewController{
     
     @IBAction func notificationBTNTapped(_ sender: Any) {
@@ -141,4 +153,8 @@ extension TimelineViewController{
         customPresentViewController(presenter, viewController: addPostController, animated: true, completion: nil)
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 }

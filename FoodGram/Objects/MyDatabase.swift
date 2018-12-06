@@ -12,6 +12,7 @@ import FirebaseDatabase
 import Firebase
 import AwaitKit
 
+
 class MyDatabase: NSObject {
     static let shared = MyDatabase()
     var hasLoaded: NSInteger
@@ -95,7 +96,6 @@ class MyDatabase: NSObject {
     {
         self.ref = Database.database().reference().child("users").child(self.thisUserDBContext).child("posts")
         self.ref.observe(DataEventType.value, with: { (snapshot) in
-    
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
                     if let value = snap.value as? Dictionary<String, AnyObject> {
@@ -114,17 +114,16 @@ class MyDatabase: NSObject {
                     }
                 }
             }
-            self.hasLoaded += 1
+            self.hasLoaded = self.hasLoaded + 1
         })
-        
     }
     
     func readUserPostsById(userID: String) -> [Post]{
         var result = [Post]()
         
         let DBref = Database.database().reference().child("users").child(userID).child("posts")
-        DBref.observe(DataEventType.value, with: { (snapshot) in
-            
+        DBref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+    
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
                     if let value = snap.value as? Dictionary<String, AnyObject> {
@@ -132,7 +131,6 @@ class MyDatabase: NSObject {
                         let userID = self.thisUserDBContext
                         let image = value["image"] as? String ?? ""
                         let postDescription = value["postDescription"] as? String ?? ""
-                        let creationDate = Date()
                         let price = value["price"] as? String ?? ""
                         let location = value["location"] as? String ?? ""
                         let rating = value["rating"] as? NSInteger ?? 0
@@ -140,10 +138,10 @@ class MyDatabase: NSObject {
                         let newPost = Post(postId: postID, userId: userID, image: image, postDescription: postDescription, creationDate: Date(), price: price, location: location, rating: rating)
                         
                         result.append(newPost)
+                        
                     }
                 }
             }
-        
         })
         return result
     }
@@ -163,12 +161,39 @@ class MyDatabase: NSObject {
         self.ref.child("notifications").setValue([Notification]())
     }
     
+    func changeProfilePic(userID: String, picture: UIImage) {
+
+        let imagePath = Storage.storage().reference().child(userID + "_pic")
+        if let imageData = picture.pngData(){
+            imagePath.putData(imageData, metadata: nil) { (metadata, error) in
+                if(error != nil){
+                    print(error!)
+                    return
+                }
+                // Fetch the download URL
+                imagePath.downloadURL { (url, error) in
+                    if let error = error {
+                        print(error)
+                        return
+                    } else {
+                        // Get the download URL
+                        let urlStr:String = (url?.absoluteString ?? "")
+                                var DBref = Database.database().reference().child("users").child(userID)
+                                DBref.child("profileImg").setValue(urlStr)
+                    }
+                }
+            }
+        }
+    }
+    func getUserPostsAndAwaitByName(userName: String) ->[Post] {
+        var userId = self.getUserIDByName(userID: userName)
+        
+        return self.readUserPostsById(userID: userId)
+    }
 
     func getUserById(userID: String) -> String{
 
         return self.allUsers.someKey(forValue: userID)!
-//            let usersArray = Array(self.allUsers)
-//            cell.userName.text = usersArray[index].key
         }
     
     func getUserIDByName(userID: String) -> String{

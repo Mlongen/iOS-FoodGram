@@ -82,6 +82,7 @@ PODS:
   - GoogleUtilities/UserDefaults (5.3.4):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.0)
+  - Hero (1.4.0)
   - iOSDropDown (0.2.6)
   - leveldb-library (1.20)
   - MarqueeLabel/Swift (3.2.0)
@@ -126,6 +127,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
+  - Hero
   - iOSDropDown
   - NotificationBannerSwift
   - Presentr
@@ -153,6 +155,7 @@ SPEC REPOS:
     - GooglePlaces
     - GoogleUtilities
     - GTMSessionFetcher
+    - Hero
     - iOSDropDown
     - leveldb-library
     - MarqueeLabel
@@ -186,6 +189,7 @@ SPEC CHECKSUMS:
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
   GoogleUtilities: abb092d2c12e817fa3e0e7b274987dd72fb86ec3
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
+  Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   iOSDropDown: 90608a7270234c503260ef13314907b6703b39aa
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   MarqueeLabel: 440a502b91a9179bd98f9fff00ba1150650a1c0e
@@ -201,6 +205,6 @@ SPEC CHECKSUMS:
   SteviaLayout: dd74d1abd127bbf0ce346ac9430441684fe427d0
   YPImagePicker: 26d5bf7bfe1cffd1c5eedea3ac60422b314e2a42
 
-PODFILE CHECKSUM: 5ff1decbae172f53db2ff75b1a66b69d5af4d2db
+PODFILE CHECKSUM: f6a7c1495e14ebb45960b6128ebd8415c755c9e4
 
 COCOAPODS: 1.5.3

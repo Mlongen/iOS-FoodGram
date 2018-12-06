@@ -175,15 +175,14 @@ extension AddPostViewController {
         config.library.mediaType = .photo
         config.library.onlySquare  = false
         config.onlySquareImagesFromCamera = true
-        config.targetImageSize = .original
+        config.targetImageSize = .cappedTo(size: 500.0)
         config.usesFrontCamera = true
         config.showsFilters = true
         
         config.shouldSaveNewPicturesToAlbum = true
-        config.albumName = "MyGreatAppName"
         config.screens = [.library, .photo]
         config.startOnScreen = .library
-        config.showsCrop = .rectangle(ratio: (4/3))
+        config.showsCrop = .rectangle(ratio: (16/9))
         config.wordings.libraryTitle = "Gallery"
         config.hidesStatusBar = false
         config.library.maxNumberOfItems = 1

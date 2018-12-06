@@ -23,5 +23,5 @@ target 'FoodGram' do
   pod 'Cosmos'
   pod 'NotificationBannerSwift'
   pod 'RAMReel'
-  
+  pod 'Hero'
 end
