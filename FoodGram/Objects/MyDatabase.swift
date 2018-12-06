@@ -39,21 +39,9 @@ class MyDatabase: NSObject {
 
     }
     
-    
-    
-    
     func addFriendPosts()
     {
     }
-    
-    
-//    var notificationID: String
-//    var createdByUser: String
-//    var createdByID: String
-//    var content: String
-//    var type: String
-//    var status: String
-    
     
     func readNotifications()
     {
@@ -163,7 +151,7 @@ class MyDatabase: NSObject {
     
     func changeProfilePic(userID: String, picture: UIImage) {
 
-        let imagePath = Storage.storage().reference().child(userID + "_pic")
+        let imagePath = Storage.storage().reference().child(UUID().uuidString)
         if let imageData = picture.pngData(){
             imagePath.putData(imageData, metadata: nil) { (metadata, error) in
                 if(error != nil){
@@ -185,9 +173,20 @@ class MyDatabase: NSObject {
             }
         }
     }
+    func getProfilePicByID(userID: String,  completion: @escaping (String) -> ()){
+        let DBref = Database.database().reference().child("users").child(userID).child("profileImg")
+        DBref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+            if let profilePic = snapshot.value as? String {
+                completion(profilePic)
+            } else {
+                completion("")
+            }
+            
+        })
+    }
+    
     func getUserPostsAndAwaitByName(userName: String) ->[Post] {
         var userId = self.getUserIDByName(userID: userName)
-        
         return self.readUserPostsById(userID: userId)
     }
 

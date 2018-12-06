@@ -81,12 +81,13 @@ class TimelineViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PostCell
+                let index = indexPath.item
         
-        
+        let userID = database.friendPosts[index].userId
         //configure cell
         
-        let index = indexPath.item
-        cell.userName.text = database.getUserById(userID: database.friendPosts[index].userId)
+
+        cell.userName.text = database.getUserById(userID:userID)
         cell.amount.text = database.friendPosts[index].price
         cell.descriptionLabel.text = database.friendPosts[index].postDescription
         let imageUrl = database.friendPosts[index].image
@@ -94,11 +95,14 @@ class TimelineViewController: UICollectionViewController {
         cell.foodPic.sd_setImage(with: url, completed: { [weak self] (image, error, cacheType, imageURL) in
             cell.foodPic.image = image
         })
-//        let profileImageUrl = database.friendPosts[index].pro
-//        let url = URL(string: imageUrl)
-        cell.profilePic.sd_setImage(with: url, completed: { [weak self] (image, error, cacheType, imageURL) in
-            cell.foodPic.image = image
-        })
+        MyDatabase.shared.getProfilePicByID(userID: userID) { (urlStr) in
+            let url = URL(string: urlStr)
+            cell.profilePic.sd_setImage(with: url, completed: { [weak self] (image, error, cacheType, imageURL) in
+                cell.profilePic.image = image
+            })
+        }
+        
+        
         cell.profilePic.layer.cornerRadius =  cell.profilePic.frame.size.width / 2
         cell.profilePic.clipsToBounds = true
         cell.rating.text = "Rating: " + String(database.friendPosts[index].rating) + "/10"
