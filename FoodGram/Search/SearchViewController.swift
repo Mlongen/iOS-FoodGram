@@ -15,7 +15,7 @@ class SearchViewController: UIViewController,UICollectionViewDelegate {
     var dataSource: SimplePrefixQueryDataSource!
     var data: [String]!
     var ramReel: RAMReel<RAMCell, RAMTextField, SimplePrefixQueryDataSource>!
-    
+    var result: String!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,12 +27,14 @@ class SearchViewController: UIViewController,UICollectionViewDelegate {
         }
         
         ramReel.hooks.append {
-            let r = $0
-            if (self.data.contains(r)) {
-                let banner = NotificationBanner(title: "User \(r) exists", subtitle: nil, style: .success)
+            self.result = $0
+            if (self.data.contains(self.result)) {
+                let banner = NotificationBanner(title: "User \(self.result) exists", subtitle: nil, style: .success)
                 banner.show()
+                 self.performSegue(withIdentifier: "showProfileFromSearch", sender: self)
+
             } else {
-                let banner = NotificationBanner(title: "User \(r) does not exist", subtitle: nil, style: .danger)
+                let banner = NotificationBanner(title: "User \(self.result) does not exist", subtitle: nil, style: .danger)
                 banner.show()
             }
         }
@@ -40,5 +42,14 @@ class SearchViewController: UIViewController,UICollectionViewDelegate {
         view.addSubview(ramReel.view)
 
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier == "showProfileFromSearch") {
+            if let dest = segue.destination as? ProfileViewController{
+                dest.thisUser = self.result
+            }
 
+}
+}
 }

@@ -49,7 +49,17 @@ class TimelineViewController: UICollectionViewController {
 
 
     @objc func refresh(){
-        collectionView.refreshControl?.endRefreshing()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            if (self.database.hasLoaded > 0)
+            {
+                print(MyDatabase.shared.friendPosts.count)
+                self.collectionView.refreshControl?.endRefreshing()
+            } else {
+
+            }
+        }
+        
+       
     }
     
 
@@ -72,6 +82,8 @@ class TimelineViewController: UICollectionViewController {
         //configure cell
         
         let index = indexPath.item
+        cell.userName.text = database.getUserById(userID: database.friendPosts[index].userId)
+        cell.amount.text = database.friendPosts[index].price
         cell.descriptionLabel.text = database.friendPosts[index].postDescription
         let imageUrl = database.friendPosts[index].image
         let url = URL(string: imageUrl)

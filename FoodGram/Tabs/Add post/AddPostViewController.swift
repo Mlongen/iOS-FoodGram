@@ -40,10 +40,11 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     @IBOutlet weak var restaurantName: UITextField!
     @IBOutlet weak var amount: UISlider!
     @IBOutlet weak var rating: UISlider!
-    @IBOutlet weak var postDescription: UITextField!
+
     @IBOutlet weak var image: UIImageView!
     
-    
+    @IBOutlet weak var postDescription: UITextField!
+    var pickedImage: UIImage!
     
     @IBOutlet weak var nameLabel: UILabel!
 
@@ -53,6 +54,7 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
         }
     }
     
+    @IBOutlet weak var cosmosView: CosmosView!
     @IBAction func cameraBTNTapped(_ sender: Any) {
         self.presentImagePicker()
     }
@@ -61,9 +63,11 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     
     
     @IBOutlet weak var dropDown: DropDown!
+    var dropDownData: [String]!
     override func viewDidLoad() {
         super.viewDidLoad()
-        dropDown.optionArray = ["$5", "$10", "$15", "$20", "$30", "$35+"]
+        dropDownData = ["$5", "$10", "$15", "$20", "$30", "$35+"]
+        dropDown.optionArray = dropDownData
         dropDown.listHeight = 300
         self.myDB = MyDatabase.shared
         ref = Database.database().reference().child("users").child(myDB.thisUserDBContext)
@@ -79,7 +83,7 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
         
     }
     
-    fileprivate func upload(_ image: UIImage, _ postId: String, _ userId: String, _ postDescription: String, _ formattedDate: String, _ price: Int, _ location: String, _ rating: Int) {
+    fileprivate func upload(_ image: UIImage, _ postId: String, _ userId: String, _ postDescription: String, _ formattedDate: String, _ price: String, _ location: String, _ rating: Int) {
         let imagePath = Storage.storage().reference().child(postId)
         if let imageData = image.pngData(){
             imagePath.putData(imageData, metadata: nil) { (metadata, error) in
@@ -112,17 +116,16 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
         let postId = UUID().uuidString
         let userId = myDB.thisUserDBContext
         
-        let image = #imageLiteral(resourceName: "food")
-        let postDescription = "description"
+        let postDescription = self.postDescription.text
         let creationDate = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MMM-yyyy"
         let formattedDate = formatter.string(from: creationDate)
-        let price = 11
-        let location = "location"
-        let rating = 10
+        let price = dropDownData[dropDown.selectedIndex!]
+        let location = self.nameLabel.text
+        let rating = cosmosView.rating
     
-        upload(image, postId, userId, postDescription, formattedDate, price, location, rating)
+        upload(cameraBTN.image(for: .normal)!, postId, userId, postDescription!, formattedDate, price, location!, Int(rating))
         let banner = NotificationBanner(title: "Post uploaded successfully!", subtitle: "Your friends will be able to see it in a few seconds.", style: .success)
         banner.show()
         self.dismiss(animated: true, completion: nil)
@@ -154,7 +157,9 @@ extension AddPostViewController: UIImagePickerControllerDelegate, UINavigationCo
         if let photo = (info[.editedImage] ?? info[.originalImage]) as? UIImage {
             
             //      2. display in UImageView
-            self.cameraBTN.setImage(photo, for: .normal)
+            self.pickedImage = photo
+            self.cameraBTN.setImage(self.pickedImage, for: .normal)
+            
             
             //store image to core data
         }

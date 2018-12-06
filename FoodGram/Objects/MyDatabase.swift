@@ -102,9 +102,9 @@ class MyDatabase: NSObject {
                         let postID = value["postID"] as? String ?? ""
                         let userID = self.thisUserDBContext
                         let image = value["image"] as? String ?? ""
-                        let postDescription = value["post description"] as? String ?? ""
+                        let postDescription = value["postDescription"] as? String ?? ""
                         let creationDate = Date()
-                        let price = value["price"] as? NSInteger ?? 0
+                        let price = value["price"] as? String ?? ""
                         let location = value["location"] as? String ?? ""
                         let rating = value["rating"] as? NSInteger ?? 0
                         
@@ -117,6 +117,35 @@ class MyDatabase: NSObject {
             self.hasLoaded += 1
         })
         
+    }
+    
+    func readUserPostsById(userID: String) -> [Post]{
+        var result = [Post]()
+        
+        let DBref = Database.database().reference().child("users").child(userID).child("posts")
+        DBref.observe(DataEventType.value, with: { (snapshot) in
+            
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshots {
+                    if let value = snap.value as? Dictionary<String, AnyObject> {
+                        let postID = value["postID"] as? String ?? ""
+                        let userID = self.thisUserDBContext
+                        let image = value["image"] as? String ?? ""
+                        let postDescription = value["postDescription"] as? String ?? ""
+                        let creationDate = Date()
+                        let price = value["price"] as? String ?? ""
+                        let location = value["location"] as? String ?? ""
+                        let rating = value["rating"] as? NSInteger ?? 0
+                        
+                        let newPost = Post(postId: postID, userId: userID, image: image, postDescription: postDescription, creationDate: Date(), price: price, location: location, rating: rating)
+                        
+                        result.append(newPost)
+                    }
+                }
+            }
+        
+        })
+        return result
     }
     
     func addUserToDB(_ user: Firebase.User, username: String) {
@@ -135,4 +164,17 @@ class MyDatabase: NSObject {
     }
     
 
-}
+    func getUserById(userID: String) -> String{
+
+        return self.allUsers.someKey(forValue: userID)!
+//            let usersArray = Array(self.allUsers)
+//            cell.userName.text = usersArray[index].key
+        }
+    
+    func getUserIDByName(userID: String) -> String{
+        return self.allUsers[userID]!
+    }
+    }
+
+
+

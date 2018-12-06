@@ -18,6 +18,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userNameTitle: UINavigationItem!
     
+    @IBOutlet weak var changePicButton: UIButton!
+    
+    @IBOutlet weak var addFriendBtn: UIButton!
     @IBAction func addFriend(_ sender: Any) {
 
         let userID = MyDatabase.shared.allUsers[thisUser] as! String
@@ -61,6 +64,15 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         username.text = thisUser
         self.title = thisUser
         // Do any additional setup after loading the view.
+        if (username.text == MyDatabase.shared.allUsers.someKey(forValue: MyDatabase.shared.thisUserDBContext) as? String){
+            changePicButton.isHidden = false
+            addFriendBtn.isHidden = false
+        
+        } else {
+            changePicButton.isHidden = true
+            addFriendBtn.isHidden = true
+        }
+        
     }
     
 }
