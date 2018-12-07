@@ -29,12 +29,12 @@ class SearchViewController: UIViewController,UICollectionViewDelegate {
         ramReel.hooks.append {
             self.result = $0
             if (self.data.contains(self.result)) {
-                let banner = NotificationBanner(title: "User \(self.result) exists", subtitle: nil, style: .success)
+                let banner = NotificationBanner(title: "User \(String(describing: self.result)) exists", subtitle: nil, style: .success)
                 banner.show()
                  self.performSegue(withIdentifier: "showProfileFromSearch", sender: self)
 
             } else {
-                let banner = NotificationBanner(title: "User \(self.result) does not exist", subtitle: nil, style: .danger)
+                let banner = NotificationBanner(title: "User \(String(describing: self.result)) does not exist", subtitle: nil, style: .danger)
                 banner.show()
             }
         }

@@ -42,7 +42,9 @@ class FriendsCollectionController: UICollectionViewController {
             customPresenter.transitionType = .coverVerticalFromTop
             customPresenter.dismissTransitionType = .crossDissolve
             customPresenter.roundCorners = true
-            customPresenter.backgroundOpacity = 0.5
+            customPresenter.cornerRadius = 10
+            customPresenter.backgroundOpacity = 0.45
+            customPresenter.backgroundColor = .white
             customPresenter.dismissOnSwipe = true
             customPresenter.dismissOnSwipeDirection = .top
             customPresenter.accessibilityScroll(UIAccessibilityScrollDirection.down)
@@ -86,7 +88,7 @@ class FriendsCollectionController: UICollectionViewController {
         
         MyDatabase.shared.getProfilePicByID(userID: MyDatabase.shared.getUserIDByName(userID: usersArray[index].key)) { (urlStr) in
             let url = URL(string: urlStr)
-            cell.profilePic.sd_setImage(with: url, completed: { [weak self] (image, error, cacheType, imageURL) in
+            cell.profilePic.sd_setImage(with: url, completed: { (image, error, cacheType, imageURL) in
                 cell.profilePic.image = image
             })
         }

@@ -10,6 +10,7 @@ import UIKit
 
 class NotificationCell: UITableViewCell {
 
+    @IBOutlet weak var acceptBtn: UIButton!
     @IBOutlet weak var notificationContent: UILabel!
     
     override func awakeFromNib() {

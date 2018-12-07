@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		A104ACB221AF974100F68894 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104ACB121AF974100F68894 /* NotificationViewController.swift */; };
 		A118786A21B49D870090C9B8 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A118786921B49D870090C9B8 /* iOSDropDown.framework */; };
+		A133989A21BA59CE003537E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A133989921BA59CE003537E8 /* Main.storyboard */; };
+		A133989E21BA5F97003537E8 /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A133989D21BA5F97003537E8 /* FriendsController.swift */; };
+		A13398A021BA5FA8003537E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A133989F21BA5FA8003537E8 /* Assets.xcassets */; };
 		A14DAB1721765E1D00368668 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DAB1621765E1D00368668 /* AppDelegate.swift */; };
-		A14DAB1E21765E1D00368668 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB1C21765E1D00368668 /* Main.storyboard */; };
-		A14DAB2021765E2000368668 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB1F21765E2000368668 /* Assets.xcassets */; };
 		A14DAB2321765E2000368668 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB2121765E2000368668 /* LaunchScreen.storyboard */; };
 		A15A99AA21AF99D10009E9C3 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A99A921AF99D10009E9C3 /* NotificationCell.swift */; };
 		A15F02FE2193710000080858 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15F02FD2193710000080858 /* AddPostViewController.swift */; };
@@ -38,10 +39,11 @@
 		5F50A0F73558CA7EF89D55B3 /* Pods-FoodGram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodGram.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram.release.xcconfig"; sourceTree = "<group>"; };
 		A104ACB121AF974100F68894 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		A118786921B49D870090C9B8 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A133989921BA59CE003537E8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../../.Trash/Main.storyboard; sourceTree = "<group>"; };
+		A133989D21BA5F97003537E8 /* FriendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsController.swift; path = "../../../../Downloads/iOS-FoodGram-master/FoodGram/FriendsController.swift"; sourceTree = "<group>"; };
+		A133989F21BA5FA8003537E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../Downloads/iOS-FoodGram-master/FoodGram/Assets.xcassets"; sourceTree = "<group>"; };
 		A14DAB1321765E1D00368668 /* FoodGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14DAB1621765E1D00368668 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A14DAB1D21765E1D00368668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A14DAB1F21765E2000368668 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A14DAB2221765E2000368668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A14DAB2421765E2000368668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A15A99A921AF99D10009E9C3 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
@@ -88,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				A14DAB1521765E1D00368668 /* FoodGram */,
-				A14DAB1421765E1D00368668 /* Products */,
 				ED1CF589CB68BAB41B963C91 /* Pods */,
 				554CA2EAB801BCCDA2DDE2D5 /* Frameworks */,
 			);
@@ -100,6 +101,7 @@
 				A14DAB1321765E1D00368668 /* FoodGram.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		A14DAB1521765E1D00368668 /* FoodGram */ = {
@@ -107,15 +109,17 @@
 			children = (
 				A14DAB1621765E1D00368668 /* AppDelegate.swift */,
 				A15A99A921AF99D10009E9C3 /* NotificationCell.swift */,
+				A133989D21BA5F97003537E8 /* FriendsController.swift */,
+				A133989F21BA5FA8003537E8 /* Assets.xcassets */,
+				A133989921BA59CE003537E8 /* Main.storyboard */,
 				A175467921A5C5170001A203 /* GoogleService-Info.plist */,
-				A14DAB1C21765E1D00368668 /* Main.storyboard */,
 				A175467B21A5C6670001A203 /* LoginController.swift */,
 				A17D07EA219223AA005FB743 /* Objects */,
 				A1A918CD2177F1FE003646C7 /* Tabs */,
-				A14DAB1F21765E2000368668 /* Assets.xcassets */,
 				A14DAB2121765E2000368668 /* LaunchScreen.storyboard */,
 				A1A918D22177F300003646C7 /* Profile */,
 				A14DAB2421765E2000368668 /* Info.plist */,
+				A14DAB1421765E1D00368668 /* Products */,
 				A104ACB121AF974100F68894 /* NotificationViewController.swift */,
 			);
 			path = FoodGram;
@@ -260,8 +264,8 @@
 			files = (
 				A14DAB2321765E2000368668 /* LaunchScreen.storyboard in Resources */,
 				A175467A21A5C5170001A203 /* GoogleService-Info.plist in Resources */,
-				A14DAB2021765E2000368668 /* Assets.xcassets in Resources */,
-				A14DAB1E21765E1D00368668 /* Main.storyboard in Resources */,
+				A13398A021BA5FA8003537E8 /* Assets.xcassets in Resources */,
+				A133989A21BA59CE003537E8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +394,7 @@
 				A17D07E921922351005FB743 /* Post.swift in Sources */,
 				A175467C21A5C6670001A203 /* LoginController.swift in Sources */,
 				A17D07E5219222D8005FB743 /* Friend.swift in Sources */,
+				A133989E21BA5F97003537E8 /* FriendsController.swift in Sources */,
 				A1A918D12177F2FB003646C7 /* ProfilePostCell.swift in Sources */,
 				A15F02FE2193710000080858 /* AddPostViewController.swift in Sources */,
 				A1A918CA2177B01A003646C7 /* FriendsCollectionController.swift in Sources */,
@@ -406,14 +411,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A14DAB1C21765E1D00368668 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A14DAB1D21765E1D00368668 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A14DAB2121765E2000368668 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

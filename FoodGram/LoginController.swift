@@ -25,19 +25,31 @@ class LoginController: UIViewController {
     @IBOutlet weak var confirmPasswordLabel: UILabel!
     
     @IBOutlet weak var passwordField: UITextField!
-    fileprivate func loadingData() {
+    fileprivate func loadFriends() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            if (self.database.hasLoaded > 0)
+            if (MyDatabase.shared.hasLoadedFriends > 0)
+            {
+                print(MyDatabase.shared.friends)
+                MyDatabase.shared.readFriendsPosts()
+                self.loadPosts()
+            } else {
+                self.loadFriends()
+            }
+        }
+    }
+    fileprivate func loadPosts() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if (MyDatabase.shared.hasLoadedPosts > 0)
             {
                 self.performSegue(withIdentifier: "showTab",sender: self)
             } else {
-                self.loadingData()
+                
+                self.loadPosts()
             }
         }
     }
     
     @IBAction func signInBtn(_ sender: Any) {
-        
         
         let email = emailField?.text
         let password = passwordField?.text
@@ -46,26 +58,24 @@ class LoginController: UIViewController {
         Auth.auth().signIn(withEmail: email!, password: password!) { (authResult, error) in
             // ...
             guard let user = authResult?.user else { return }
-            self.database = MyDatabase.shared
-            self.database.thisUserDBContext = user.uid
+            MyDatabase.shared.thisUserDBContext = user.uid
             
+            MyDatabase.shared.readFriends()
+            MyDatabase.shared.readAllUsers()
+            self.loadFriends()
 
-            self.database.readFriendPosts()
-            self.database.readAllUsers()
             
             let banner = NotificationBanner(title: "Succesfully logged in.", subtitle: nil, style: .success)
             banner.show()
 
-            self.loadingData()
-            self.database.readNotifications()
+           
+            MyDatabase.shared.readNotifications()
             
+            }
         }
-        
-    }
     }
     
     @IBOutlet weak var createAccBtn: UIButton!
-    
     
     @IBAction func createAccAction(_ sender: Any) {
         
@@ -89,9 +99,6 @@ class LoginController: UIViewController {
             }
         }
         
-        
-        
-        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,8 +107,5 @@ class LoginController: UIViewController {
             confirmPasswordLabel.removeFromSuperview()
         // Do any additional setup after loading the view.
     }
-    
-
-
      
 }

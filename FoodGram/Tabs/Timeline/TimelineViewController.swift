@@ -17,8 +17,9 @@ import Hero
 private let reuseIdentifier = "PostCell"
 
 class TimelineViewController: UICollectionViewController {
-
+    @IBOutlet var TimelineViewController: UICollectionView!
     var database: MyDatabase!
+
     static var isNotification: Bool!
     
     lazy var addPostController: AddPostViewController = {
@@ -39,31 +40,17 @@ class TimelineViewController: UICollectionViewController {
         let width = (view.frame.size.width - 20)
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width + 30)
-        print(Auth.auth().currentUser!.uid)
        
         database = MyDatabase.shared
-
+        MyDatabase.shared.timeLineCollectionView = collectionView
         let refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        refresh.addTarget(TimelineViewController, action: #selector(self.refresh), for: .valueChanged)
         collectionView.refreshControl = refresh
     }
 
 
     @objc func refresh(){
-        MyDatabase.shared.friendPosts.removeAll()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
-            
-            if (MyDatabase.shared.hasLoaded > 0)
-            {
-                MyDatabase.shared.readFriendPosts()
-                print(MyDatabase.shared.friendPosts.count)
-                self.collectionView.reloadData()
-                self.collectionView.refreshControl?.endRefreshing()
-            } else {
-            }
-        }
-        
-        
+        MyDatabase.shared.bridgeReload()
     }
     
 
@@ -92,12 +79,12 @@ class TimelineViewController: UICollectionViewController {
         cell.descriptionLabel.text = database.friendPosts[index].postDescription
         let imageUrl = database.friendPosts[index].image
         let url = URL(string: imageUrl)
-        cell.foodPic.sd_setImage(with: url, completed: { [weak self] (image, error, cacheType, imageURL) in
+        cell.foodPic.sd_setImage(with: url, completed: { (image, error, cacheType, imageURL) in
             cell.foodPic.image = image
         })
         MyDatabase.shared.getProfilePicByID(userID: userID) { (urlStr) in
             let url = URL(string: urlStr)
-            cell.profilePic.sd_setImage(with: url, completed: { [weak self] (image, error, cacheType, imageURL) in
+            cell.profilePic.sd_setImage(with: url, completed: { (image, error, cacheType, imageURL) in
                 cell.profilePic.image = image
             })
         }

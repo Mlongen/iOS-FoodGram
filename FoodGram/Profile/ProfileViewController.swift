@@ -29,16 +29,16 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     @IBAction func addFriend(_ sender: Any) {
 
-        let userID = MyDatabase.shared.allUsers[thisUser] as! String
+        let userID = MyDatabase.shared.allUsers[thisUser]
 
-        let mySelfUsername = MyDatabase.shared.allUsers.someKey(forValue: MyDatabase.shared.thisUserDBContext) as! String
+        let mySelfUsername = MyDatabase.shared.allUsers.someKey(forValue: MyDatabase.shared.thisUserDBContext)
 
         let notID = UUID().uuidString
-        let notificationsRef = Database.database().reference().child("users").child(userID).child("notifications").child(notID)
+        let notificationsRef = Database.database().reference().child("users").child(userID!).child("notifications").child(notID)
         notificationsRef.child("notificationID").setValue(notID)
         notificationsRef.child("createdByUser").setValue(mySelfUsername)
         notificationsRef.child("createdByID").setValue(MyDatabase.shared.thisUserDBContext)
-        notificationsRef.child("content").setValue("\(mySelfUsername) has added you as a friend.")
+        notificationsRef.child("content").setValue("\(String(describing: mySelfUsername)) has added you as a friend.")
         notificationsRef.child("type").setValue("FriendRequest")
         notificationsRef.child("status").setValue("Pending")
         
@@ -71,7 +71,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         profilePic.layer.cornerRadius =  profilePic.frame.size.width / 2
         profilePic.clipsToBounds = true
         // Do any additional setup after loading the view.
-        if (username.text == MyDatabase.shared.allUsers.someKey(forValue: MyDatabase.shared.thisUserDBContext) as? String){
+        if (username.text == MyDatabase.shared.allUsers.someKey(forValue: MyDatabase.shared.thisUserDBContext)){
             changePicButton.isHidden = false
             addFriendBtn.isHidden = true
         
@@ -105,7 +105,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         config.isScrollToChangeModesEnabled = false
         
         // Build a picker with your configuration
-        var picker = YPImagePicker(configuration: config)
+        let picker = YPImagePicker(configuration: config)
         present(picker, animated: true, completion: nil)
         picker.didFinishPicking { [unowned self] items, _ in
             if let photo = items.singlePhoto {

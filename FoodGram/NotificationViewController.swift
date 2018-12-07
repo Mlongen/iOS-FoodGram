@@ -12,6 +12,11 @@ class NotificationViewController: UIViewController, UITableViewDataSource {
     
     
     
+//    @IBAction func acceptFriendRequest(_ sender: NotificationCell) {
+//
+////        var userName = sender.notificationContent.text?.split(separator: " ")[0]
+//        print(sender.notificationContent.text)
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MyDatabase.shared.notifications.count
@@ -20,15 +25,22 @@ class NotificationViewController: UIViewController, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationCell", for: indexPath) as! NotificationCell
         cell.notificationContent.text = MyDatabase.shared.notifications[indexPath.row].content
-            
+        cell.acceptBtn.tag = indexPath.row
+        cell.acceptBtn.addTarget(self, action: #selector(acceptFriendRequest), for: .touchUpInside)
         return cell
     }
     
+    @objc func acceptFriendRequest(sender: UIButton){
+        let content = MyDatabase.shared.notifications[sender.tag].content
+        let userName = String(content.split(separator: " ")[0])
+        MyDatabase.shared.addUserAsFriend(userName: userName)
+    }
     
 }
 

@@ -15,14 +15,17 @@ import AwaitKit
 
 class MyDatabase: NSObject {
     static let shared = MyDatabase()
-    var hasLoaded: NSInteger
+    var hasLoadedFriends: NSInteger
+    var hasLoadedPosts: NSInteger
+    var hasLoadedAllUsers: NSInteger
+    
     var ref: DatabaseReference!
     var thisUserDBContext: String
     var selfPosts: [Post]
     var friendPosts: [Post]
-    var friends: [Friend]
+    var friends: [String]
     var allUsers: [String: String]
-
+    var timeLineCollectionView: UICollectionView?
     
     var notifications: [Notification]
     
@@ -30,17 +33,96 @@ class MyDatabase: NSObject {
         
         self.thisUserDBContext = thisUserDBContext
         self.selfPosts = [Post]()
-        self.friends = [Friend]()
+        self.friends = [String]()
         self.friendPosts = [Post]()
         self.notifications = [Notification]()
-        self.hasLoaded = 0
+        self.hasLoadedPosts = 0
+        self.hasLoadedFriends = 0
+        self.hasLoadedAllUsers = 0
         allUsers = [String: String]()
         
 
     }
     
-    func addFriendPosts()
+    func readFriends()
     {
+        self.ref = Database.database().reference().child("users").child(self.thisUserDBContext).child("friends")
+        self.ref.observe(DataEventType.value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshots {
+                    if let value = snap.value as? Dictionary<String, AnyObject> {
+                        let user = value["userId"] as? String ?? ""
+                        print(user)
+                        MyDatabase.shared.friends.append(user)
+                    }
+                    
+                }
+            }
+            self.hasLoadedFriends = self.hasLoadedFriends + 1
+        })
+        
+    }
+    
+    func readFriendsPosts() {
+        for friend in friends {
+            self.ref = Database.database().reference().child("users").child(friend).child("posts")
+            self.ref.observe(DataEventType.value, with: { (snapshot) in
+                if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                    for snap in snapshots {
+                        if let value = snap.value as? Dictionary<String, AnyObject> {
+                            let postID = value["postID"] as? String ?? ""
+                            let userID = value["userID"] as? String ?? ""
+                            let image = value["image"] as? String ?? ""
+                            let postDescription = value["postDescription"] as? String ?? ""
+                            let creationDate = Date()
+                            let price = value["price"] as? String ?? ""
+                            let location = value["location"] as? String ?? ""
+                            let rating = value["rating"] as? NSInteger ?? 0
+                            
+                            let newPost = Post(postId: postID, userId: userID, image: image, postDescription: postDescription, creationDate: Date(), price: price, location: location, rating: rating)
+                            
+                            self.friendPosts.append(newPost)
+                        }
+                        
+                    }
+                }
+                self.hasLoadedPosts = self.hasLoadedPosts + 1
+                
+                
+            })
+
+//            MyDatabase.shared.timeLineCollectionView!.reloadData()
+        }
+    }
+    
+    func reloadFriendsPosts() {
+        self.friendPosts.removeAll()
+        for friend in friends {
+            self.ref = Database.database().reference().child("users").child(friend).child("posts")
+            self.ref.observe(DataEventType.value, with: { (snapshot) in
+                if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                    for snap in snapshots {
+                        if let value = snap.value as? Dictionary<String, AnyObject> {
+                            let postID = value["postID"] as? String ?? ""
+                            let userID = value["userID"] as? String ?? ""
+                            let image = value["image"] as? String ?? ""
+                            let postDescription = value["postDescription"] as? String ?? ""
+                            let creationDate = Date()
+                            let price = value["price"] as? String ?? ""
+                            let location = value["location"] as? String ?? ""
+                            let rating = value["rating"] as? NSInteger ?? 0
+                            
+                            let newPost = Post(postId: postID, userId: userID, image: image, postDescription: postDescription, creationDate: Date(), price: price, location: location, rating: rating)
+                            
+                            self.friendPosts.append(newPost)
+                        }
+                    }
+                }
+                MyDatabase.shared.timeLineCollectionView!.reloadData()
+                MyDatabase.shared.timeLineCollectionView!.refreshControl?.endRefreshing()
+            })
+
+        }
     }
     
     func readNotifications()
@@ -78,32 +160,11 @@ class MyDatabase: NSObject {
                     }
                 }
             }
+            MyDatabase.shared.hasLoadedAllUsers = MyDatabase.shared.hasLoadedAllUsers + 1
         })
     }
-    func readFriendPosts()
-    {
-        self.ref = Database.database().reference().child("users").child(self.thisUserDBContext).child("posts")
-        self.ref.observe(DataEventType.value, with: { (snapshot) in
-            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
-                for snap in snapshots {
-                    if let value = snap.value as? Dictionary<String, AnyObject> {
-                        let postID = value["postID"] as? String ?? ""
-                        let userID = self.thisUserDBContext
-                        let image = value["image"] as? String ?? ""
-                        let postDescription = value["postDescription"] as? String ?? ""
-                        let creationDate = Date()
-                        let price = value["price"] as? String ?? ""
-                        let location = value["location"] as? String ?? ""
-                        let rating = value["rating"] as? NSInteger ?? 0
-                        
-                        let newPost = Post(postId: postID, userId: userID, image: image, postDescription: postDescription, creationDate: Date(), price: price, location: location, rating: rating)
-                        
-                        self.friendPosts.append(newPost)
-                    }
-                }
-            }
-            self.hasLoaded = self.hasLoaded + 1
-        })
+    @objc func bridgeReload() {
+        MyDatabase.shared.reloadFriendsPosts()
     }
     
     func readUserPostsById(userID: String) -> [Post]{
@@ -151,7 +212,7 @@ class MyDatabase: NSObject {
     
     func changeProfilePic(userID: String, picture: UIImage) {
 
-        let imagePath = Storage.storage().reference().child(UUID().uuidString)
+        let imagePath = Storage.storage().reference().child(userID + "_pic")
         if let imageData = picture.pngData(){
             imagePath.putData(imageData, metadata: nil) { (metadata, error) in
                 if(error != nil){
@@ -166,10 +227,8 @@ class MyDatabase: NSObject {
                     } else {
                         // Get the download URL
                         let urlStr:String = (url?.absoluteString ?? "")
-                                var DBref = Database.database().reference().child("users").child(userID)
+                        let DBref = Database.database().reference().child("users").child(userID)
                                 DBref.child("profileImg").setValue(urlStr)
-                        
-                        
                     }
                 }
             }
@@ -187,8 +246,22 @@ class MyDatabase: NSObject {
         })
     }
     
+    func addUserAsFriend(userName: String) {
+        let senderUserId = self.getUserIDByName(userID: userName)
+        let reference = Database.database().reference().child("users").child(self.thisUserDBContext).child("friends").child(senderUserId )
+        reference.child("userName").setValue(userName)
+        reference.child("userId").setValue(senderUserId)
+        
+        let reference2 = Database.database().reference().child("users").child(senderUserId).child("friends").child(self.thisUserDBContext)
+        reference2.child("userName").setValue(self.getUserById(userID: self.thisUserDBContext))
+        reference2.child("userId").setValue(self.thisUserDBContext)
+        
+        
+    }
+    
     func getUserPostsAndAwaitByName(userName: String) ->[Post] {
-        var userId = self.getUserIDByName(userID: userName)
+        
+        let userId = self.getUserIDByName(userID: userName)
         return self.readUserPostsById(userID: userId)
     }
 
