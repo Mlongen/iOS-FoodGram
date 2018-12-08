@@ -100,6 +100,7 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
                         // Get the download URL
                         let urlStr:String = (url?.absoluteString ?? "")
                         self.ref.child("posts").child(postId).child("userID").setValue(userId)
+                        self.ref.child("posts").child(postId).child("postId").setValue(postId)
                         self.ref.child("posts").child(postId).child("image").setValue(urlStr)
                         self.ref.child("posts").child(postId).child("postDescription").setValue(postDescription)
                         self.ref.child("posts").child(postId).child("creationDate").setValue(formattedDate)
@@ -119,7 +120,7 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
         let postDescription = self.postDescription.text
         let creationDate = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MMM-yyyy"
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let formattedDate = formatter.string(from: creationDate)
         let price = dropDownData[dropDown.selectedIndex!]
         let location = self.nameLabel.text

@@ -25,6 +25,7 @@ class MyDatabase: NSObject {
     var friendPosts: [Post]
     var friends: [String]
     var allUsers: [String: String]
+    var timelinePostIds: [String]
     var timeLineCollectionView: UICollectionView?
     
     var notifications: [Notification]
@@ -36,6 +37,7 @@ class MyDatabase: NSObject {
         self.friends = [String]()
         self.friendPosts = [Post]()
         self.notifications = [Notification]()
+        self.timelinePostIds = [String]()
         self.hasLoadedPosts = 0
         self.hasLoadedFriends = 0
         self.hasLoadedAllUsers = 0
@@ -62,6 +64,14 @@ class MyDatabase: NSObject {
         })
         
     }
+    func filterDuplicates(post: Post) {
+        
+        if !self.timelinePostIds.contains(post.postId) {
+            MyDatabase.shared.friendPosts.append(post)
+            self.timelinePostIds.append(post.postId)
+        }
+        
+    }
     
     func readFriendsPosts() {
         for friend in friends {
@@ -70,22 +80,25 @@ class MyDatabase: NSObject {
                 if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                     for snap in snapshots {
                         if let value = snap.value as? Dictionary<String, AnyObject> {
-                            let postID = value["postID"] as? String ?? ""
+                            let postID = value["postId"] as? String ?? ""
                             let userID = value["userID"] as? String ?? ""
                             let image = value["image"] as? String ?? ""
                             let postDescription = value["postDescription"] as? String ?? ""
-                            let creationDate = Date()
+                            let creationDate = value["creationDate"] as? String ?? ""
                             let price = value["price"] as? String ?? ""
                             let location = value["location"] as? String ?? ""
                             let rating = value["rating"] as? NSInteger ?? 0
                             
-                            let newPost = Post(postId: postID, userId: userID, image: image, postDescription: postDescription, creationDate: Date(), price: price, location: location, rating: rating)
+                            let newPost = Post(postId: postID, userId: userID, image: image, postDescription: postDescription, creationDate: creationDate, price: price, location: location, rating: rating)
                             
-                            self.friendPosts.append(newPost)
+                            self.filterDuplicates(post: newPost)
                         }
                         
                     }
                 }
+                self.friendPosts = self.friendPosts.sorted(by: {
+                    $0.creationDate.compare($1.creationDate) == .orderedDescending
+                })
                 self.hasLoadedPosts = self.hasLoadedPosts + 1
                 
                 
@@ -97,32 +110,37 @@ class MyDatabase: NSObject {
     
     func reloadFriendsPosts() {
         self.friendPosts.removeAll()
+        self.timelinePostIds.removeAll()
         for friend in friends {
             self.ref = Database.database().reference().child("users").child(friend).child("posts")
             self.ref.observe(DataEventType.value, with: { (snapshot) in
                 if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                     for snap in snapshots {
                         if let value = snap.value as? Dictionary<String, AnyObject> {
-                            let postID = value["postID"] as? String ?? ""
+                            let postID = value["postId"] as? String ?? ""
                             let userID = value["userID"] as? String ?? ""
                             let image = value["image"] as? String ?? ""
                             let postDescription = value["postDescription"] as? String ?? ""
-                            let creationDate = Date()
+                            let creationDate = value["creationDate"] as? String ?? ""
                             let price = value["price"] as? String ?? ""
                             let location = value["location"] as? String ?? ""
                             let rating = value["rating"] as? NSInteger ?? 0
                             
-                            let newPost = Post(postId: postID, userId: userID, image: image, postDescription: postDescription, creationDate: Date(), price: price, location: location, rating: rating)
+                            let newPost = Post(postId: postID, userId: userID, image: image, postDescription: postDescription, creationDate: creationDate, price: price, location: location, rating: rating)
                             
-                            self.friendPosts.append(newPost)
+                            self.filterDuplicates(post: newPost)
                         }
                     }
                 }
+                self.friendPosts = self.friendPosts.sorted(by: {
+                    $0.creationDate.compare($1.creationDate) == .orderedDescending
+                })
                 MyDatabase.shared.timeLineCollectionView!.reloadData()
                 MyDatabase.shared.timeLineCollectionView!.refreshControl?.endRefreshing()
             })
 
         }
+        
     }
     
     func readNotifications()
@@ -179,12 +197,13 @@ class MyDatabase: NSObject {
                         let postID = value["postID"] as? String ?? ""
                         let userID = self.thisUserDBContext
                         let image = value["image"] as? String ?? ""
+                        let creationDate = value["creationDate"] as? String ?? ""
                         let postDescription = value["postDescription"] as? String ?? ""
                         let price = value["price"] as? String ?? ""
                         let location = value["location"] as? String ?? ""
                         let rating = value["rating"] as? NSInteger ?? 0
                         
-                        let newPost = Post(postId: postID, userId: userID, image: image, postDescription: postDescription, creationDate: Date(), price: price, location: location, rating: rating)
+                        let newPost = Post(postId: postID, userId: userID, image: image, postDescription: postDescription, creationDate: creationDate, price: price, location: location, rating: rating)
                         
                         result.append(newPost)
                         
