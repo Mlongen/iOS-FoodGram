@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import AwaitKit
 import NotificationBannerSwift
 
 class LoginController: UIViewController {

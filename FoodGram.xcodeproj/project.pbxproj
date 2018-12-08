@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9CF6F73B9F12927F37BD294C /* Pods_FoodGram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11ED7AEF4A4F618F4920B81A /* Pods_FoodGram.framework */; };
 		A104ACB221AF974100F68894 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104ACB121AF974100F68894 /* NotificationViewController.swift */; };
 		A118786A21B49D870090C9B8 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A118786921B49D870090C9B8 /* iOSDropDown.framework */; };
 		A133989A21BA59CE003537E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A133989921BA59CE003537E8 /* Main.storyboard */; };
 		A133989E21BA5F97003537E8 /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A133989D21BA5F97003537E8 /* FriendsController.swift */; };
 		A13398A021BA5FA8003537E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A133989F21BA5FA8003537E8 /* Assets.xcassets */; };
+		A136BCC121BB8FA50049140C /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A136BCC021BB8FA50049140C /* TabController.swift */; };
 		A14DAB1721765E1D00368668 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DAB1621765E1D00368668 /* AppDelegate.swift */; };
 		A14DAB2321765E2000368668 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB2121765E2000368668 /* LaunchScreen.storyboard */; };
 		A15A99AA21AF99D10009E9C3 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A99A921AF99D10009E9C3 /* NotificationCell.swift */; };
@@ -30,18 +32,17 @@
 		A1A918D12177F2FB003646C7 /* ProfilePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D02177F2FB003646C7 /* ProfilePostCell.swift */; };
 		A1A918D62177F614003646C7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D52177F614003646C7 /* ProfileViewController.swift */; };
 		A1A918D82177FCC8003646C7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D72177FCC8003646C7 /* SearchViewController.swift */; };
-		B6C1CBD46B5E147D52C8FC10 /* Pods_FoodGram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E6A5A7EF14384DA2F03AE3 /* Pods_FoodGram.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		01E6A5A7EF14384DA2F03AE3 /* Pods_FoodGram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodGram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		069806C08C4012A37230107E /* Pods-FoodGram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodGram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram.debug.xcconfig"; sourceTree = "<group>"; };
-		5F50A0F73558CA7EF89D55B3 /* Pods-FoodGram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodGram.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram.release.xcconfig"; sourceTree = "<group>"; };
+		11ED7AEF4A4F618F4920B81A /* Pods_FoodGram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodGram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BB03E8E0061DB14984C76F6 /* Pods-FoodGram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodGram.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram.release.xcconfig"; sourceTree = "<group>"; };
 		A104ACB121AF974100F68894 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		A118786921B49D870090C9B8 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A133989921BA59CE003537E8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../../.Trash/Main.storyboard; sourceTree = "<group>"; };
 		A133989D21BA5F97003537E8 /* FriendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsController.swift; path = "../../../../Downloads/iOS-FoodGram-master/FoodGram/FriendsController.swift"; sourceTree = "<group>"; };
 		A133989F21BA5FA8003537E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../Downloads/iOS-FoodGram-master/FoodGram/Assets.xcassets"; sourceTree = "<group>"; };
+		A136BCC021BB8FA50049140C /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		A14DAB1321765E1D00368668 /* FoodGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14DAB1621765E1D00368668 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A14DAB2221765E2000368668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,6 +63,7 @@
 		A1A918D02177F2FB003646C7 /* ProfilePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostCell.swift; sourceTree = "<group>"; };
 		A1A918D52177F614003646C7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = FoodGram/Profile/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		A1A918D72177FCC8003646C7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		FFB918C088277916B6D23307 /* Pods-FoodGram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodGram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +72,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A118786A21B49D870090C9B8 /* iOSDropDown.framework in Frameworks */,
-				B6C1CBD46B5E147D52C8FC10 /* Pods_FoodGram.framework in Frameworks */,
+				9CF6F73B9F12927F37BD294C /* Pods_FoodGram.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				A118786921B49D870090C9B8 /* iOSDropDown.framework */,
-				01E6A5A7EF14384DA2F03AE3 /* Pods_FoodGram.framework */,
+				11ED7AEF4A4F618F4920B81A /* Pods_FoodGram.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -90,8 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				A14DAB1521765E1D00368668 /* FoodGram */,
-				ED1CF589CB68BAB41B963C91 /* Pods */,
 				554CA2EAB801BCCDA2DDE2D5 /* Frameworks */,
+				ECB68A01AB56A89B54E0D9ED /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +114,7 @@
 				A133989D21BA5F97003537E8 /* FriendsController.swift */,
 				A133989F21BA5FA8003537E8 /* Assets.xcassets */,
 				A133989921BA59CE003537E8 /* Main.storyboard */,
+				A136BCC021BB8FA50049140C /* TabController.swift */,
 				A175467921A5C5170001A203 /* GoogleService-Info.plist */,
 				A175467B21A5C6670001A203 /* LoginController.swift */,
 				A17D07EA219223AA005FB743 /* Objects */,
@@ -192,11 +195,11 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		ED1CF589CB68BAB41B963C91 /* Pods */ = {
+		ECB68A01AB56A89B54E0D9ED /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				069806C08C4012A37230107E /* Pods-FoodGram.debug.xcconfig */,
-				5F50A0F73558CA7EF89D55B3 /* Pods-FoodGram.release.xcconfig */,
+				FFB918C088277916B6D23307 /* Pods-FoodGram.debug.xcconfig */,
+				2BB03E8E0061DB14984C76F6 /* Pods-FoodGram.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -208,12 +211,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A14DAB2721765E2000368668 /* Build configuration list for PBXNativeTarget "FoodGram" */;
 			buildPhases = (
-				63D0FF2E4A1A74C9C7FE2889 /* [CP] Check Pods Manifest.lock */,
+				ECF9CA30813F475975F30843 /* [CP] Check Pods Manifest.lock */,
 				A14DAB0F21765E1D00368668 /* Sources */,
 				A14DAB1021765E1D00368668 /* Frameworks */,
 				A14DAB1121765E1D00368668 /* Resources */,
-				20E911AAC884B6897B4C4EE7 /* [CP] Embed Pods Frameworks */,
-				074061CB5F2DECF1BC4ACC1B /* [CP] Copy Pods Resources */,
+				05D0B87DC849901A9C690947 /* [CP] Embed Pods Frameworks */,
+				6A23EF582699A0BC935E291D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -272,7 +275,61 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		074061CB5F2DECF1BC4ACC1B /* [CP] Copy Pods Resources */ = {
+		05D0B87DC849901A9C690947 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
+				"${BUILT_PRODUCTS_DIR}/PryntTrimmerView/PryntTrimmerView.framework",
+				"${BUILT_PRODUCTS_DIR}/RAMReel/RAMReel.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionableTab/TransitionableTab.framework",
+				"${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PryntTrimmerView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RAMReel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SearchTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionableTab.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPImagePicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A23EF582699A0BC935E291D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -298,67 +355,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		20E911AAC884B6897B4C4EE7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AwaitKit/AwaitKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Cely/Cely.framework",
-				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
-				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
-				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
-				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
-				"${BUILT_PRODUCTS_DIR}/PryntTrimmerView/PryntTrimmerView.framework",
-				"${BUILT_PRODUCTS_DIR}/RAMReel/RAMReel.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
-				"${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework",
-				"${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AwaitKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cely.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PryntTrimmerView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RAMReel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SearchTextField.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPImagePicker.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDropDown.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		63D0FF2E4A1A74C9C7FE2889 /* [CP] Check Pods Manifest.lock */ = {
+		ECF9CA30813F475975F30843 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -404,6 +401,7 @@
 				A1A918C62177A90B003646C7 /* PostCell.swift in Sources */,
 				A17D07EC21922441005FB743 /* MyDatabase.swift in Sources */,
 				A1A918C82177AFFE003646C7 /* FriendCell.swift in Sources */,
+				A136BCC121BB8FA50049140C /* TabController.swift in Sources */,
 				A15A99AA21AF99D10009E9C3 /* NotificationCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -540,7 +538,7 @@
 		};
 		A14DAB2821765E2000368668 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 069806C08C4012A37230107E /* Pods-FoodGram.debug.xcconfig */;
+			baseConfigurationReference = FFB918C088277916B6D23307 /* Pods-FoodGram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -559,7 +557,7 @@
 		};
 		A14DAB2921765E2000368668 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F50A0F73558CA7EF89D55B3 /* Pods-FoodGram.release.xcconfig */;
+			baseConfigurationReference = 2BB03E8E0061DB14984C76F6 /* Pods-FoodGram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -122,7 +122,8 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let formattedDate = formatter.string(from: creationDate)
-        let price = dropDownData[dropDown.selectedIndex!]
+        let price = dropDownData[dropDown.selectedIndex ?? 0]
+        
         let location = self.nameLabel.text
         let rating = cosmosView.rating
     

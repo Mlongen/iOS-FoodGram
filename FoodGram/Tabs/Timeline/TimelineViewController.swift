@@ -11,8 +11,6 @@ import Firebase
 import FirebaseAuth
 import SDWebImage
 import Presentr
-import AwaitKit
-import Hero
 
 private let reuseIdentifier = "PostCell"
 
@@ -46,12 +44,15 @@ class TimelineViewController: UICollectionViewController {
         let refresh = UIRefreshControl()
         refresh.addTarget(TimelineViewController, action: #selector(self.refresh), for: .valueChanged)
         collectionView.refreshControl = refresh
+        
+        
     }
 
 
     @objc func refresh(){
         MyDatabase.shared.bridgeReload()
     }
+    
     
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -76,6 +77,7 @@ class TimelineViewController: UICollectionViewController {
 
         cell.userName.text = database.getUserById(userID:userID)
         cell.amount.text = database.friendPosts[index].price
+        cell.restaurantName.text = database.friendPosts[index].location
         cell.descriptionLabel.text = database.friendPosts[index].postDescription
         let imageUrl = database.friendPosts[index].image
         let url = URL(string: imageUrl)
