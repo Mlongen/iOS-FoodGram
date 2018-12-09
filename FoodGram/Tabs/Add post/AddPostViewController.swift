@@ -129,8 +129,13 @@ class AddPostViewController: UIViewController, GMSPlacePickerViewControllerDeleg
     
         upload(cameraBTN.image(for: .normal)!, postId, userId, postDescription!, formattedDate, price, location!, Int(rating))
         let banner = NotificationBanner(title: "Post uploaded successfully!", subtitle: "Your friends will be able to see it in a few seconds.", style: .success)
+        
         banner.show()
         self.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+            banner.dismiss()
+        })
+        
     }
 
     func convertImageToBase64(image: UIImage) -> String {

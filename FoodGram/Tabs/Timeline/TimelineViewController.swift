@@ -79,6 +79,9 @@ class TimelineViewController: UICollectionViewController {
         cell.amount.text = database.friendPosts[index].price
         cell.restaurantName.text = database.friendPosts[index].location
         cell.descriptionLabel.text = database.friendPosts[index].postDescription
+//        let size = cell.descriptionLabel.sizeThatFits(CGSize(width: (view.frame.size.width - 50), height: 50))
+//        cell.descriptionLabel.frame = CGRect(origin: CGPoint(x: 100, y: 100), size: size)
+        
         let imageUrl = database.friendPosts[index].image
         let url = URL(string: imageUrl)
         cell.foodPic.sd_setImage(with: url, completed: { (image, error, cacheType, imageURL) in
@@ -117,6 +120,7 @@ extension TimelineViewController{
             customPresenter.transitionType = .coverVerticalFromTop
             customPresenter.dismissTransitionType = .crossDissolve
             customPresenter.roundCorners = true
+            customPresenter.cornerRadius = 10
             customPresenter.backgroundOpacity = 0.5
             customPresenter.dismissOnSwipe = true
             customPresenter.dismissOnSwipeDirection = .top
@@ -133,11 +137,11 @@ extension TimelineViewController{
             let height = ModalSize.fluid(percentage: 0.85)
             let center = ModalCenterPosition.center
             let customType = PresentationType.custom(width: width, height: height, center: center)
-            
             let customPresenter = Presentr(presentationType: customType)
             customPresenter.transitionType = .coverVerticalFromTop
             customPresenter.dismissTransitionType = .crossDissolve
             customPresenter.roundCorners = true
+            customPresenter.cornerRadius = 10
             customPresenter.backgroundOpacity = 0.5
             customPresenter.dismissOnSwipe = true
             customPresenter.dismissOnSwipeDirection = .top

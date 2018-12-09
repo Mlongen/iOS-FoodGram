@@ -22,4 +22,5 @@ target 'FoodGram' do
   pod 'NotificationBannerSwift'
   pod 'RAMReel'
   pod 'TransitionableTab'
+  pod 'RAMAnimatedTabBarController'
 end

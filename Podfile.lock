@@ -90,6 +90,7 @@ PODS:
     - SnapKit (~> 4.0.1)
   - Presentr (1.9)
   - PryntTrimmerView (3.0.0)
+  - RAMAnimatedTabBarController (4.0.1)
   - RAMReel (4.0.0)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
@@ -114,6 +115,7 @@ DEPENDENCIES:
   - iOSDropDown
   - NotificationBannerSwift
   - Presentr
+  - RAMAnimatedTabBarController
   - RAMReel
   - SDWebImage
   - SearchTextField
@@ -144,6 +146,7 @@ SPEC REPOS:
     - NotificationBannerSwift
     - Presentr
     - PryntTrimmerView
+    - RAMAnimatedTabBarController
     - RAMReel
     - SDWebImage
     - SearchTextField
@@ -175,6 +178,7 @@ SPEC CHECKSUMS:
   NotificationBannerSwift: 49fc4be7fabada55b189b50e72184c92edd5f7f7
   Presentr: 7078d7eb5d1661ebeaae60c9e42a1e534de1b993
   PryntTrimmerView: 53ac64053c7ce63cb3e27f54090f52da0734891d
+  RAMAnimatedTabBarController: 677d6f7ec7e88b1089486f4db49b0a5067e8ad1c
   RAMReel: 815addc9594886e6816b891a1559058f05ff9580
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SearchTextField: a0992739d4b05dcbb40fb3a5cc6526bd991bdd23
@@ -183,6 +187,6 @@ SPEC CHECKSUMS:
   TransitionableTab: 54a5d0af475033bdb83959fde4e5d6201af7e2ab
   YPImagePicker: 26d5bf7bfe1cffd1c5eedea3ac60422b314e2a42
 
-PODFILE CHECKSUM: f2ebcfeebf4495a190d4fb7eb61da7185b0dbe21
+PODFILE CHECKSUM: 9c4f6c05a0aa1f3daef9e58f5975d19632db63f7
 
 COCOAPODS: 1.5.3

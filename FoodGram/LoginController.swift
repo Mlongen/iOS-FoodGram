@@ -66,6 +66,9 @@ class LoginController: UIViewController {
             
             let banner = NotificationBanner(title: "Succesfully logged in.", subtitle: nil, style: .success)
             banner.show()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                banner.dismiss()
+            })
 
            
             MyDatabase.shared.readNotifications()
@@ -89,12 +92,18 @@ class LoginController: UIViewController {
                 guard let user = authResult?.user else { return }
                 MyDatabase.shared.thisUserDBContext = user.uid
                 MyDatabase.shared.addUserToDB(user, username: username!)
-                self.database.readAllUsers()
+                MyDatabase.shared.readFriends()
+                MyDatabase.shared.readAllUsers()
+                self.loadFriends()
+
                 
                 let banner = NotificationBanner(title: "User created succesfully", subtitle: "Logging in...", style: .success)
                 banner.show()
                 
                 self.performSegue(withIdentifier: "showTab",sender: self)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                    banner.dismiss()
+                })
             }
         }
         

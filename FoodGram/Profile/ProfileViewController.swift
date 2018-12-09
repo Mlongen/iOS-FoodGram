@@ -14,7 +14,7 @@ import YPImagePicker
 class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     private let reuseIdentifier = "ProfilePostCell"
-    var thisUser: String = "test"
+    var thisUser: String = ""
     
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userNameTitle: UINavigationItem!
@@ -38,7 +38,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         notificationsRef.child("notificationID").setValue(notID)
         notificationsRef.child("createdByUser").setValue(mySelfUsername)
         notificationsRef.child("createdByID").setValue(MyDatabase.shared.thisUserDBContext)
-        notificationsRef.child("content").setValue("\(String(describing: mySelfUsername)) has added you as a friend.")
+        notificationsRef.child("content").setValue("\(mySelfUsername) has added you as a friend.")
         notificationsRef.child("type").setValue("FriendRequest")
         notificationsRef.child("status").setValue("Pending")
         
@@ -68,8 +68,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         username.text = thisUser
         self.title = thisUser
         
-        profilePic.layer.cornerRadius =  profilePic.frame.size.width / 2
-        profilePic.clipsToBounds = true
+        profilePic.setRounded()
         // Do any additional setup after loading the view.
         if (username.text == MyDatabase.shared.allUsers.someKey(forValue: MyDatabase.shared.thisUserDBContext)){
             changePicButton.isHidden = false
@@ -92,7 +91,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         config.showsFilters = true
         
         config.shouldSaveNewPicturesToAlbum = true
-        config.albumName = "MyGreatAppName"
         config.screens = [.library, .photo]
         config.startOnScreen = .library
         config.showsCrop = .rectangle(ratio: (4/3))
@@ -109,7 +107,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         present(picker, animated: true, completion: nil)
         picker.didFinishPicking { [unowned self] items, _ in
             if let photo = items.singlePhoto {
-                MyDatabase.shared.changeProfilePic(userID: MyDatabase.shared.getUserIDByName(userID: self.thisUser), picture: photo.image)
+                MyDatabase.shared.changeProfilePic(userID: MyDatabase.shared.getUserIDByName(userName: self.thisUser), picture: photo.image)
                 self.profilePic.image = photo.image
             }
             picker.dismiss(animated: true, completion: nil)

@@ -20,7 +20,7 @@ class FriendsCollectionController: UICollectionViewController {
         let width = (view.frame.size.width - 20)
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width / 4)
-        
+
         
 
     }
@@ -69,27 +69,26 @@ class FriendsCollectionController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FriendCell
     
         let index = indexPath.item
-        cell.layer.cornerRadius = 10
+        cell.layer.cornerRadius = 5.0
         cell.layer.masksToBounds = true
         cell.layer.backgroundColor = UIColor.white.cgColor
-        cell.layer.shadowColor = UIColor.white.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)//CGSizeMake(0, 2.0);
-        cell.layer.shadowRadius = 1.0
-        cell.layer.shadowOpacity = 0.2
+        cell.layer.shadowColor = UIColor.gray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 3.0)//CGSizeMake(0, 2.0);
+        cell.layer.shadowRadius = 4.0
+        cell.layer.shadowOpacity = 0.7
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         
         let usersArray = Array(MyDatabase.shared.allUsers)
         cell.userName.text = usersArray[index].key
+
+        cell.newpic.setRounded()
         
-        cell.profilePic.layer.cornerRadius =  cell.profilePic.frame.size.width / 2
-        cell.profilePic.clipsToBounds = true
         
-        
-        MyDatabase.shared.getProfilePicByID(userID: MyDatabase.shared.getUserIDByName(userID: usersArray[index].key)) { (urlStr) in
+        MyDatabase.shared.getProfilePicByID(userID: MyDatabase.shared.getUserIDByName(userName: usersArray[index].key)) { (urlStr) in
             let url = URL(string: urlStr)
-            cell.profilePic.sd_setImage(with: url, completed: { (image, error, cacheType, imageURL) in
-                cell.profilePic.image = image
+            cell.newpic.sd_setImage(with: url, completed: { (image, error, cacheType, imageURL) in
+                cell.newpic.image = image
             })
         }
 
@@ -99,7 +98,6 @@ class FriendsCollectionController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         
         let cell = collectionView.cellForItem(at: indexPath) as! FriendCell
         performSegue(withIdentifier: "detailFromFriendList", sender: cell)
@@ -115,4 +113,13 @@ class FriendsCollectionController: UICollectionViewController {
 }
 }
 
+extension UIImageView {
+    
+    func setRounded(borderWidth: CGFloat = 0.0, borderColor: UIColor = UIColor.clear) {
+        layer.cornerRadius = frame.width / 2
+        layer.masksToBounds = true
+        layer.borderWidth = borderWidth
+        layer.borderColor = borderColor.cgColor
+    }
+}
 

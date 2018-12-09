@@ -26,7 +26,8 @@ class MyDatabase: NSObject {
     var timelinePostIds: [String]
     var timeLineCollectionView: UICollectionView?
     
-    var notifications: [Notification]
+    var allNotifications: [Notification]
+    var filteredNotifications: [Notification]
     
     init(thisUserDBContext: String = "0") {
         
@@ -34,7 +35,8 @@ class MyDatabase: NSObject {
         self.selfPosts = [Post]()
         self.friends = [String]()
         self.friendPosts = [Post]()
-        self.notifications = [Notification]()
+        self.allNotifications = [Notification]()
+        self.filteredNotifications = [Notification]()
         self.timelinePostIds = [String]()
         self.hasLoadedPosts = 0
         self.hasLoadedFriends = 0
@@ -63,14 +65,35 @@ class MyDatabase: NSObject {
         
     }
     func filterDuplicates(post: Post) {
-        
         if !self.timelinePostIds.contains(post.postId) {
             MyDatabase.shared.friendPosts.append(post)
             self.timelinePostIds.append(post.postId)
         }
-        
     }
     
+    func filterAllUsersDuplicates(userName: String, userId: String) {
+        if (!self.allUsers.keys.contains(userName) && userName != "") {
+            self.allUsers[userName] = userId
+        }
+    }
+
+    func freshUserList() -> [String] {
+        var result = [String]()
+        self.ref = Database.database().reference().child("users")
+        self.ref.observe(DataEventType.value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshots {
+                    if let value = snap.value as? Dictionary<String, AnyObject> {
+                        let thisUser = value["userName"] as? String ?? ""
+                        result.append(thisUser)
+                    }
+                }
+            }
+
+        }
+        )
+        return result
+    }
     func readFriendsPosts() {
         for friend in friends {
             self.ref = Database.database().reference().child("users").child(friend).child("posts")
@@ -141,29 +164,15 @@ class MyDatabase: NSObject {
         
     }
     
-    func readNotifications()
-    {
-        self.ref = Database.database().reference().child("users").child(self.thisUserDBContext).child("notifications")
-        self.ref.observe(DataEventType.value, with: { (snapshot) in
-            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
-                for snap in snapshots {
-                    if let value = snap.value as? Dictionary<String, AnyObject> {
-                        let notificationID = value["notificationID"] as? String
-                        let content = value["content"] as? String
-                        let createdByID = value["createdByID"] as? String
-                        let createdByUser = value["createdByUser"] as? String
-                        let status = value["status"] as? String
-                        let type = value["type"] as? String
-                        
-                        let notification = Notification(notificationID: notificationID!, createdByUser: createdByUser!, createdByID: createdByID!, content: content!, type: type!, status: status!)
-                        
-                        MyDatabase.shared.notifications.append(notification)
-                    }
-                }
-            }
+    
+    func readAllUsers() {
+        self.readAllUsersOnce()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+            self.readAllUsers()
         })
     }
-    func readAllUsers()
+
+    func readAllUsersOnce()
     {
         self.ref = Database.database().reference().child("users")
         self.ref.observe(DataEventType.value, with: { (snapshot) in
@@ -172,7 +181,9 @@ class MyDatabase: NSObject {
                     if let value = snap.value as? Dictionary<String, AnyObject> {
                         let userID = value["userID"] as? String ?? ""
                         let thisUser = value["userName"] as? String ?? ""
-                        self.allUsers[thisUser] = userID
+                        if (userID != MyDatabase.shared.thisUserDBContext) {
+                            self.filterAllUsersDuplicates(userName: thisUser, userId: userID)
+                        }
                     }
                 }
             }
@@ -264,7 +275,7 @@ class MyDatabase: NSObject {
     }
     
     func addUserAsFriend(userName: String) {
-        let senderUserId = self.getUserIDByName(userID: userName)
+        let senderUserId = self.getUserIDByName(userName: userName)
         let reference = Database.database().reference().child("users").child(self.thisUserDBContext).child("friends").child(senderUserId )
         reference.child("userName").setValue(userName)
         reference.child("userId").setValue(senderUserId)
@@ -275,10 +286,10 @@ class MyDatabase: NSObject {
         
         
     }
-    
+
     func getUserPostsAndAwaitByName(userName: String) ->[Post] {
         
-        let userId = self.getUserIDByName(userID: userName)
+        let userId = self.getUserIDByName(userName: userName)
         return self.readUserPostsById(userID: userId)
     }
 
@@ -287,10 +298,58 @@ class MyDatabase: NSObject {
         return self.allUsers.someKey(forValue: userID)!
         }
     
-    func getUserIDByName(userID: String) -> String{
-        return self.allUsers[userID]!
+    func getUserIDByName(userName: String) -> String{
+        return self.allUsers[userName]!
     }
     }
 
 
+// notification stuff
+extension MyDatabase {
+    
+    func readNotifications()
+    {
+        self.ref = Database.database().reference().child("users").child(self.thisUserDBContext).child("notifications")
+        self.ref.observe(DataEventType.value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshots {
+                    if let value = snap.value as? Dictionary<String, AnyObject> {
+                        let notificationID = value["notificationID"] as? String
+                        let content = value["content"] as? String
+                        let createdByID = value["createdByID"] as? String
+                        let createdByUser = value["createdByUser"] as? String
+                        let status = value["status"] as? String
+                        let type = value["type"] as? String
+                        
+                        let notification = Notification(notificationID: notificationID!, createdByUser: createdByUser!, createdByID: createdByID!, content: content!, type: type!, status: status!)
+                        
+                        if (notification.status != "Accepted") {
+                            MyDatabase.shared.filteredNotifications.append(notification)
+                        }
+                        MyDatabase.shared.allNotifications.append(notification)
+                    }
+                }
+            }
+        })
+    }
+    
+    func removeNotification(notification: Notification) {
+        let index = MyDatabase.shared.filteredNotifications.firstIndex(of: notification)
+        MyDatabase.shared.filteredNotifications.remove(at: index!)
 
+    }
+    
+    func setNotificationAsRead(notificationId: String, status: String) {
+        if (status == "Pending") {
+            let DBref = Database.database().reference().child("users").child(MyDatabase.shared.thisUserDBContext).child("notifications").child(notificationId)
+            DBref.child("status").setValue("Read")
+        }
+    }
+    
+    func setNotificationAccepted(notificationId: String) {
+        let DBref = Database.database().reference().child("users").child(MyDatabase.shared.thisUserDBContext).child("notifications").child(notificationId)
+        DBref.child("status").setValue("Accepted")
+        
+    }
+    
+}
