@@ -69,12 +69,12 @@ class FriendsCollectionController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FriendCell
     
         let index = indexPath.item
-        cell.layer.cornerRadius = 5.0
+        cell.layer.cornerRadius = 20.0
         cell.layer.masksToBounds = true
         cell.layer.backgroundColor = UIColor.white.cgColor
         cell.layer.shadowColor = UIColor.gray.cgColor
         cell.layer.shadowOffset = CGSize(width: 0, height: 3.0)//CGSizeMake(0, 2.0);
-        cell.layer.shadowRadius = 4.0
+        cell.layer.shadowRadius = 10.0
         cell.layer.shadowOpacity = 0.7
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath

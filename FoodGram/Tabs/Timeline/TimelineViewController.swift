@@ -35,9 +35,9 @@ class TimelineViewController: UICollectionViewController {
     var userID: String!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let width = (view.frame.size.width - 20)
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: width, height: width + 30)
+//        let width = (view.frame.size.width - 20)
+//        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//        layout.itemSize = CGSize(width: width, height: width + 30)
        
         database = MyDatabase.shared
         MyDatabase.shared.timeLineCollectionView = collectionView
@@ -94,9 +94,17 @@ class TimelineViewController: UICollectionViewController {
             })
         }
         
-        
-        cell.profilePic.layer.cornerRadius =  cell.profilePic.frame.size.width / 2
-        cell.profilePic.clipsToBounds = true
+        cell.layer.cornerRadius = 20.0
+        cell.layer.masksToBounds = true
+        cell.layer.backgroundColor = UIColor.white.cgColor
+        cell.layer.shadowColor = UIColor.gray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 3.0)//CGSizeMake(0, 2.0);
+        cell.layer.shadowRadius = 10.0
+        cell.layer.shadowOpacity = 0.7
+        cell.layer.masksToBounds = false
+        cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
+        let width = (view.frame.size.width - 20)
+        cell.profilePic.setRounded()
         cell.rating.text = "Rating: " + String(database.friendPosts[index].rating) + "/10"
         
         return cell
