@@ -29,9 +29,9 @@
 		A1A918C62177A90B003646C7 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918C52177A90B003646C7 /* PostCell.swift */; };
 		A1A918C82177AFFE003646C7 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918C72177AFFE003646C7 /* FriendCell.swift */; };
 		A1A918CA2177B01A003646C7 /* FriendsCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918C92177B01A003646C7 /* FriendsCollectionController.swift */; };
-		A1A918D12177F2FB003646C7 /* ProfilePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D02177F2FB003646C7 /* ProfilePostCell.swift */; };
 		A1A918D62177F614003646C7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D52177F614003646C7 /* ProfileViewController.swift */; };
 		A1A918D82177FCC8003646C7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A918D72177FCC8003646C7 /* SearchViewController.swift */; };
+		A1B8673121BCCA93001DB440 /* ProfilePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B8673021BCCA93001DB440 /* ProfilePostCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,9 +60,9 @@
 		A1A918C52177A90B003646C7 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		A1A918C72177AFFE003646C7 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		A1A918C92177B01A003646C7 /* FriendsCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCollectionController.swift; sourceTree = "<group>"; };
-		A1A918D02177F2FB003646C7 /* ProfilePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostCell.swift; sourceTree = "<group>"; };
 		A1A918D52177F614003646C7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = FoodGram/Profile/ProfileViewController.swift; sourceTree = SOURCE_ROOT; };
 		A1A918D72177FCC8003646C7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		A1B8673021BCCA93001DB440 /* ProfilePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostCell.swift; sourceTree = "<group>"; };
 		FFB918C088277916B6D23307 /* Pods-FoodGram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodGram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodGram/Pods-FoodGram.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +114,7 @@
 				A133989D21BA5F97003537E8 /* FriendsController.swift */,
 				A133989F21BA5FA8003537E8 /* Assets.xcassets */,
 				A133989921BA59CE003537E8 /* Main.storyboard */,
+				A1B8673021BCCA93001DB440 /* ProfilePostCell.swift */,
 				A136BCC021BB8FA50049140C /* TabController.swift */,
 				A175467921A5C5170001A203 /* GoogleService-Info.plist */,
 				A175467B21A5C6670001A203 /* LoginController.swift */,
@@ -190,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				A1A918D52177F614003646C7 /* ProfileViewController.swift */,
-				A1A918D02177F2FB003646C7 /* ProfilePostCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -394,9 +394,9 @@
 				A175467C21A5C6670001A203 /* LoginController.swift in Sources */,
 				A17D07E5219222D8005FB743 /* Friend.swift in Sources */,
 				A133989E21BA5F97003537E8 /* FriendsController.swift in Sources */,
-				A1A918D12177F2FB003646C7 /* ProfilePostCell.swift in Sources */,
 				A15F02FE2193710000080858 /* AddPostViewController.swift in Sources */,
 				A1A918CA2177B01A003646C7 /* FriendsCollectionController.swift in Sources */,
+				A1B8673121BCCA93001DB440 /* ProfilePostCell.swift in Sources */,
 				A17D07E32192227A005FB743 /* AppUser.swift in Sources */,
 				A1A918D62177F614003646C7 /* ProfileViewController.swift in Sources */,
 				A17D07E721922315005FB743 /* Notification.swift in Sources */,

@@ -11,11 +11,33 @@ import FirebaseDatabase
 import NotificationBannerSwift
 import YPImagePicker
 
-class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ProfileViewController: UIViewController, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 8
+    }
     
-    private let reuseIdentifier = "ProfilePostCell"
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profilePostCell", for: indexPath) as! ProfilePostCell
+        
+        let index = indexPath.item
+        cell.layer.cornerRadius = 20.0
+        cell.layer.masksToBounds = true
+        cell.layer.backgroundColor = UIColor.white.cgColor
+        cell.layer.shadowColor = UIColor.gray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 3.0)//CGSizeMake(0, 2.0);
+        cell.layer.shadowRadius = 10.0
+        cell.layer.shadowOpacity = 0.7
+        cell.layer.masksToBounds = false
+        cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
+        
+        return cell
+    }
+    
+    
     var thisUser: String = ""
     
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var userNameTitle: UINavigationItem!
     
@@ -46,28 +68,13 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         banner.show()
         
     }
-    @IBOutlet weak var profilePostsCollection: UICollectionView!
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
 
-        return cell
-    }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         username.text = thisUser
         self.title = thisUser
-        
         profilePic.setRounded()
         // Do any additional setup after loading the view.
         if (username.text == MyDatabase.shared.allUsers.someKey(forValue: MyDatabase.shared.thisUserDBContext)){
@@ -78,6 +85,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             changePicButton.isHidden = true
             addFriendBtn.isHidden = false
         }
+
         
     }
     

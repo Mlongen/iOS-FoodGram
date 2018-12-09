@@ -189,7 +189,7 @@ extension AddPostViewController {
         config.shouldSaveNewPicturesToAlbum = true
         config.screens = [.library, .photo]
         config.startOnScreen = .library
-        config.showsCrop = .rectangle(ratio: (16/9))
+        config.showsCrop = .rectangle(ratio: (5/5))
         config.wordings.libraryTitle = "Gallery"
         config.hidesStatusBar = false
         config.library.maxNumberOfItems = 1
