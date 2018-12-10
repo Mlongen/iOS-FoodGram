@@ -28,7 +28,6 @@ class LoginController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             if (MyDatabase.shared.hasLoadedFriends > 0)
             {
-                print(MyDatabase.shared.friends)
                 MyDatabase.shared.readFriendsPosts()
                 self.loadPosts()
             } else {
@@ -60,7 +59,7 @@ class LoginController: UIViewController {
             MyDatabase.shared.thisUserDBContext = user.uid
             
             MyDatabase.shared.readFriends()
-            MyDatabase.shared.readAllUsers()
+            MyDatabase.shared.hotReload()
             self.loadFriends()
 
             
@@ -70,9 +69,6 @@ class LoginController: UIViewController {
                 banner.dismiss()
             })
 
-           
-            MyDatabase.shared.readNotifications()
-            
             }
         }
     }
@@ -93,7 +89,7 @@ class LoginController: UIViewController {
                 MyDatabase.shared.thisUserDBContext = user.uid
                 MyDatabase.shared.addUserToDB(user, username: username!)
                 MyDatabase.shared.readFriends()
-                MyDatabase.shared.readAllUsers()
+                MyDatabase.shared.hotReload()
                 self.loadFriends()
 
                 

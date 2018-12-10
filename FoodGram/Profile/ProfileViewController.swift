@@ -53,8 +53,12 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
 
         let userID = MyDatabase.shared.allUsers[thisUser]
 
-        let mySelfUsername = MyDatabase.shared.allUsers.someKey(forValue: MyDatabase.shared.thisUserDBContext)
+        let mySelfUsername = MyDatabase.shared.getUserById(userID: MyDatabase.shared.thisUserDBContext)
 
+        let creationDate = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let formattedDate = formatter.string(from: creationDate)
         let notID = UUID().uuidString
         let notificationsRef = Database.database().reference().child("users").child(userID!).child("notifications").child(notID)
         notificationsRef.child("notificationID").setValue(notID)
@@ -62,6 +66,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
         notificationsRef.child("createdByID").setValue(MyDatabase.shared.thisUserDBContext)
         notificationsRef.child("content").setValue("\(mySelfUsername) has added you as a friend.")
         notificationsRef.child("type").setValue("FriendRequest")
+        notificationsRef.child("creationDate").setValue(formattedDate)
         notificationsRef.child("status").setValue("Pending")
         
         let banner = NotificationBanner(title: "Friendship request sent", subtitle: nil, style: .success)

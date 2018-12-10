@@ -15,13 +15,15 @@ class Notification: NSObject {
     var createdByID: String
     var content: String
     var type: String
+    var creationDate: String
     var status: String
     
-    init(notificationID: String, createdByUser: String, createdByID: String, content: String, type: String, status: String) {
+    init(notificationID: String, createdByUser: String, createdByID: String, content: String, type: String, creationDate: String, status: String) {
         self.notificationID = notificationID
         self.createdByUser = createdByUser
         self.createdByID = createdByID
         self.content = content
+        self.creationDate = creationDate
         self.type = type
         self.status = status
     }
