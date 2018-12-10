@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import GooglePlaces
 import GoogleMaps
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,7 +22,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         GMSPlacesClient.provideAPIKey("AIzaSyDai6PfvE-Pj6jG5mRn-lgHMawSeoCEIlY")
         GMSServices.provideAPIKey("AIzaSyDai6PfvE-Pj6jG5mRn-lgHMawSeoCEIlY")
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         return true
+    }
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        let appId: String = FBSDKSettings.appID()
+        
+        if url.scheme != nil && url.scheme!.hasPrefix("fb\(appId)") && url.host ==  "authorize" {
+            
+            return FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+            
+        }
+        
+        return false
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

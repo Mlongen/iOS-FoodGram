@@ -9,13 +9,14 @@
 import UIKit
 import Firebase
 import NotificationBannerSwift
+import FBSDKLoginKit
 
-class LoginController: UIViewController {
+class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
+
     
     var database: MyDatabase!
     var ref: DatabaseReference!
 
-    @IBOutlet weak var userNameField: UITextField!
     
     @IBOutlet weak var emailField: UITextField!
 
@@ -24,7 +25,7 @@ class LoginController: UIViewController {
     @IBOutlet weak var confirmPasswordLabel: UILabel!
     
     @IBOutlet weak var passwordField: UITextField!
-    fileprivate func loadFriends() {
+    func loadFriends() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             if (MyDatabase.shared.hasLoadedFriends > 0)
             {
@@ -58,17 +59,22 @@ class LoginController: UIViewController {
             guard let user = authResult?.user else { return }
             MyDatabase.shared.thisUserDBContext = user.uid
             
-            MyDatabase.shared.readFriends()
-            MyDatabase.shared.hotReload()
-            self.loadFriends()
-
+            
+            MyDatabase.shared.checkIfUsername(userID: user.uid, completion: { (userName) in
+                if (userName == "Default") {
+                  self.performSegue(withIdentifier: "createUserName",sender: self)
+                } else {
+                    MyDatabase.shared.readFriends()
+                    MyDatabase.shared.hotReload()
+                    self.loadFriends()
+                }
+            })
             
             let banner = NotificationBanner(title: "Succesfully logged in.", subtitle: nil, style: .success)
             banner.show()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
                 banner.dismiss()
             })
-
             }
         }
     }
@@ -78,25 +84,24 @@ class LoginController: UIViewController {
     @IBAction func createAccAction(_ sender: Any) {
         
         let email = emailField?.text
-        let username = userNameField?.text
         let password = passwordField?.text
         
         
-        if (email != nil), (username != nil), (password != nil) {
+        if (email != nil),(password != nil) {
             Auth.auth().createUser(withEmail: email!, password: password!) { (authResult, error) in
                 // ...
                 guard let user = authResult?.user else { return }
                 MyDatabase.shared.thisUserDBContext = user.uid
-                MyDatabase.shared.addUserToDB(user, username: username!)
-                MyDatabase.shared.readFriends()
-                MyDatabase.shared.hotReload()
+                MyDatabase.shared.addUserToDB(user, username: "Default")
+               // send to other viewcontroller later
+//                MyDatabase.shared.readFriends()
+//                MyDatabase.shared.hotReload()
                 self.loadFriends()
 
-                
                 let banner = NotificationBanner(title: "User created succesfully", subtitle: "Logging in...", style: .success)
                 banner.show()
                 
-                self.performSegue(withIdentifier: "showTab",sender: self)
+                self.performSegue(withIdentifier: "createUserName",sender: self)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
                     banner.dismiss()
                 })
@@ -109,7 +114,60 @@ class LoginController: UIViewController {
         self.navigationController?.setToolbarHidden(true, animated: false)
             confirmPasswordField.removeFromSuperview()
             confirmPasswordLabel.removeFromSuperview()
+        let loginButton = FBSDKLoginButton()
+        loginButton.center = view.center
+        loginButton.delegate = self
+        
+        view.addSubview(loginButton)
         // Do any additional setup after loading the view.
+        
+        if FBSDKAccessToken.current() != nil {
+            self.performSegue(withIdentifier: "createUserName",sender: self)
+        }
     }
-     
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if ((error) != nil)
+        {
+            // Process error
+        }
+        else if result.isCancelled {
+            // Handle cancellations
+        }
+        else {
+            // If you ask for multiple permissions at once, you
+            // should check if specific permissions missing
+            if result.grantedPermissions.contains("email")
+            {
+                let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                
+                Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+                    guard let user = authResult?.user else { return }
+                    MyDatabase.shared.thisUserDBContext = user.uid
+                    
+                    
+                    MyDatabase.shared.checkIfUsername(userID: user.uid, completion: { (userName) in
+                        if (userName == "Default") {
+                            self.performSegue(withIdentifier: "createUserName",sender: self)
+                        } else {
+                            MyDatabase.shared.readFriends()
+                            MyDatabase.shared.hotReload()
+                            self.loadFriends()
+                        }
+                    })
+                    
+                    let banner = NotificationBanner(title: "Succesfully logged in.", subtitle: nil, style: .success)
+                    banner.show()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                        banner.dismiss()
+                    })
+                }
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        
+    }
+    
 }

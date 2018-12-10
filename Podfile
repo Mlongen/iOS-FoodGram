@@ -10,6 +10,7 @@ target 'FoodGram' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'FBSDKLoginKit'
   pod 'SDWebImage'
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
@@ -23,4 +24,5 @@ target 'FoodGram' do
   pod 'RAMReel'
   pod 'TransitionableTab'
   pod 'RAMAnimatedTabBarController'
+  
 end

@@ -248,6 +248,11 @@ class MyDatabase: NSObject {
         self.ref.child("notifications").setValue([Notification]())
     }
     
+    func setUserNameAfterCreation(username: String) {
+        self.ref = Database.database().reference().child("users").child(MyDatabase.shared.thisUserDBContext)
+        self.ref.child("userName").setValue(username)
+    }
+    
     func changeProfilePic(userID: String, picture: UIImage) {
 
         let imagePath = Storage.storage().reference().child(userID + "_pic")
@@ -284,6 +289,17 @@ class MyDatabase: NSObject {
         })
     }
     
+    func checkIfUsername(userID: String,  completion: @escaping (String) -> ()){
+        let DBref = Database.database().reference().child("users").child(userID).child("userName")
+        DBref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+            if let name = snapshot.value as? String {
+                completion(name)
+            } else {
+                completion("")
+            }
+            
+        })
+    }
     func addUserAsFriend(userName: String) {
         let senderUserId = self.getUserIDByName(userName: userName)
         let reference = Database.database().reference().child("users").child(self.thisUserDBContext).child("friends").child(senderUserId )
@@ -355,39 +371,6 @@ extension MyDatabase {
         })
     }
     
-//    func readNotifications()
-//    {
-//        self.ref = Database.database().reference().child("users").child(self.thisUserDBContext).child("notifications")
-//        self.ref.observe(DataEventType.value, with: { (snapshot) in
-//            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
-//                for snap in snapshots {
-//                    if let value = snap.value as? Dictionary<String, AnyObject> {
-//                        let notificationID = value["notificationID"] as? String
-//                        let content = value["content"] as? String
-//                        let createdByID = value["createdByID"] as? String
-//                        let createdByUser = value["createdByUser"] as? String
-//                        let status = value["status"] as? String
-//                        let creationDate = value["creationDate"] as? String ?? ""
-//                        let type = value["type"] as? String
-//
-//                        let notification = Notification(notificationID: notificationID!, createdByUser: createdByUser!, createdByID: createdByID!, content: content!, type: type!, creationDate: creationDate, status: status!)
-//
-//                        if (notification.status != "Accepted") {
-//                            MyDatabase.shared.filteredNotifications.append(notification)
-//                        }
-//                        MyDatabase.shared.allNotifications.append(notification)
-//                    }
-//                }
-//            }
-//            self.filteredNotifications =  self.filteredNotifications.sorted(by: {
-//                $0.creationDate.compare($1.creationDate) == .orderedDescending
-//            })
-//            MyDatabase.shared.notificationsTableView!.reloadData()
-//            MyDatabase.shared.notificationsTableView!.refreshControl?.endRefreshing()
-//
-//        })
-//    }
-//
     func removeNotification(notification: Notification) {
         let index = MyDatabase.shared.filteredNotifications.firstIndex(of: notification)
         MyDatabase.shared.filteredNotifications.remove(at: index!)
