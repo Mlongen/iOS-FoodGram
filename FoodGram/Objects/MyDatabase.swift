@@ -300,6 +300,23 @@ class MyDatabase: NSObject {
             
         })
     }
+    func checkIfUserExists(email: String, completion: @escaping (Bool) -> ()){
+    
+        self.ref = Database.database().reference().child("users")
+        self.ref.observe(DataEventType.value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshots {
+                    if let value = snap.value as? Dictionary<String, AnyObject> {
+                        let userEmail = value["email"] as? String ?? ""
+                        if email == userEmail {
+                            completion(true)
+                            break
+                        }
+                    }
+                }
+            }
+        })
+    }
     func addUserAsFriend(userName: String) {
         let senderUserId = self.getUserIDByName(userName: userName)
         let reference = Database.database().reference().child("users").child(self.thisUserDBContext).child("friends").child(senderUserId )

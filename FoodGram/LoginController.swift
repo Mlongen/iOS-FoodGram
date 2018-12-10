@@ -16,7 +16,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
     
     var database: MyDatabase!
     var ref: DatabaseReference!
-
+    var userChecked: NSInteger!
     
     @IBOutlet weak var emailField: UITextField!
 
@@ -111,6 +111,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        userChecked = 0
         self.navigationController?.setToolbarHidden(true, animated: false)
             confirmPasswordField.removeFromSuperview()
             confirmPasswordLabel.removeFromSuperview()
@@ -122,7 +123,46 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
         // Do any additional setup after loading the view.
         
         if FBSDKAccessToken.current() != nil {
-            self.performSegue(withIdentifier: "createUserName",sender: self)
+            fbLogin()
+        }
+    }
+    
+    fileprivate func fbLogin() {
+        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+            guard let user = authResult?.user else { return }
+            MyDatabase.shared.thisUserDBContext = user.uid
+            
+            if self.userChecked == 0 {
+                
+                
+                MyDatabase.shared.checkIfUserExists(email: user.email!, completion: { (exists) in
+                    if exists {
+                        MyDatabase.shared.checkIfUsername(userID: user.uid, completion: { (userName) in
+                            self.userChecked = self.userChecked + 1
+                            if (userName == "Default") {
+                                self.performSegue(withIdentifier: "createUserName",sender: self)
+                            } else {
+                                MyDatabase.shared.readFriends()
+                                MyDatabase.shared.hotReload()
+                                self.loadFriends()
+                            }
+                        })
+                    } else {
+                        MyDatabase.shared.addUserToDB(user, username: "Default")
+                        self.loadFriends()
+                        
+                        let banner = NotificationBanner(title: "User created succesfully", subtitle: "Logging in...", style: .success)
+                        banner.show()
+                        
+                        self.performSegue(withIdentifier: "createUserName",sender: self)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                            banner.dismiss()
+                        })
+                    }
+                })
+            }
         }
     }
     
@@ -139,29 +179,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
             // should check if specific permissions missing
             if result.grantedPermissions.contains("email")
             {
-                let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-                
-                Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
-                    guard let user = authResult?.user else { return }
-                    MyDatabase.shared.thisUserDBContext = user.uid
-                    
-                    
-                    MyDatabase.shared.checkIfUsername(userID: user.uid, completion: { (userName) in
-                        if (userName == "Default") {
-                            self.performSegue(withIdentifier: "createUserName",sender: self)
-                        } else {
-                            MyDatabase.shared.readFriends()
-                            MyDatabase.shared.hotReload()
-                            self.loadFriends()
-                        }
-                    })
-                    
-                    let banner = NotificationBanner(title: "Succesfully logged in.", subtitle: nil, style: .success)
-                    banner.show()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-                        banner.dismiss()
-                    })
-                }
+                fbLogin()
             }
         }
     }
