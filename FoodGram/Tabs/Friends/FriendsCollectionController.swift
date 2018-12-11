@@ -17,9 +17,9 @@ class FriendsCollectionController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let width = (view.frame.size.width - 20)
+        let width = (view.frame.size.width - 26)
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: width, height: width / 4)
+        layout.itemSize = CGSize(width: width, height: width / 4.8)
 
         
 
@@ -29,29 +29,6 @@ class FriendsCollectionController: UICollectionViewController {
         return searchController as! SearchViewController
     }()
     
-
-    @IBAction func openSearchController(_ sender: Any) {
-        let presenter: Presentr = {
-            
-            let width = ModalSize.fluid(percentage: 0.95)
-            let height = ModalSize.fluid(percentage: 0.3)
-            let center = ModalCenterPosition.topCenter
-            let customType = PresentationType.custom(width: width, height: height, center: center)
-            
-            let customPresenter = Presentr(presentationType: customType)
-            customPresenter.transitionType = .coverVerticalFromTop
-            customPresenter.dismissTransitionType = .crossDissolve
-            customPresenter.roundCorners = true
-            customPresenter.cornerRadius = 10
-            customPresenter.backgroundOpacity = 0.45
-            customPresenter.backgroundColor = .white
-            customPresenter.dismissOnSwipe = true
-            customPresenter.dismissOnSwipeDirection = .top
-            customPresenter.accessibilityScroll(UIAccessibilityScrollDirection.down)
-            return customPresenter
-        }()
-        customPresentViewController(presenter, viewController:  searchController, animated: true, completion: nil)
-    }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -73,9 +50,10 @@ class FriendsCollectionController: UICollectionViewController {
         cell.layer.masksToBounds = true
         cell.layer.backgroundColor = UIColor.white.cgColor
         cell.layer.shadowColor = UIColor.gray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 3.0)//CGSizeMake(0, 2.0);
-        cell.layer.shadowRadius = 10.0
-        cell.layer.shadowOpacity = 0.7
+        cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)//CGSizeMake(0, 2.0);
+        cell.layer.shadowRadius = 20.0
+        cell.layer.shadowOpacity = 0.2
+        cell.layer.opacity = 0.80
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         
@@ -107,7 +85,7 @@ class FriendsCollectionController: UICollectionViewController {
 
         if (segue.identifier == "detailFromFriendList") {
             if let dest = segue.destination as? ProfileViewController, let cell = sender as? FriendCell {
-                dest.thisUser = cell.userName.text!
+                dest.thisUserID = MyDatabase.shared.getUserIDByName(userName: cell.userName.text!)
 }
 }
 }

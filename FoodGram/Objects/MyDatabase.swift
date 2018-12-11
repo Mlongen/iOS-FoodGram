@@ -29,12 +29,17 @@ class MyDatabase: NSObject {
     var notificationsTableView: UITableView?
     var searchCollectionView: UICollectionView?
     
+    var specificProfileCollectionView: UICollectionView?
     var searchResults: [Post]
     var searchResultIds: [String]
     
     var allNotifications: [Notification]
     var filteredNotifications: [Notification]
     var filteredNotificationsIds: [String]
+    
+    var specificProfilePosts: [Post]
+    var specificProfilePostIds: [String]
+    
     
     init(thisUserDBContext: String = "0") {
         
@@ -51,6 +56,8 @@ class MyDatabase: NSObject {
         self.hasLoadedAllUsers = 0
         self.searchResults = [Post]()
         self.searchResultIds = [String]()
+        self.specificProfilePosts = [Post]()
+        self.specificProfilePostIds = [String]()
         self.allUsers = [String: String]()
         
 
@@ -85,6 +92,13 @@ class MyDatabase: NSObject {
         if !self.searchResultIds.contains(post.postId) {
             MyDatabase.shared.searchResults.append(post)
             self.searchResultIds.append(post.postId)
+        }
+    }
+    
+    func filterSpecificProfileDuplicates(post: Post) {
+        if !self.specificProfilePostIds.contains(post.postId) {
+            MyDatabase.shared.specificProfilePosts.append(post)
+            self.specificProfilePostIds.append(post.postId)
         }
     }
     func filterAllUsersDuplicates(userName: String, userId: String) {
@@ -140,12 +154,8 @@ class MyDatabase: NSObject {
                         
                     }
                 }
-
-                
-                
             })
 
-//            MyDatabase.shared.timeLineCollectionView!.reloadData()
         }
         self.friendPosts = self.friendPosts.sorted(by: {
             $0.creationDate.compare($1.creationDate) == .orderedDescending
@@ -217,9 +227,9 @@ class MyDatabase: NSObject {
         MyDatabase.shared.reloadFriendsPosts()
     }
     
-    func readUserPostsById(userID: String) -> [Post]{
-        var result = [Post]()
-        
+    func readUserPostsById(userID: String){
+        self.specificProfilePostIds.removeAll()
+        self.specificProfilePosts.removeAll()
         let DBref = Database.database().reference().child("users").child(userID).child("posts")
         DBref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
     
@@ -237,13 +247,17 @@ class MyDatabase: NSObject {
                         
                         let newPost = Post(postId: postID, userId: userID, image: image, postDescription: postDescription, creationDate: creationDate, price: price, location: location, rating: rating)
                         
-                        result.append(newPost)
+                        self.filterSpecificProfileDuplicates(post: newPost)
                         
                     }
                 }
             }
+            self.specificProfilePosts = self.specificProfilePosts.sorted(by: {
+                $0.creationDate.compare($1.creationDate) == .orderedDescending
+            })
+            MyDatabase.shared.specificProfileCollectionView?.reloadData()
+            MyDatabase.shared.specificProfileCollectionView?.refreshControl?.endRefreshing()
         })
-        return result
     }
     
     func addUserToDB(_ user: Firebase.User, username: String) {
@@ -341,12 +355,6 @@ class MyDatabase: NSObject {
         reference2.child("userId").setValue(self.thisUserDBContext)
         
         
-    }
-
-    func getUserPostsAndAwaitByName(userName: String) ->[Post] {
-        
-        let userId = self.getUserIDByName(userName: userName)
-        return self.readUserPostsById(userID: userId)
     }
 
     func getUserById(userID: String) -> String{

@@ -12,8 +12,8 @@
 		A118786A21B49D870090C9B8 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A118786921B49D870090C9B8 /* iOSDropDown.framework */; };
 		A133989A21BA59CE003537E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A133989921BA59CE003537E8 /* Main.storyboard */; };
 		A133989E21BA5F97003537E8 /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A133989D21BA5F97003537E8 /* FriendsController.swift */; };
-		A13398A021BA5FA8003537E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A133989F21BA5FA8003537E8 /* Assets.xcassets */; };
 		A136BCC121BB8FA50049140C /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A136BCC021BB8FA50049140C /* TabController.swift */; };
+		A138A55621BF94DA00B02FE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A138A55521BF94DA00B02FE1 /* Assets.xcassets */; };
 		A14DAB1721765E1D00368668 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DAB1621765E1D00368668 /* AppDelegate.swift */; };
 		A14DAB2321765E2000368668 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB2121765E2000368668 /* LaunchScreen.storyboard */; };
 		A15A010D21BF6B6400E97AD9 /* RealSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A010C21BF6B6400E97AD9 /* RealSearchViewController.swift */; };
@@ -43,8 +43,8 @@
 		A118786921B49D870090C9B8 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A133989921BA59CE003537E8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../../.Trash/Main.storyboard; sourceTree = "<group>"; };
 		A133989D21BA5F97003537E8 /* FriendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsController.swift; path = "../../../../Downloads/iOS-FoodGram-master/FoodGram/FriendsController.swift"; sourceTree = "<group>"; };
-		A133989F21BA5FA8003537E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../Downloads/iOS-FoodGram-master/FoodGram/Assets.xcassets"; sourceTree = "<group>"; };
 		A136BCC021BB8FA50049140C /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
+		A138A55521BF94DA00B02FE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		A14DAB1321765E1D00368668 /* FoodGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14DAB1621765E1D00368668 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A14DAB2221765E2000368668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -116,9 +116,9 @@
 				A14DAB1621765E1D00368668 /* AppDelegate.swift */,
 				A15A99A921AF99D10009E9C3 /* NotificationCell.swift */,
 				A133989D21BA5F97003537E8 /* FriendsController.swift */,
-				A133989F21BA5FA8003537E8 /* Assets.xcassets */,
 				A133989921BA59CE003537E8 /* Main.storyboard */,
 				A15A010C21BF6B6400E97AD9 /* RealSearchViewController.swift */,
+				A138A55521BF94DA00B02FE1 /* Assets.xcassets */,
 				A1B8673021BCCA93001DB440 /* ProfilePostCell.swift */,
 				A136BCC021BB8FA50049140C /* TabController.swift */,
 				A175467921A5C5170001A203 /* GoogleService-Info.plist */,
@@ -273,7 +273,7 @@
 			files = (
 				A14DAB2321765E2000368668 /* LaunchScreen.storyboard in Resources */,
 				A175467A21A5C5170001A203 /* GoogleService-Info.plist in Resources */,
-				A13398A021BA5FA8003537E8 /* Assets.xcassets in Resources */,
+				A138A55621BF94DA00B02FE1 /* Assets.xcassets in Resources */,
 				A133989A21BA59CE003537E8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

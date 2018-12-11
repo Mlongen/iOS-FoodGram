@@ -11,4 +11,11 @@ import UIKit
 class ProfilePostCell: UICollectionViewCell {
     
     @IBOutlet weak var postPic: UIImageView!
+    
+    @IBOutlet weak var restaurantName: UILabel!
+    
+    @IBOutlet weak var ratingLabel: UILabel!
+    
+    @IBOutlet weak var priceLabel: UILabel!
+    
 }

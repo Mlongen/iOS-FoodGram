@@ -10,23 +10,37 @@ import UIKit
 import FirebaseDatabase
 import NotificationBannerSwift
 import YPImagePicker
+import SDWebImage
 
 class ProfileViewController: UIViewController, UICollectionViewDataSource{
+    
+    
+    static var shared = ProfileViewController()
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return MyDatabase.shared.specificProfilePosts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profilePostCell", for: indexPath) as! ProfilePostCell
         
         let index = indexPath.item
+        
+        let imageUrl = MyDatabase.shared.specificProfilePosts[index].image
+        let url = URL(string: imageUrl)
+        cell.postPic.sd_setImage(with: url, completed: { (image, error, cacheType, imageURL) in
+            cell.postPic.image = image
+        })
+        cell.priceLabel.text = MyDatabase.shared.specificProfilePosts[index].price
+        cell.ratingLabel.text = "Rating: " + String(MyDatabase.shared.specificProfilePosts[index].rating) + "/10"
+        cell.restaurantName.text = MyDatabase.shared.specificProfilePosts[index].location
         cell.layer.cornerRadius = 20.0
         cell.layer.masksToBounds = true
         cell.layer.backgroundColor = UIColor.white.cgColor
         cell.layer.shadowColor = UIColor.gray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 3.0)//CGSizeMake(0, 2.0);
-        cell.layer.shadowRadius = 10.0
-        cell.layer.shadowOpacity = 0.7
+        cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)//CGSizeMake(0, 2.0);
+        cell.layer.shadowRadius = 20.0
+        cell.layer.shadowOpacity = 0.2
+        cell.layer.opacity = 0.80
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         
@@ -34,7 +48,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
     }
     
     
-    var thisUser: String = ""
+    var thisUserID: String = ""
     
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -51,16 +65,14 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
     
     @IBAction func addFriend(_ sender: Any) {
 
-        let userID = MyDatabase.shared.allUsers[thisUser]
-
-        let mySelfUsername = MyDatabase.shared.getUserById(userID: userID!)
-
+        let userID = thisUserID
+        let mySelfUsername = MyDatabase.shared.getUserById(userID: userID)
         let creationDate = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let formattedDate = formatter.string(from: creationDate)
         let notID = UUID().uuidString
-        let notificationsRef = Database.database().reference().child("users").child(userID!).child("notifications").child(notID)
+        let notificationsRef = Database.database().reference().child("users").child(userID).child("notifications").child(notID)
         notificationsRef.child("notificationID").setValue(notID)
         notificationsRef.child("createdByUser").setValue(mySelfUsername)
         notificationsRef.child("createdByID").setValue(MyDatabase.shared.thisUserDBContext)
@@ -78,18 +90,29 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        username?.text = thisUser
-        self.title = thisUser
+        
+        MyDatabase.shared.specificProfileCollectionView = collectionView
+        if thisUserID == "" {
+            thisUserID = MyDatabase.shared.thisUserDBContext
+        }
+        MyDatabase.shared.readUserPostsById(userID: thisUserID)
+        username?.text = MyDatabase.shared.getUserById(userID: thisUserID)
+        MyDatabase.shared.getProfilePicByID(userID: thisUserID
+            , completion: { (imageUrl) in
+                let url = URL(string: imageUrl)
+                self.profilePic.sd_setImage(with: url, completed: { (image, error, cacheType, imageURL) in
+                    self.profilePic.image = image
+                })
+        })
         profilePic?.setRounded()
         // Do any additional setup after loading the view.
-        if (username?.text == MyDatabase.shared.allUsers.someKey(forValue: MyDatabase.shared.thisUserDBContext)){
+        if (thisUserID == MyDatabase.shared.thisUserDBContext){
             changePicButton.isHidden = false
             addFriendBtn.isHidden = true
         
         } else {
-//            changePicButton?.isHidden = true
-//            addFriendBtn.isHidden = false
+            changePicButton?.isHidden = true
+            addFriendBtn.isHidden = false
         }
 
         
@@ -121,7 +144,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
         present(picker, animated: true, completion: nil)
         picker.didFinishPicking { [unowned self] items, _ in
             if let photo = items.singlePhoto {
-                MyDatabase.shared.changeProfilePic(userID: MyDatabase.shared.getUserIDByName(userName: self.thisUser), picture: photo.image)
+                MyDatabase.shared.changeProfilePic(userID: self.thisUserID, picture: photo.image)
                 self.profilePic.image = photo.image
             }
             picker.dismiss(animated: true, completion: nil)
@@ -135,3 +158,4 @@ extension Dictionary where Value: Equatable {
         return first(where: { $1 == val })?.key
     }
 }
+
