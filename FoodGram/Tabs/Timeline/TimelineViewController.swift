@@ -33,6 +33,7 @@ class TimelineViewController: UICollectionViewController {
     
     var ref: DatabaseReference!
     var userID: String!
+    var radius: Int = 20
     override func viewDidLoad() {
         super.viewDidLoad()
 //        let width = (view.frame.size.width - 20)
@@ -128,11 +129,10 @@ extension TimelineViewController{
             customPresenter.transitionType = .coverVerticalFromTop
             customPresenter.dismissTransitionType = .crossDissolve
             customPresenter.roundCorners = true
-            customPresenter.cornerRadius = 10
+            customPresenter.cornerRadius = CGFloat(radius)
             customPresenter.backgroundOpacity = 0.5
             customPresenter.dismissOnSwipe = true
             customPresenter.dismissOnSwipeDirection = .top
-            customPresenter.accessibilityScroll(UIAccessibilityScrollDirection.down)
             return customPresenter
         }()
         customPresentViewController(presenter, viewController:  notificationController, animated: true, completion: nil)
@@ -149,7 +149,7 @@ extension TimelineViewController{
             customPresenter.transitionType = .coverVerticalFromTop
             customPresenter.dismissTransitionType = .crossDissolve
             customPresenter.roundCorners = true
-            customPresenter.cornerRadius = 10
+            customPresenter.cornerRadius = CGFloat(radius)
             customPresenter.backgroundOpacity = 0.5
             customPresenter.dismissOnSwipe = true
             customPresenter.dismissOnSwipeDirection = .top
