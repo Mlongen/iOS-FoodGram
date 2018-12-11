@@ -78,7 +78,14 @@ extension RealSearchViewController: UICollectionViewDataSource {
         }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MyDatabase.shared.searchResults.count
+        let count = MyDatabase.shared.searchResults.count
+        if (count == 0) {
+            self.collectionView.setEmptyMessage("Nothing to show :(")
+        } else {
+            self.collectionView.restore()
+            self.collectionView.backgroundColor = UIColor(patternImage: UIImage(named: "bg.png")!)
+        }
+        return count
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -131,4 +138,25 @@ extension RealSearchViewController: UICollectionViewDataSource {
     
     
     
+}
+
+
+extension UICollectionView {
+    
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.backgroundColor = UIColor(patternImage: UIImage(named: "bg.png")!)
+        messageLabel.text = message
+        messageLabel.textColor = .white
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+        messageLabel.sizeToFit()
+        
+        self.backgroundView = messageLabel;
+    }
+    
+    func restore() {
+        self.backgroundView = nil
+    }
 }

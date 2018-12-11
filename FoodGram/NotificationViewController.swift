@@ -35,12 +35,31 @@ class NotificationViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationCell", for: indexPath) as! NotificationCell
-        cell.notificationContent.text = MyDatabase.shared.filteredNotifications[indexPath.row].content
-        let notificationID = MyDatabase.shared.filteredNotifications[indexPath.row].notificationID
+        
+        cell.userNameLabel.text = MyDatabase.shared.filteredNotifications[indexPath.row].createdByUser
+        
+        var usernameLength = ((cell.userNameLabel.text?.count)!) + 1
+        var content = MyDatabase.shared.filteredNotifications[indexPath.row].content
+        
+        var startIndex = content.index(content.startIndex, offsetBy: usernameLength)
+        cell.notificationContent.text = String(content[startIndex...])
+        
+        MyDatabase.shared.getProfilePicByID(userID:MyDatabase.shared.filteredNotifications[indexPath.row].createdByID) { (urlStr) in
+            let url = URL(string: urlStr)
+            cell.profilePic.sd_setImage(with: url, completed: { (image, error, cacheType, imageURL) in
+                cell.profilePic.image = image
+            })
+            cell.profilePic.setRounded()
+        }
+        
+        let notificationID =
+            MyDatabase.shared.filteredNotifications[indexPath.row].notificationID
         let status = MyDatabase.shared.filteredNotifications[indexPath.row].status
         cell.acceptBtn.tag = indexPath.row
         cell.acceptBtn.addTarget(self, action: #selector(acceptFriendRequest), for: .touchUpInside)
         MyDatabase.shared.setNotificationAsRead(notificationId: notificationID, status: status)
+        
+        
         return cell
     }
 

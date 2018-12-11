@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import SDWebImage
 
 class NotificationCell: UITableViewCell {
-
+    @IBOutlet weak var profilePic: UIImageView!
+    
+    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var acceptBtn: UIButton!
     @IBOutlet weak var notificationContent: UILabel!
     

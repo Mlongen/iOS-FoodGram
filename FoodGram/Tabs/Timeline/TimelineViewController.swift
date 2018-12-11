@@ -79,8 +79,6 @@ class TimelineViewController: UICollectionViewController {
         cell.amount.text = database.friendPosts[index].price
         cell.restaurantName.text = database.friendPosts[index].location
         cell.descriptionLabel.text = database.friendPosts[index].postDescription
-//        let size = cell.descriptionLabel.sizeThatFits(CGSize(width: (view.frame.size.width - 50), height: 50))
-//        cell.descriptionLabel.frame = CGRect(origin: CGPoint(x: 100, y: 100), size: size)
         
         let imageUrl = database.friendPosts[index].image
         let url = URL(string: imageUrl)
@@ -101,6 +99,7 @@ class TimelineViewController: UICollectionViewController {
         cell.layer.shadowOffset = CGSize(width: 0, height: 3.0)//CGSizeMake(0, 2.0);
         cell.layer.shadowRadius = 10.0
         cell.layer.shadowOpacity = 0.7
+                cell.layer.opacity = 0.85
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         let width = (view.frame.size.width - 20)

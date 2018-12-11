@@ -36,8 +36,6 @@ class SearchViewController: UIViewController,UICollectionViewDelegate {
         ramReel.hooks.append {
             self.result = $0
             if (self.data.contains(self.result)) {
-                let banner = NotificationBanner(title: "User \(self.result!) exists", subtitle: nil, style: .success)
-                banner.show()
                 self.profileViewController.thisUserID = MyDatabase.shared.getUserIDByName(userName: self.result)
                 self.navigationController?.pushViewController(self.profileViewController, animated: true)
 
