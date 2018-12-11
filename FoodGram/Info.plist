@@ -28,6 +28,8 @@
 	<string>You need to allow access in order to choose a picture.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>You need to allow access in order to choose a picture.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Show your location on the map</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

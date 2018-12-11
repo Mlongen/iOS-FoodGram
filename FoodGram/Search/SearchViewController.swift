@@ -36,7 +36,8 @@ class SearchViewController: UIViewController,UICollectionViewDelegate {
 //                //your view controller
 //                vc.thisUser = self.result
 //                self.navigationController?.pushViewController(vc, animated: true)
-                 self.performSegue(withIdentifier: "showProfileFromSearch", sender: self)
+                 let vc = ProfileViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
 
             } else {
                 let banner = NotificationBanner(title: "User \(self.result) does not exist", subtitle: nil, style: .danger)

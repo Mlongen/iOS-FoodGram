@@ -16,6 +16,7 @@
 		A136BCC121BB8FA50049140C /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A136BCC021BB8FA50049140C /* TabController.swift */; };
 		A14DAB1721765E1D00368668 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DAB1621765E1D00368668 /* AppDelegate.swift */; };
 		A14DAB2321765E2000368668 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB2121765E2000368668 /* LaunchScreen.storyboard */; };
+		A15A010D21BF6B6400E97AD9 /* RealSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A010C21BF6B6400E97AD9 /* RealSearchViewController.swift */; };
 		A15A99AA21AF99D10009E9C3 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A99A921AF99D10009E9C3 /* NotificationCell.swift */; };
 		A15F02FE2193710000080858 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15F02FD2193710000080858 /* AddPostViewController.swift */; };
 		A175467A21A5C5170001A203 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A175467921A5C5170001A203 /* GoogleService-Info.plist */; };
@@ -48,6 +49,7 @@
 		A14DAB1621765E1D00368668 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A14DAB2221765E2000368668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A14DAB2421765E2000368668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A15A010C21BF6B6400E97AD9 /* RealSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealSearchViewController.swift; sourceTree = "<group>"; };
 		A15A99A921AF99D10009E9C3 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		A15F02FD2193710000080858 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		A175467921A5C5170001A203 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				A133989D21BA5F97003537E8 /* FriendsController.swift */,
 				A133989F21BA5FA8003537E8 /* Assets.xcassets */,
 				A133989921BA59CE003537E8 /* Main.storyboard */,
+				A15A010C21BF6B6400E97AD9 /* RealSearchViewController.swift */,
 				A1B8673021BCCA93001DB440 /* ProfilePostCell.swift */,
 				A136BCC021BB8FA50049140C /* TabController.swift */,
 				A175467921A5C5170001A203 /* GoogleService-Info.plist */,
@@ -396,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A14DAB1721765E1D00368668 /* AppDelegate.swift in Sources */,
+				A15A010D21BF6B6400E97AD9 /* RealSearchViewController.swift in Sources */,
 				A1A918C42177A8E7003646C7 /* TimelineViewController.swift in Sources */,
 				A104ACB221AF974100F68894 /* NotificationViewController.swift in Sources */,
 				A1A918D82177FCC8003646C7 /* SearchViewController.swift in Sources */,

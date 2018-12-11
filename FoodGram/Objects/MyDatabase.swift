@@ -24,8 +24,13 @@ class MyDatabase: NSObject {
     var friends: [String]
     var allUsers: [String: String]
     var timelinePostIds: [String]
+    
     var timeLineCollectionView: UICollectionView?
     var notificationsTableView: UITableView?
+    var searchCollectionView: UICollectionView?
+    
+    var searchResults: [Post]
+    var searchResultIds: [String]
     
     var allNotifications: [Notification]
     var filteredNotifications: [Notification]
@@ -44,7 +49,9 @@ class MyDatabase: NSObject {
         self.hasLoadedPosts = 0
         self.hasLoadedFriends = 0
         self.hasLoadedAllUsers = 0
-        allUsers = [String: String]()
+        self.searchResults = [Post]()
+        self.searchResultIds = [String]()
+        self.allUsers = [String: String]()
         
 
     }
@@ -74,6 +81,12 @@ class MyDatabase: NSObject {
         }
     }
     
+    func filterSearchDuplicates(post: Post) {
+        if !self.searchResultIds.contains(post.postId) {
+            MyDatabase.shared.searchResults.append(post)
+            self.searchResultIds.append(post.postId)
+        }
+    }
     func filterAllUsersDuplicates(userName: String, userId: String) {
         if (!self.allUsers.keys.contains(userName) && userName != "") {
             self.allUsers[userName] = userId
@@ -172,7 +185,7 @@ class MyDatabase: NSObject {
             })
 
         }
-        
+
     }
     
     
@@ -407,4 +420,46 @@ extension MyDatabase {
         
     }
     
+}
+
+//search stuff
+extension MyDatabase
+{
+    func findPostsByRestaurantname(searchedName: String) {
+        
+        self.searchResults.removeAll()
+        self.searchResultIds.removeAll()
+        let users = Array(MyDatabase.shared.allUsers.values)
+        
+    
+        for user in users {
+            self.ref = Database.database().reference().child("users").child(user).child("posts")
+            self.ref.observe(DataEventType.value, with: { (snapshot) in
+                if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                    for snap in snapshots {
+                        if let value = snap.value as? Dictionary<String, AnyObject> {
+                            let postID = value["postId"] as? String ?? ""
+                            let userID = value["userID"] as? String ?? ""
+                            let image = value["image"] as? String ?? ""
+                            let postDescription = value["postDescription"] as? String ?? ""
+                            let creationDate = value["creationDate"] as? String ?? ""
+                            let price = value["price"] as? String ?? ""
+                            let location = value["location"] as? String ?? ""
+                            let rating = value["rating"] as? NSInteger ?? 0
+                            
+                            if location == searchedName {
+                                let newPost = Post(postId: postID, userId: userID, image: image, postDescription: postDescription, creationDate: creationDate, price: price, location: location, rating: rating)
+                                
+                                self.filterSearchDuplicates(post: newPost)
+                            }
+                        }
+                    }
+                }
+                self.searchResults = self.searchResults.sorted(by: {
+                    $0.creationDate.compare($1.creationDate) == .orderedDescending
+                })
+                MyDatabase.shared.searchCollectionView!.reloadData()
+            })
+        }
+    }
 }

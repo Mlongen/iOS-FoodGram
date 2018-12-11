@@ -53,7 +53,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
 
         let userID = MyDatabase.shared.allUsers[thisUser]
 
-        let mySelfUsername = MyDatabase.shared.getUserById(userID: MyDatabase.shared.thisUserDBContext)
+        let mySelfUsername = MyDatabase.shared.getUserById(userID: userID!)
 
         let creationDate = Date()
         let formatter = DateFormatter()
@@ -78,17 +78,18 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        username.text = thisUser
+
+        username?.text = thisUser
         self.title = thisUser
-        profilePic.setRounded()
+        profilePic?.setRounded()
         // Do any additional setup after loading the view.
-        if (username.text == MyDatabase.shared.allUsers.someKey(forValue: MyDatabase.shared.thisUserDBContext)){
+        if (username?.text == MyDatabase.shared.allUsers.someKey(forValue: MyDatabase.shared.thisUserDBContext)){
             changePicButton.isHidden = false
             addFriendBtn.isHidden = true
         
         } else {
-            changePicButton.isHidden = true
-            addFriendBtn.isHidden = false
+//            changePicButton?.isHidden = true
+//            addFriendBtn.isHidden = false
         }
 
         
