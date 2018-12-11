@@ -47,6 +47,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
         return cell
     }
     
+    @IBOutlet weak var profileView: UIView!
     
     var thisUserID: String = ""
     
@@ -95,6 +96,18 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
         if thisUserID == "" {
             thisUserID = MyDatabase.shared.thisUserDBContext
         }
+        
+        profileView.layer.cornerRadius = 20.0
+        profileView.layer.masksToBounds = true
+        profileView.layer.backgroundColor = UIColor.white.cgColor
+        profileView.layer.shadowColor = UIColor.gray.cgColor
+        profileView.layer.shadowOffset = CGSize(width: 0, height: 1.0)//CGSizeMake(0, 2.0);
+        profileView.layer.shadowRadius = 20.0
+        profileView.layer.shadowOpacity = 0.2
+        profileView.layer.opacity = 0.85
+        profileView.layer.masksToBounds = false
+        profileView.layer.shadowPath = UIBezierPath(roundedRect:profileView.bounds, cornerRadius:profileView.layer.cornerRadius).cgPath
+        
         MyDatabase.shared.readUserPostsById(userID: thisUserID)
         username?.text = MyDatabase.shared.getUserById(userID: thisUserID)
         MyDatabase.shared.getProfilePicByID(userID: thisUserID

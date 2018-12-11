@@ -129,14 +129,9 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
     
     fileprivate func fbLogin() {
         let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-        
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
             guard let user = authResult?.user else { return }
             MyDatabase.shared.thisUserDBContext = user.uid
-            
-            if self.userChecked == 0 {
-                
-                
                 MyDatabase.shared.checkIfUserExists(email: user.email!, completion: { (exists) in
                     if exists {
                         MyDatabase.shared.checkIfUsername(userID: user.uid, completion: { (userName) in
@@ -162,7 +157,6 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
                         })
                     }
                 })
-            }
         }
     }
     
