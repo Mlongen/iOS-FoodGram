@@ -492,10 +492,14 @@ extension MyDatabase {
         self.ref.child(MyDatabase.shared.thisUserDBContext).setValue(MyDatabase.shared.thisUserDBContext)
 
     }
-//
-//    func removeLikeFromUser(destinationID: String)
-//    {
-//
-//    }
+
+    func removeLikeFromUser(destinationID: String)
+    {
+                self.ref = Database.database().reference().child("users").child(destinationID).child("Likes")
+                self.ref.child(MyDatabase.shared.thisUserDBContext).setValue(nil)
+
+        
+
+    }
 }
 

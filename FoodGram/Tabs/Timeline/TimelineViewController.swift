@@ -16,6 +16,8 @@ private let reuseIdentifier = "PostCell"
 
 class LikeButton: UIButton {
     var userID: String!
+    var arrayRef: [Post]!
+    var index: Int!
 }
 
 class TimelineViewController: UICollectionViewController {
@@ -75,10 +77,9 @@ class TimelineViewController: UICollectionViewController {
         var btn = sender as! LikeButton
         
         var userID = btn.userID
-        
         MyDatabase.shared.checkIfUserAlreadyLiked(destinationID: userID!) { (hasLiked) in
             if hasLiked {
-                //return negative
+                MyDatabase.shared.removeLikeFromUser(destinationID: userID!)
             } else {
                 MyDatabase.shared.addLikeToUser(destinationID: userID!)
             }
@@ -98,6 +99,8 @@ class TimelineViewController: UICollectionViewController {
         cell.restaurantName.text = database.friendPosts[index].location
         cell.descriptionLabel.text = database.friendPosts[index].postDescription
         cell.likeButton.userID = userID
+        cell.likeButton.arrayRef = MyDatabase.shared.friendPosts
+        cell.likeButton.index = index
         cell.likeButton.addTarget(self, action: #selector(self.likeButtonTapped(_:)), for: .touchUpInside)
         
         let imageUrl = database.friendPosts[index].image
