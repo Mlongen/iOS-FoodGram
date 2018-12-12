@@ -25,13 +25,11 @@ class SearchViewController: UIViewController,UICollectionViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         data = Array(MyDatabase.shared.allUsers.keys)
         dataSource = SimplePrefixQueryDataSource(data)
         
-        ramReel = RAMReel(frame: view.bounds, dataSource: dataSource, placeholder: "Start by typing…", attemptToDodgeKeyboard: false) {
-            print("Plain:", $0)
-        }
+        ramReel = RAMReel(frame: view.bounds, dataSource: dataSource, placeholder: "Start by typing…", attemptToDodgeKeyboard: false)
         
         ramReel.hooks.append {
             self.result = $0

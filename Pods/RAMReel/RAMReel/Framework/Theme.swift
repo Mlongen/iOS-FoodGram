@@ -53,7 +53,7 @@ public struct RAMTheme: Theme {
     /// Theme background color.
     public let listBackgroundColor: UIColor
     
-    fileprivate init(
+    init(
         textColor: UIColor = UIColor.black,
         listBackgroundColor: UIColor = UIColor.clear,
         font: UIFont = RAMTheme.defaultFont
@@ -64,6 +64,11 @@ public struct RAMTheme: Theme {
         self.font = font
     }
     
+    init(_ textColor: UIColor, _ listBackgroundColor: UIColor, _ font: UIFont){
+        self.textColor = textColor
+        self.listBackgroundColor = listBackgroundColor
+        self.font = font
+    }
     fileprivate static var defaultFont: UIFont = RAMTheme.initDefaultFont()
     
     fileprivate static func initDefaultFont() -> UIFont {

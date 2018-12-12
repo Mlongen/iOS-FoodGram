@@ -9,76 +9,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FoodGram/LoginController.swift"
-            timestampString = "566274636.712351"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "createAccAction(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FoodGram/LoginController.swift"
-            timestampString = "566274636.712461"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "signInBtn(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FoodGram.LoginController.signInBtn(Any) -&gt; ()"
-                  moduleName = "FoodGram"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcelolongen/Desktop/SwiftProjects/FoodGram/FoodGram/LoginController.swift"
-                  timestampString = "565470887.871781"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "1012">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in FoodGram.LoginController.signInBtn(Any) -&gt; ()"
-                  moduleName = "FoodGram"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcelolongen/Desktop/SwiftProjects/FoodGram/FoodGram/LoginController.swift"
-                  timestampString = "565470887.8741651"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "57">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.577921"
+            timestampString = "566330942.8415051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "readAllUsersOnce()"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,27 +26,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.578016"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
-            landmarkName = "readAllUsersOnce()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.578087"
+            timestampString = "566330942.841987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "217"
             endingLineNumber = "217"
+            landmarkName = "readAllUsersOnce()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FoodGram/Objects/MyDatabase.swift"
+            timestampString = "566330942.8422199"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "readAllUsersOnce()"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.578243"
+            timestampString = "566330942.842587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "filterDuplicates(post:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.578318"
+            timestampString = "566330942.842824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "reloadFriendsPosts()"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.578382"
+            timestampString = "566330942.843051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "readFriendsPosts()"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.5784431"
+            timestampString = "566330942.843276"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "reloadFriendsPosts()"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.578504"
+            timestampString = "566330942.8434989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "bridgeReload()"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.578566"
+            timestampString = "566330942.843721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "reloadFriendsPosts()"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.578626"
+            timestampString = "566330942.843942"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "readFriendsPosts()"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Profile/ProfileViewController.swift"
-            timestampString = "566274636.713526"
+            timestampString = "566330942.8441809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
@@ -282,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Profile/ProfileViewController.swift"
-            timestampString = "566274636.713609"
+            timestampString = "566330942.844225"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "11"
@@ -298,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.578756"
+            timestampString = "566330942.8442661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
@@ -314,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.578827"
+            timestampString = "566330942.844565"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "readFriends()"
             landmarkType = "7">
          </BreakpointContent>
@@ -329,56 +265,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FoodGram/LoginController.swift"
-            timestampString = "566274636.71377"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "loadFriends()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FoodGram/LoginController.swift"
-            timestampString = "566274636.71381"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "loadPosts()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FoodGram/LoginController.swift"
-            timestampString = "566274636.713847"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "loginButton(_:didCompleteWith:error:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "FoodGram/Profile/ProfileViewController.swift"
-            timestampString = "566274636.713888"
+            timestampString = "566330942.844793"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
@@ -394,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.578957"
+            timestampString = "566330942.844836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
+            startingLineNumber = "468"
+            endingLineNumber = "468"
             landmarkName = "findPostsByRestaurantname(searchedName:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.579021"
+            timestampString = "566330942.845055"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "458"
-            endingLineNumber = "458"
+            startingLineNumber = "485"
+            endingLineNumber = "485"
             landmarkName = "findPostsByRestaurantname(searchedName:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.579082"
+            timestampString = "566330942.845273"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "459"
-            endingLineNumber = "459"
+            startingLineNumber = "486"
+            endingLineNumber = "486"
             landmarkName = "findPostsByRestaurantname(searchedName:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.579144"
+            timestampString = "566330942.845489"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "filterSearchDuplicates(post:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.579206"
+            timestampString = "566330942.845716"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "466"
-            endingLineNumber = "466"
+            startingLineNumber = "493"
+            endingLineNumber = "493"
             landmarkName = "findPostsByRestaurantname(searchedName:)"
             landmarkType = "7">
             <Locations>
@@ -506,7 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/RealSearchViewController.swift"
-            timestampString = "566274636.714216"
+            timestampString = "566330133.605626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "134"
@@ -522,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.579314"
+            timestampString = "566330942.84598"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "469"
-            endingLineNumber = "469"
+            startingLineNumber = "496"
+            endingLineNumber = "496"
             landmarkName = "findPostsByRestaurantname(searchedName:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -538,7 +426,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/RealSearchViewController.swift"
-            timestampString = "566274636.714327"
+            timestampString = "566330133.605708"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
@@ -554,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/RealSearchViewController.swift"
-            timestampString = "566274636.7143871"
+            timestampString = "566330133.605747"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -570,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/Objects/MyDatabase.swift"
-            timestampString = "566277352.57942"
+            timestampString = "566330942.8462369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "readUserPostsById(userID:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -585,13 +473,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FoodGram/Profile/ProfileViewController.swift"
-            timestampString = "566274636.715548"
+            filePath = "FoodGram/Tabs/Timeline/TimelineViewController.swift"
+            timestampString = "566330942.846475"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -601,75 +489,155 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FoodGram/Profile/ProfileViewController.swift"
-            timestampString = "566274636.715615"
+            filePath = "FoodGram/Tabs/Timeline/TimelineViewController.swift"
+            timestampString = "566330942.846516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FoodGram/Tabs/Timeline/TimelineViewController.swift"
+            timestampString = "566330942.8465509"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "likeButtonTapped(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FoodGram.TimelineViewController.likeButtonTapped(Any) -&gt; ()"
+                  moduleName = "FoodGram"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcelolongen/Desktop/SwiftProjects/FoodGram/FoodGram/Tabs/Timeline/TimelineViewController.swift"
+                  timestampString = "566330943.2090631"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "98">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in FoodGram.TimelineViewController.likeButtonTapped(Any) -&gt; ()"
+                  moduleName = "FoodGram"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcelolongen/Desktop/SwiftProjects/FoodGram/FoodGram/Tabs/Timeline/TimelineViewController.swift"
+                  timestampString = "566330943.211508"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/LoginController.swift"
-            timestampString = "566274636.715679"
+            timestampString = "566330942.846977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "fbLogin()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FoodGram/LoginController.swift"
-            timestampString = "566274636.715724"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "fbLogin()"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in FoodGram.LoginController.(fbLogin in _84E5AA6B7F59EB9F978E082F3D24BB95)() -&gt; ()"
-                  moduleName = "FoodGram"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcelolongen/Desktop/SwiftProjects/FoodGram/FoodGram/LoginController.swift"
-                  timestampString = "566244795.9382401"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "136"
-                  endingLineNumber = "136"
-                  offsetFromSymbolStart = "315">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Swift.Bool) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in FoodGram.LoginController.(fbLogin in _84E5AA6B7F59EB9F978E082F3D24BB95)() -&gt; ()"
                   moduleName = "FoodGram"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/marcelolongen/Desktop/SwiftProjects/FoodGram/FoodGram/LoginController.swift"
-                  timestampString = "566244795.940091"
+                  timestampString = "566330943.227283"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "137"
-                  endingLineNumber = "137"
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in closure #1 (Swift.Bool) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in FoodGram.LoginController.(fbLogin in _84E5AA6B7F59EB9F978E082F3D24BB95)() -&gt; ()"
+                  moduleName = "FoodGram"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcelolongen/Desktop/SwiftProjects/FoodGram/FoodGram/LoginController.swift"
+                  timestampString = "566330943.230665"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FoodGram/LoginController.swift"
+            timestampString = "566330942.847021"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "fbLogin()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in FoodGram.LoginController.(fbLogin in _84E5AA6B7F59EB9F978E082F3D24BB95)() -&gt; ()"
+                  moduleName = "FoodGram"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcelolongen/Desktop/SwiftProjects/FoodGram/FoodGram/LoginController.swift"
+                  timestampString = "566330943.23733"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "466">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in FoodGram.LoginController.(fbLogin in _84E5AA6B7F59EB9F978E082F3D24BB95)() -&gt; ()"
+                  moduleName = "FoodGram"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcelolongen/Desktop/SwiftProjects/FoodGram/FoodGram/LoginController.swift"
+                  timestampString = "566330943.23976"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
                   offsetFromSymbolStart = "48">
                </Location>
             </Locations>
@@ -682,11 +650,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoodGram/LoginController.swift"
-            timestampString = "566274636.715765"
+            timestampString = "566330942.847057"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "fbLogin()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FoodGram/LoginController.swift"
+            timestampString = "566330942.847093"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "fbLogin()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FoodGram/LoginController.swift"
+            timestampString = "566330942.847128"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "fbLogin()"
             landmarkType = "7">
          </BreakpointContent>
@@ -697,13 +697,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FoodGram/Tabs/Timeline/TimelineViewController.swift"
-            timestampString = "566277352.579599"
+            filePath = "FoodGram/Objects/MyDatabase.swift"
+            timestampString = "566330942.847163"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
+            landmarkName = "checkIfUsername(userID:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -713,13 +713,139 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FoodGram/Tabs/Timeline/TimelineViewController.swift"
-            timestampString = "566277352.581431"
+            filePath = "FoodGram/NotificationViewController.swift"
+            timestampString = "566326468.0835381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "NotificationViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FoodGram/Profile/ProfileViewController.swift"
+            timestampString = "566330942.84751"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "checkFriendShipStatus()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FoodGram/Profile/ProfileViewController.swift"
+            timestampString = "566330942.847579"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "checkFriendShipStatus()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FoodGram/Tabs/Timeline/PostCell.swift"
+            timestampString = "566330942.847621"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "PostCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FoodGram.PostCell.likeButton.getter : weak Swift.Optional&lt;FoodGram.LikeButton&gt;"
+                  moduleName = "FoodGram"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcelolongen/Desktop/SwiftProjects/FoodGram/FoodGram/Tabs/Timeline/PostCell.swift"
+                  timestampString = "566330134.027521"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FoodGram.PostCell.likeButton.setter : weak Swift.Optional&lt;FoodGram.LikeButton&gt;"
+                  moduleName = "FoodGram"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcelolongen/Desktop/SwiftProjects/FoodGram/FoodGram/Tabs/Timeline/PostCell.swift"
+                  timestampString = "566330134.0292701"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "106">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FoodGram.PostCell.init(frame: __C.CGRect) -&gt; FoodGram.PostCell"
+                  moduleName = "FoodGram"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcelolongen/Desktop/SwiftProjects/FoodGram/FoodGram/Tabs/Timeline/PostCell.swift"
+                  timestampString = "566330134.031242"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "43">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FoodGram.PostCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;FoodGram.PostCell&gt;"
+                  moduleName = "FoodGram"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcelolongen/Desktop/SwiftProjects/FoodGram/FoodGram/Tabs/Timeline/PostCell.swift"
+                  timestampString = "566330134.0335521"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "50">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FoodGram/Profile/ProfileViewController.swift"
+            timestampString = "566330942.8479021"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "addFriend(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

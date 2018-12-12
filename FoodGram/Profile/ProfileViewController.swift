@@ -80,26 +80,34 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
     @IBOutlet weak var addFriendBtn: UIButton!
     @IBOutlet weak var profilePic: UIImageView!
     
-    @IBAction func addFriend(_ sender: Any) {
+    @objc func addFriend(_ sender: Any) {
 
         let userID = thisUserID
-        let mySelfUsername = MyDatabase.shared.getUserById(userID: userID)
+        let mySelfUsername = MyDatabase.shared.getUserById(userID: MyDatabase.shared.thisUserDBContext)
         let creationDate = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let formattedDate = formatter.string(from: creationDate)
         let notID = UUID().uuidString
-        let notificationsRef = Database.database().reference().child("users").child(userID).child("notifications").child(notID)
-        notificationsRef.child("notificationID").setValue(notID)
-        notificationsRef.child("createdByUser").setValue(mySelfUsername)
-        notificationsRef.child("createdByID").setValue(MyDatabase.shared.thisUserDBContext)
-        notificationsRef.child("content").setValue("\(mySelfUsername) has added you as a friend.")
-        notificationsRef.child("type").setValue("FriendRequest")
-        notificationsRef.child("creationDate").setValue(formattedDate)
-        notificationsRef.child("status").setValue("Pending")
         
-        let banner = NotificationBanner(title: "Friendship request sent", subtitle: nil, style: .success)
-        banner.show()
+        MyDatabase.shared.checkIfNotificationHasBeenSent(createdById: MyDatabase.shared.thisUserDBContext, sentTo: userID, type: "FriendRequest") { (hasBeenSent) in
+            if (hasBeenSent == "FriendAlready" || hasBeenSent == "RequestedAlready") {
+                let banner = NotificationBanner(title: "You already added this person as a friend.", subtitle: nil, style: .success)
+                banner.show()
+            } else {
+                let notificationsRef = Database.database().reference().child("users").child(userID).child("notifications").child(notID)
+                notificationsRef.child("notificationID").setValue(notID)
+                notificationsRef.child("createdByUser").setValue(mySelfUsername)
+                notificationsRef.child("createdByID").setValue(MyDatabase.shared.thisUserDBContext)
+                notificationsRef.child("content").setValue("\(mySelfUsername) has added you as a friend.")
+                notificationsRef.child("type").setValue("FriendRequest")
+                notificationsRef.child("creationDate").setValue(formattedDate)
+                notificationsRef.child("status").setValue("Pending")
+                print(creationDate)
+                self.addFriendBtn.setTitle("Pending", for: .normal)
+                self.addFriendBtn.isEnabled = false
+            }
+        }
         
     }
     
@@ -131,9 +139,36 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
         publicationsView.layer.shadowPath = UIBezierPath(roundedRect:publicationsView.bounds, cornerRadius:publicationsView.layer.cornerRadius).cgPath
     }
     
+    fileprivate func checkFriendShipStatus() {
+        // Do any additional setup after loading the view.
+        if (thisUserID == MyDatabase.shared.thisUserDBContext){
+            changePicButton.isHidden = false
+            addFriendBtn.isHidden = true
+            self.navigationItem.rightBarButtonItem = self.settingsBtn
+            self.navigationItem.leftBarButtonItem = self.logoutBtn
+            
+        } else {
+            changePicButton?.isHidden = true
+            addFriendBtn.isHidden = false
+            MyDatabase.shared.checkIfNotificationHasBeenSent(createdById: MyDatabase.shared.thisUserDBContext, sentTo: thisUserID, type: "FriendRequest") { (hasBeenSent) in
+                if (hasBeenSent == "FriendAlready") {
+                    self.addFriendBtn.setTitle("Remove friend", for: .normal)
+                    self.addFriendBtn.isEnabled = false
+                } else if (hasBeenSent == "RequestedAlready"){
+                    self.addFriendBtn.setTitle("Pending", for: .normal)
+                    self.addFriendBtn.isEnabled = false
+                }
+                
+                self.navigationItem.rightBarButtonItem = nil
+                self.navigationItem.leftBarButtonItem = nil
+            }
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         MyDatabase.shared.specificProfileCollectionView = collectionView
         if thisUserID == "" {
             thisUserID = MyDatabase.shared.thisUserDBContext
@@ -153,21 +188,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
                 })
         })
         profilePic?.setRounded()
-        // Do any additional setup after loading the view.
-        if (thisUserID == MyDatabase.shared.thisUserDBContext){
-            changePicButton.isHidden = false
-            addFriendBtn.isHidden = true
-            self.navigationItem.rightBarButtonItem = self.settingsBtn
-            self.navigationItem.leftBarButtonItem = self.logoutBtn
-        
-        } else {
-            changePicButton?.isHidden = true
-            addFriendBtn.isHidden = false
-            self.navigationItem.rightBarButtonItem = nil
-            self.navigationItem.leftBarButtonItem = nil
-        }
-
-        
+        checkFriendShipStatus()
+        self.addFriendBtn.addTarget(self, action: #selector(addFriend(_:)), for: .touchUpInside)
     }
     
     func presentImagePicker(){

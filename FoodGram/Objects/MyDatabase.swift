@@ -66,12 +66,11 @@ class MyDatabase: NSObject {
     func readFriends()
     {
         self.ref = Database.database().reference().child("users").child(self.thisUserDBContext).child("friends")
-        self.ref.observe(DataEventType.value, with: { (snapshot) in
+        self.ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
                     if let value = snap.value as? Dictionary<String, AnyObject> {
                         let user = value["userId"] as? String ?? ""
-                        print(user)
                         MyDatabase.shared.friends.append(user)
                     }
                     
@@ -134,7 +133,7 @@ class MyDatabase: NSObject {
     func readFriendsPosts() {
         for friend in friends {
             self.ref = Database.database().reference().child("users").child(friend).child("posts")
-            self.ref.observe(DataEventType.value, with: { (snapshot) in
+            self.ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
                 if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                     for snap in snapshots {
                         if let value = snap.value as? Dictionary<String, AnyObject> {
@@ -168,7 +167,7 @@ class MyDatabase: NSObject {
         self.timelinePostIds.removeAll()
         for friend in friends {
             self.ref = Database.database().reference().child("users").child(friend).child("posts")
-            self.ref.observe(DataEventType.value, with: { (snapshot) in
+            self.ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
                 if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                     for snap in snapshots {
                         if let value = snap.value as? Dictionary<String, AnyObject> {
@@ -210,7 +209,7 @@ class MyDatabase: NSObject {
     func readAllUsersOnce()
     {
         self.ref = Database.database().reference().child("users")
-        self.ref.observe(DataEventType.value, with: { (snapshot) in
+        self.ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
                     if let value = snap.value as? Dictionary<String, AnyObject> {
@@ -371,6 +370,34 @@ class MyDatabase: NSObject {
 // notification stuff
 extension MyDatabase {
     
+    func checkIfNotificationHasBeenSent(createdById: String, sentTo: String, type: String, completion: @escaping (String) -> ()){
+            self.ref = Database.database().reference().child("users").child(sentTo).child("notifications")
+            self.ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+                if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                    for snap in snapshots {
+                        if let value = snap.value as? Dictionary<String, AnyObject> {
+                            let snapCreatedById = value["createdByID"] as? String ?? ""
+                            let snapType = value["type"] as? String ?? ""
+                            let status = value["status"] as? String ?? ""
+                            
+                            if (snapCreatedById == createdById && type == "FriendRequest" && status == "Accepted") {
+                                completion("FriendAlready")
+                                print(1)
+                                return
+                            }
+                            if (snapCreatedById == createdById && snapType == type) {
+                                completion("RequestedAlready")
+                                print(2 )
+                                return
+                            }
+                            
+                        }
+                    }
+                    completion("NotFound")
+                }
+                
+            })
+    }
     
     func reloadNotifications()
     {
@@ -378,7 +405,7 @@ extension MyDatabase {
         MyDatabase.shared.filteredNotifications.removeAll()
         MyDatabase.shared.filteredNotificationsIds.removeAll()
         self.ref = Database.database().reference().child("users").child(self.thisUserDBContext).child("notifications")
-        self.ref.observe(DataEventType.value, with: { (snapshot) in
+        self.ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
 
                 for snap in snapshots {
@@ -442,7 +469,7 @@ extension MyDatabase
     
         for user in users {
             self.ref = Database.database().reference().child("users").child(user).child("posts")
-            self.ref.observe(DataEventType.value, with: { (snapshot) in
+            self.ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
                 if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                     for snap in snapshots {
                         if let value = snap.value as? Dictionary<String, AnyObject> {

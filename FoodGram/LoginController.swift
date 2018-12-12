@@ -12,14 +12,14 @@ import NotificationBannerSwift
 import FBSDKLoginKit
 
 class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
-
+    
     
     var database: MyDatabase!
     var ref: DatabaseReference!
     var userChecked: NSInteger!
     
     @IBOutlet weak var emailField: UITextField!
-
+    
     
     @IBOutlet weak var confirmPasswordField: UITextField!
     @IBOutlet weak var confirmPasswordLabel: UILabel!
@@ -54,27 +54,27 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
         let password = passwordField?.text
         
         if (email != nil), (password != nil) {
-        Auth.auth().signIn(withEmail: email!, password: password!) { (authResult, error) in
-            // ...
-            guard let user = authResult?.user else { return }
-            MyDatabase.shared.thisUserDBContext = user.uid
-            
-            
-            MyDatabase.shared.checkIfUsername(userID: user.uid, completion: { (userName) in
-                if (userName == "Default") {
-                  self.performSegue(withIdentifier: "createUserName",sender: self)
-                } else {
-                    MyDatabase.shared.readFriends()
-                    MyDatabase.shared.hotReload()
-                    self.loadFriends()
-                }
-            })
-            
-            let banner = NotificationBanner(title: "Succesfully logged in.", subtitle: nil, style: .success)
-            banner.show()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-                banner.dismiss()
-            })
+            Auth.auth().signIn(withEmail: email!, password: password!) { (authResult, error) in
+                // ...
+                guard let user = authResult?.user else { return }
+                MyDatabase.shared.thisUserDBContext = user.uid
+                
+                
+                MyDatabase.shared.checkIfUsername(userID: user.uid, completion: { (userName) in
+                    if (userName == "Default") {
+                        self.performSegue(withIdentifier: "createUserName",sender: self)
+                    } else {
+                        MyDatabase.shared.readFriends()
+                        MyDatabase.shared.hotReload()
+                        self.loadFriends()
+                    }
+                })
+                
+                let banner = NotificationBanner(title: "Succesfully logged in.", subtitle: nil, style: .success)
+                banner.show()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                    banner.dismiss()
+                })
             }
         }
     }
@@ -93,11 +93,11 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
                 guard let user = authResult?.user else { return }
                 MyDatabase.shared.thisUserDBContext = user.uid
                 MyDatabase.shared.addUserToDB(user, username: "Default")
-               // send to other viewcontroller later
-//                MyDatabase.shared.readFriends()
-//                MyDatabase.shared.hotReload()
+                // send to other viewcontroller later
+                //                MyDatabase.shared.readFriends()
+                //                MyDatabase.shared.hotReload()
                 self.loadFriends()
-
+                
                 let banner = NotificationBanner(title: "User created succesfully", subtitle: "Logging in...", style: .success)
                 banner.show()
                 
@@ -113,10 +113,11 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
         super.viewDidLoad()
         userChecked = 0
         self.navigationController?.setToolbarHidden(true, animated: false)
-            confirmPasswordField.removeFromSuperview()
-            confirmPasswordLabel.removeFromSuperview()
+        confirmPasswordField.removeFromSuperview()
+        confirmPasswordLabel.removeFromSuperview()
         let loginButton = FBSDKLoginButton()
         loginButton.center = view.center
+        loginButton.readPermissions = ["email"]
         loginButton.delegate = self
         
         view.addSubview(loginButton)
@@ -129,9 +130,11 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
     
     fileprivate func fbLogin() {
         let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
             guard let user = authResult?.user else { return }
             MyDatabase.shared.thisUserDBContext = user.uid
+            if self.userChecked == 0 {
                 MyDatabase.shared.checkIfUserExists(email: user.email!, completion: { (exists) in
                     if exists {
                         MyDatabase.shared.checkIfUsername(userID: user.uid, completion: { (userName) in
@@ -157,6 +160,7 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
                         })
                     }
                 })
+            }
         }
     }
     
@@ -183,3 +187,4 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
     }
     
 }
+

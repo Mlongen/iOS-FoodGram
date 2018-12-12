@@ -76,12 +76,6 @@ class TimelineViewController: UICollectionViewController {
     
     @objc func likeButtonTapped(_ sender: Any) -> Void {
         var btn = sender as! LikeButton
-        UIView.animate(withDuration: 0.5) {
-            btn.frame.size.width += 10
-            btn.frame.size.height += 10
-        }
-
-        
         MyDatabase.shared.checkIfUserAlreadyLiked(userDestinationId: btn.userID, postDestinationID: btn.postID) { (hasLiked) in
             if hasLiked {
                 MyDatabase.shared.removeLikeFromUser(userDestinationId: btn.userID, postDestinationId: btn.postID)
@@ -89,6 +83,17 @@ class TimelineViewController: UICollectionViewController {
                 MyDatabase.shared.addLikeToUser(userDestinationId: btn.userID, postDestinationId: btn.postID)
             }
         }
+        UIView.animate(withDuration: 0.2) {
+            btn.frame.size.width += 5
+            btn.frame.size.height += 5
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            UIView.animate(withDuration: 0.2) {
+                btn.frame.size.width -= 5
+                btn.frame.size.height -= 5
+            }
+        }
+
         self.collectionView.reloadData()
     }
 
@@ -135,7 +140,6 @@ class TimelineViewController: UICollectionViewController {
                 cell.layer.opacity = 0.85
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
-        let width = (view.frame.size.width - 20)
         cell.profilePic.setRounded()
         cell.rating.text = "Rating: " + String(database.friendPosts[index].rating) + "/10"
         
