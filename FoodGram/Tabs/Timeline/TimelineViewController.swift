@@ -76,6 +76,11 @@ class TimelineViewController: UICollectionViewController {
     
     @objc func likeButtonTapped(_ sender: Any) -> Void {
         var btn = sender as! LikeButton
+        UIView.animate(withDuration: 0.5) {
+            btn.frame.size.width += 10
+            btn.frame.size.height += 10
+        }
+
         
         MyDatabase.shared.checkIfUserAlreadyLiked(userDestinationId: btn.userID, postDestinationID: btn.postID) { (hasLiked) in
             if hasLiked {
