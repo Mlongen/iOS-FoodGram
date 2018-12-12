@@ -481,9 +481,8 @@ extension MyDatabase {
         self.ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
-                    if (snap.value as? Dictionary<String, AnyObject>) != nil {
                         totalLikes = totalLikes + 1
-                    }
+                    
                 }
             }
             completion(totalLikes)

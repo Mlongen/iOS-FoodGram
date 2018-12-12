@@ -84,6 +84,7 @@ class TimelineViewController: UICollectionViewController {
                 MyDatabase.shared.addLikeToUser(userDestinationId: btn.userID, postDestinationId: btn.postID)
             }
         }
+        self.collectionView.reloadData()
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
