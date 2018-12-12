@@ -15,6 +15,7 @@ class PostCell: UICollectionViewCell {
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var foodPic: UIImageView!
     @IBOutlet weak var descriptionLabel: UITextView!
+    @IBOutlet weak var numberOfLikes: UILabel!
     @IBOutlet weak var amount: UILabel!
     @IBOutlet weak var restaurantName: UILabel!
     @IBOutlet weak var rating: UILabel!

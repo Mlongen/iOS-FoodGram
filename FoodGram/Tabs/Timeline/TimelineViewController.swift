@@ -16,6 +16,7 @@ private let reuseIdentifier = "PostCell"
 
 class LikeButton: UIButton {
     var userID: String!
+    var postID: String!
     var arrayRef: [Post]!
     var index: Int!
 }
@@ -76,12 +77,11 @@ class TimelineViewController: UICollectionViewController {
     @objc func likeButtonTapped(_ sender: Any) -> Void {
         var btn = sender as! LikeButton
         
-        var userID = btn.userID
-        MyDatabase.shared.checkIfUserAlreadyLiked(destinationID: userID!) { (hasLiked) in
+        MyDatabase.shared.checkIfUserAlreadyLiked(userDestinationId: btn.userID, postDestinationID: btn.postID) { (hasLiked) in
             if hasLiked {
-                MyDatabase.shared.removeLikeFromUser(destinationID: userID!)
+                MyDatabase.shared.removeLikeFromUser(userDestinationId: btn.userID, postDestinationId: btn.postID)
             } else {
-                MyDatabase.shared.addLikeToUser(destinationID: userID!)
+                MyDatabase.shared.addLikeToUser(userDestinationId: btn.userID, postDestinationId: btn.postID)
             }
         }
     }
@@ -90,9 +90,12 @@ class TimelineViewController: UICollectionViewController {
         let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PostCell
                 let index = indexPath.item
         
+        
         let userID = database.friendPosts[index].userId
         //configure cell
-        
+        MyDatabase.shared.getNumberOfLikes(userDestinationId: userID, postDestinationID: database.friendPosts[index].postId)  { (total) in
+            cell.numberOfLikes.text = String(total)
+        }
 
         cell.userName.text = database.getUserById(userID:userID)
         cell.amount.text = database.friendPosts[index].price
@@ -101,6 +104,7 @@ class TimelineViewController: UICollectionViewController {
         cell.likeButton.userID = userID
         cell.likeButton.arrayRef = MyDatabase.shared.friendPosts
         cell.likeButton.index = index
+        cell.likeButton.postID = database.friendPosts[index].postId
         cell.likeButton.addTarget(self, action: #selector(self.likeButtonTapped(_:)), for: .touchUpInside)
         
         let imageUrl = database.friendPosts[index].image

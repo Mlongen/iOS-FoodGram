@@ -475,9 +475,9 @@ extension MyDatabase
 //like stuff
 extension MyDatabase {
     
-    func getNumberOfLikes(destinationID: String, completion: @escaping (Int) -> ()){
+    func getNumberOfLikes(userDestinationId: String, postDestinationID: String, completion: @escaping (Int) -> ()){
         var totalLikes = 0
-        self.ref = Database.database().reference().child("users").child(destinationID).child("Likes")
+        self.ref = Database.database().reference().child("users").child(userDestinationId).child("posts").child(postDestinationID).child("Likes")
         self.ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
@@ -487,12 +487,12 @@ extension MyDatabase {
                 }
             }
             completion(totalLikes)
-            
         })
     }
     
-    func checkIfUserAlreadyLiked(destinationID: String, completion: @escaping (Bool) -> ()){
-        self.ref = Database.database().reference().child("users").child(destinationID).child("Likes")
+    func checkIfUserAlreadyLiked(userDestinationId: String, postDestinationID: String, completion: @escaping (Bool) -> ()){
+        
+        self.ref = Database.database().reference().child("users").child(userDestinationId).child("posts").child(postDestinationID).child("Likes")
         self.ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             if snapshot.hasChild(MyDatabase.shared.thisUserDBContext) {
                 completion(true)
@@ -502,16 +502,16 @@ extension MyDatabase {
             
         })
     }
-    func addLikeToUser(destinationID: String)
+    func addLikeToUser(userDestinationId: String, postDestinationId: String)
     {
-        self.ref = Database.database().reference().child("users").child(destinationID).child("Likes")
+        self.ref = Database.database().reference().child("users").child(userDestinationId).child("posts").child(postDestinationId).child("Likes")
         self.ref.child(MyDatabase.shared.thisUserDBContext).setValue(MyDatabase.shared.thisUserDBContext)
 
     }
 
-    func removeLikeFromUser(destinationID: String)
+    func removeLikeFromUser(userDestinationId: String, postDestinationId: String)
     {
-                self.ref = Database.database().reference().child("users").child(destinationID).child("Likes")
+                self.ref = Database.database().reference().child("users").child(userDestinationId).child("posts").child(postDestinationId).child("Likes")
                 self.ref.child(MyDatabase.shared.thisUserDBContext).setValue(nil)
     }
 }
