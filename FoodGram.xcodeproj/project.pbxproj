@@ -14,6 +14,7 @@
 		A133989E21BA5F97003537E8 /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A133989D21BA5F97003537E8 /* FriendsController.swift */; };
 		A136BCC121BB8FA50049140C /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A136BCC021BB8FA50049140C /* TabController.swift */; };
 		A138A55621BF94DA00B02FE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A138A55521BF94DA00B02FE1 /* Assets.xcassets */; };
+		A138A55821C0484A00B02FE1 /* Source in Resources */ = {isa = PBXBuildFile; fileRef = A138A55721C0484A00B02FE1 /* Source */; };
 		A14DAB1721765E1D00368668 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14DAB1621765E1D00368668 /* AppDelegate.swift */; };
 		A14DAB2321765E2000368668 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14DAB2121765E2000368668 /* LaunchScreen.storyboard */; };
 		A15A010D21BF6B6400E97AD9 /* RealSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15A010C21BF6B6400E97AD9 /* RealSearchViewController.swift */; };
@@ -45,6 +46,7 @@
 		A133989D21BA5F97003537E8 /* FriendsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsController.swift; path = "../../../../Downloads/iOS-FoodGram-master/FoodGram/FriendsController.swift"; sourceTree = "<group>"; };
 		A136BCC021BB8FA50049140C /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		A138A55521BF94DA00B02FE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
+		A138A55721C0484A00B02FE1 /* Source */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Source; path = "../../../../Downloads/alerts-and-pickers-new/Source"; sourceTree = "<group>"; };
 		A14DAB1321765E1D00368668 /* FoodGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14DAB1621765E1D00368668 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A14DAB2221765E2000368668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				A14DAB1621765E1D00368668 /* AppDelegate.swift */,
 				A15A99A921AF99D10009E9C3 /* NotificationCell.swift */,
 				A133989D21BA5F97003537E8 /* FriendsController.swift */,
+				A138A55721C0484A00B02FE1 /* Source */,
 				A133989921BA59CE003537E8 /* Main.storyboard */,
 				A15A010C21BF6B6400E97AD9 /* RealSearchViewController.swift */,
 				A138A55521BF94DA00B02FE1 /* Assets.xcassets */,
@@ -271,6 +274,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A138A55821C0484A00B02FE1 /* Source in Resources */,
 				A14DAB2321765E2000368668 /* LaunchScreen.storyboard in Resources */,
 				A175467A21A5C5170001A203 /* GoogleService-Info.plist in Resources */,
 				A138A55621BF94DA00B02FE1 /* Assets.xcassets in Resources */,

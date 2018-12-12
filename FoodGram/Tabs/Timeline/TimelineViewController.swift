@@ -14,6 +14,10 @@ import Presentr
 
 private let reuseIdentifier = "PostCell"
 
+class LikeButton: UIButton {
+    var userID: String!
+}
+
 class TimelineViewController: UICollectionViewController {
     @IBOutlet var TimelineViewController: UICollectionView!
     var database: MyDatabase!
@@ -66,6 +70,20 @@ class TimelineViewController: UICollectionViewController {
         // #warning Incomplete implementation, return the number of items
         return database.friendPosts.count
     }
+    
+    @objc func likeButtonTapped(_ sender: Any) -> Void {
+        var btn = sender as! LikeButton
+        
+        var userID = btn.userID
+        
+        MyDatabase.shared.checkIfUserAlreadyLiked(destinationID: userID!) { (hasLiked) in
+            if hasLiked {
+                //return negative
+            } else {
+                MyDatabase.shared.addLikeToUser(destinationID: userID!)
+            }
+        }
+    }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PostCell
@@ -79,6 +97,8 @@ class TimelineViewController: UICollectionViewController {
         cell.amount.text = database.friendPosts[index].price
         cell.restaurantName.text = database.friendPosts[index].location
         cell.descriptionLabel.text = database.friendPosts[index].postDescription
+        cell.likeButton.userID = userID
+        cell.likeButton.addTarget(self, action: #selector(self.likeButtonTapped(_:)), for: .touchUpInside)
         
         let imageUrl = database.friendPosts[index].image
         let url = URL(string: imageUrl)

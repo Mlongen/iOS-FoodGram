@@ -10,6 +10,7 @@ import UIKit
 
 class PostCell: UICollectionViewCell {
     
+    @IBOutlet weak var likeButton: LikeButton!
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var foodPic: UIImageView!

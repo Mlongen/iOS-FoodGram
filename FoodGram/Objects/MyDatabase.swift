@@ -471,3 +471,31 @@ extension MyDatabase
         }
     }
 }
+
+//like stuff
+extension MyDatabase {
+    
+    func checkIfUserAlreadyLiked(destinationID: String, completion: @escaping (Bool) -> ()){
+        self.ref = Database.database().reference().child("users").child(destinationID).child("Likes")
+        self.ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+            if snapshot.hasChild(MyDatabase.shared.thisUserDBContext) {
+                completion(true)
+            } else {
+                completion(false)
+            }
+            
+        })
+    }
+    func addLikeToUser(destinationID: String)
+    {
+        self.ref = Database.database().reference().child("users").child(destinationID).child("Likes")
+        self.ref.child(MyDatabase.shared.thisUserDBContext).setValue(MyDatabase.shared.thisUserDBContext)
+
+    }
+//
+//    func removeLikeFromUser(destinationID: String)
+//    {
+//
+//    }
+}
+

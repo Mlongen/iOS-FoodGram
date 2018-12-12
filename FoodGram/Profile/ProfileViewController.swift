@@ -12,6 +12,7 @@ import NotificationBannerSwift
 import YPImagePicker
 import SDWebImage
 
+
 class ProfileViewController: UIViewController, UICollectionViewDataSource{
     
     
@@ -51,6 +52,21 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
     
     var thisUserID: String = ""
     
+    @IBOutlet weak var settingsBtn: UIBarButtonItem!
+    
+    @IBAction func settingsAction(_ sender: Any) {
+        let alert = UIAlertController(title: "Hey", message: "test", preferredStyle: .alert)
+        // or show alert with options
+        alert.show(self, sender: self.settingsBtn)
+    }
+    
+    @IBAction func logoutAction(_ sender: Any) {
+    }
+    
+    
+    @IBOutlet weak var publicationsView: UIView!
+    
+    @IBOutlet weak var logoutBtn: UIBarButtonItem!
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var username: UILabel!
@@ -89,14 +105,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
     
 
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        MyDatabase.shared.specificProfileCollectionView = collectionView
-        if thisUserID == "" {
-            thisUserID = MyDatabase.shared.thisUserDBContext
-        }
-        
+    fileprivate func setProfileViewRadiusAndShadows() {
         profileView.layer.cornerRadius = 20.0
         profileView.layer.masksToBounds = true
         profileView.layer.backgroundColor = UIColor.white.cgColor
@@ -107,6 +116,32 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
         profileView.layer.opacity = 0.85
         profileView.layer.masksToBounds = false
         profileView.layer.shadowPath = UIBezierPath(roundedRect:profileView.bounds, cornerRadius:profileView.layer.cornerRadius).cgPath
+    }
+    
+    fileprivate func setPublicationViewRadiusAndShadows() {
+        publicationsView.layer.cornerRadius = 10.0
+        publicationsView.layer.masksToBounds = true
+        publicationsView.layer.backgroundColor = UIColor.white.cgColor
+        publicationsView.layer.shadowColor = UIColor.gray.cgColor
+        publicationsView.layer.shadowOffset = CGSize(width: 0, height: 1.0)//CGSizeMake(0, 2.0);
+        publicationsView.layer.shadowRadius = 20.0
+        publicationsView.layer.shadowOpacity = 0.2
+        publicationsView.layer.opacity = 0.90
+        publicationsView.layer.masksToBounds = false
+        publicationsView.layer.shadowPath = UIBezierPath(roundedRect:publicationsView.bounds, cornerRadius:publicationsView.layer.cornerRadius).cgPath
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        MyDatabase.shared.specificProfileCollectionView = collectionView
+        if thisUserID == "" {
+            thisUserID = MyDatabase.shared.thisUserDBContext
+        }
+        
+        setProfileViewRadiusAndShadows()
+        
+        setPublicationViewRadiusAndShadows()
         
         MyDatabase.shared.readUserPostsById(userID: thisUserID)
         username?.text = MyDatabase.shared.getUserById(userID: thisUserID)
@@ -122,10 +157,14 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
         if (thisUserID == MyDatabase.shared.thisUserDBContext){
             changePicButton.isHidden = false
             addFriendBtn.isHidden = true
+            self.navigationItem.rightBarButtonItem = self.settingsBtn
+            self.navigationItem.leftBarButtonItem = self.logoutBtn
         
         } else {
             changePicButton?.isHidden = true
             addFriendBtn.isHidden = false
+            self.navigationItem.rightBarButtonItem = nil
+            self.navigationItem.leftBarButtonItem = nil
         }
 
         
