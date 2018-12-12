@@ -63,11 +63,22 @@ class FriendsCollectionController: UICollectionViewController {
         cell.newpic.setRounded()
         
         
+        
+        
         MyDatabase.shared.getProfilePicByID(userID: MyDatabase.shared.getUserIDByName(userName: usersArray[index].key)) { (urlStr) in
-            let url = URL(string: urlStr)
-            cell.newpic.sd_setImage(with: url, completed: { (image, error, cacheType, imageURL) in
-                cell.newpic.image = image
-            })
+            if (urlStr == "image" || urlStr == "") {
+                var newUrlStr = "https://firebasestorage.googleapis.com/v0/b/iosfoodgram.appspot.com/o/72EF94D0-10BA-4D0E-BBC3-90477B2600BE?alt=media&token=d44c9931-3096-44c2-9d10-37877990059b"
+                let url = URL(string: newUrlStr)
+                cell.newpic.sd_setImage(with: url, completed: { (image, error, cacheType, imageURL) in
+                    cell.newpic.image = image
+                })
+            } else {
+                let url = URL(string: urlStr)
+                cell.newpic.sd_setImage(with: url, completed: { (image, error, cacheType, imageURL) in
+                    cell.newpic.image = image
+                })
+            }
+            
         }
 
         // Configure the cell

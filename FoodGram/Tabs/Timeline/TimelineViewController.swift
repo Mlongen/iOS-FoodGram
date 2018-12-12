@@ -124,10 +124,18 @@ class TimelineViewController: UICollectionViewController {
             cell.foodPic.image = image
         })
         MyDatabase.shared.getProfilePicByID(userID: userID) { (urlStr) in
-            let url = URL(string: urlStr)
-            cell.profilePic.sd_setImage(with: url, completed: { (image, error, cacheType, imageURL) in
-                cell.profilePic.image = image
-            })
+            if (urlStr == "image" || urlStr == "") {
+                var newUrlStr = "https://firebasestorage.googleapis.com/v0/b/iosfoodgram.appspot.com/o/72EF94D0-10BA-4D0E-BBC3-90477B2600BE?alt=media&token=d44c9931-3096-44c2-9d10-37877990059b"
+                let url = URL(string: newUrlStr)
+                cell.profilePic.sd_setImage(with: url, completed: { (image, error, cacheType, imageURL) in
+                    cell.profilePic.image = image
+                })
+            } else {
+                let url = URL(string: urlStr)
+                cell.profilePic.sd_setImage(with: url, completed: { (image, error, cacheType, imageURL) in
+                    cell.profilePic.image = image
+                })
+            }
         }
         
         cell.layer.cornerRadius = 20.0
