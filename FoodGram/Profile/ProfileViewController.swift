@@ -11,11 +11,12 @@ import FirebaseDatabase
 import NotificationBannerSwift
 import YPImagePicker
 import SDWebImage
+import Pastel
 
 
 class ProfileViewController: UIViewController, UICollectionViewDataSource{
     
-    
+    @IBOutlet weak var pastelView: PastelView!
     static var shared = ProfileViewController()
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return MyDatabase.shared.specificProfilePosts.count
@@ -47,6 +48,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
         
         return cell
     }
+    
     
     @IBOutlet weak var profileView: UIView!
     
@@ -168,6 +170,17 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        pastelView.startPastelPoint = .bottomLeft
+        pastelView.endPastelPoint = .topRight
+        
+        // Custom Duration
+        pastelView.animationDuration = 2.0
+        
+        // Custom Color
+        pastelView.setColors([#colorLiteral(red: 0.1058823529, green: 0.8078431373, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.07936513195, green: 0.303920712, blue: 0.8549019694, alpha: 1)])
+        
+        pastelView.startAnimation()
 
         MyDatabase.shared.specificProfileCollectionView = collectionView
         if thisUserID == "" {

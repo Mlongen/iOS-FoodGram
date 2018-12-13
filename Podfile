@@ -24,5 +24,6 @@ target 'FoodGram' do
   pod 'RAMReel'
   pod 'TransitionableTab'
   pod 'RAMAnimatedTabBarController'
+  pod 'Pastel'
   
 end

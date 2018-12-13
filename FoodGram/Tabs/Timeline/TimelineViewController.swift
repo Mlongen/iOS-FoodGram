@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import SDWebImage
 import Presentr
+import Pastel
 
 private let reuseIdentifier = "PostCell"
 
@@ -25,6 +26,7 @@ class TimelineViewController: UICollectionViewController {
     @IBOutlet var TimelineViewController: UICollectionView!
     var database: MyDatabase!
 
+    @IBOutlet weak var pastelView: PastelView!
     static var isNotification: Bool!
     
     lazy var addPostController: AddPostViewController = {
@@ -43,9 +45,16 @@ class TimelineViewController: UICollectionViewController {
     var radius: Int = 20
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let width = (view.frame.size.width - 20)
-//        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        layout.itemSize = CGSize(width: width, height: width + 30)
+        pastelView.startPastelPoint = .bottomLeft
+        pastelView.endPastelPoint = .topRight
+        
+        // Custom Duration
+        pastelView.animationDuration = 5.0
+        
+        // Custom Color
+        pastelView.setColors([#colorLiteral(red: 0.1058823529, green: 0.8078431373, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.07936513195, green: 0.303920712, blue: 0.8549019694, alpha: 1)])
+        
+        pastelView.startAnimation()
        
         database = MyDatabase.shared
         MyDatabase.shared.timeLineCollectionView = collectionView
@@ -140,7 +149,6 @@ class TimelineViewController: UICollectionViewController {
         
         cell.layer.cornerRadius = 20.0
         cell.layer.masksToBounds = true
-        cell.layer.backgroundColor = UIColor.white.cgColor
         cell.layer.shadowColor = UIColor.gray.cgColor
         cell.layer.shadowOffset = CGSize(width: 0, height: 3.0)//CGSizeMake(0, 2.0);
         cell.layer.shadowRadius = 10.0

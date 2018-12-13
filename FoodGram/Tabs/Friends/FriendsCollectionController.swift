@@ -9,19 +9,33 @@
 import UIKit
 import Presentr
 import SDWebImage
+import Pastel
 
 private let reuseIdentifier = "FriendCell"
 
 class FriendsCollectionController: UICollectionViewController {
-
+    @IBOutlet weak var pastelView: PastelView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let width = (view.frame.size.width - 26)
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width / 4.8)
-
         
+        // Custom Direction
+        pastelView.startPastelPoint = .bottomLeft
+        pastelView.endPastelPoint = .topRight
+        
+        // Custom Duration
+        pastelView.animationDuration = 2.0
+        
+        // Custom Color
+        pastelView.setColors([#colorLiteral(red: 0.1058823529, green: 0.8078431373, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.07936513195, green: 0.303920712, blue: 0.8549019694, alpha: 1)])
+        
+        pastelView.startAnimation()
+
+
 
     }
     lazy var searchController: SearchViewController = {
@@ -48,7 +62,7 @@ class FriendsCollectionController: UICollectionViewController {
         let index = indexPath.item
         cell.layer.cornerRadius = 20.0
         cell.layer.masksToBounds = true
-        cell.layer.backgroundColor = UIColor.white.cgColor
+
         cell.layer.shadowColor = UIColor.gray.cgColor
         cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)//CGSizeMake(0, 2.0);
         cell.layer.shadowRadius = 20.0

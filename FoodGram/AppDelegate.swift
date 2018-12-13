@@ -25,6 +25,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        // Sets shadow (line below the bar) to a blank image
+        UINavigationBar.appearance().shadowImage = UIImage()
+        // Sets the translucent background color
+        UINavigationBar.appearance().backgroundColor = .clear
+        // Set translucent. (Default value is already true, so this can be removed if desired.)
+        UINavigationBar.appearance().isTranslucent = true
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UITabBar.appearance().backgroundColor = .clear
+        
         return true
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {

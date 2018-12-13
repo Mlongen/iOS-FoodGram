@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import NotificationBannerSwift
 import FBSDKLoginKit
+import Pastel
 
 class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
     
@@ -111,6 +112,21 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let pastelView = PastelView(frame: view.bounds)
+        
+        // Custom Direction
+        pastelView.startPastelPoint = .bottomLeft
+        pastelView.endPastelPoint = .topRight
+        
+        // Custom Duration
+        pastelView.animationDuration = 5.0
+        
+        // Custom Color
+        pastelView.setColors([#colorLiteral(red: 0.1058823529, green: 0.8078431373, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.07936513195, green: 0.303920712, blue: 0.8549019694, alpha: 1)])
+        
+        pastelView.startAnimation()
+        view.insertSubview(pastelView, at: 0)
         userChecked = 0
         self.navigationController?.setToolbarHidden(true, animated: false)
         confirmPasswordField.removeFromSuperview()
