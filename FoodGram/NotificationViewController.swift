@@ -37,7 +37,15 @@ class NotificationViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationCell", for: indexPath) as! NotificationCell
         
         cell.userNameLabel.text = MyDatabase.shared.filteredNotifications[indexPath.row].createdByUser
-        
+        cell.layer.cornerRadius = 20.0
+        cell.layer.masksToBounds = true
+        cell.layer.shadowColor = UIColor.gray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 3.0)//CGSizeMake(0, 2.0);
+        cell.layer.shadowRadius = 10.0
+        cell.layer.shadowOpacity = 0.7
+        cell.layer.opacity = 0.85
+        cell.layer.masksToBounds = false
+        cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         var usernameLength = ((cell.userNameLabel.text?.count)!) + 1
         var content = MyDatabase.shared.filteredNotifications[indexPath.row].content
         

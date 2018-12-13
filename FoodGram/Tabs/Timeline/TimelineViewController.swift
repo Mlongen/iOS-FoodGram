@@ -84,7 +84,7 @@ class TimelineViewController: UICollectionViewController {
     }
     
     @objc func likeButtonTapped(_ sender: Any) -> Void {
-        var btn = sender as! LikeButton
+        let btn = sender as! LikeButton
         MyDatabase.shared.checkIfUserAlreadyLiked(userDestinationId: btn.userID, postDestinationID: btn.postID) { (hasLiked) in
             if hasLiked {
                 MyDatabase.shared.removeLikeFromUser(userDestinationId: btn.userID, postDestinationId: btn.postID)
@@ -149,11 +149,11 @@ class TimelineViewController: UICollectionViewController {
         
         cell.layer.cornerRadius = 20.0
         cell.layer.masksToBounds = true
-        cell.layer.shadowColor = UIColor.gray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 3.0)//CGSizeMake(0, 2.0);
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 2.8)//CGSizeMake(0, 2.0);
         cell.layer.shadowRadius = 10.0
-        cell.layer.shadowOpacity = 0.7
-                cell.layer.opacity = 0.85
+        cell.layer.shadowOpacity = 0.85
+                cell.layer.opacity = 0.95
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         cell.profilePic.setRounded()
@@ -171,7 +171,7 @@ extension TimelineViewController{
     @IBAction func notificationBTNTapped(_ sender: Any) {
         let presenter: Presentr = {
             
-            let width = ModalSize.fluid(percentage: 0.8)
+            let width = ModalSize.fluid(percentage: 0.85)
             let height = ModalSize.fluid(percentage: 0.5)
             let center = ModalCenterPosition.center
             let customType = PresentationType.custom(width: width, height: height, center: center)
@@ -179,8 +179,8 @@ extension TimelineViewController{
             let customPresenter = Presentr(presentationType: customType)
             customPresenter.transitionType = .coverVerticalFromTop
             customPresenter.dismissTransitionType = .crossDissolve
-            customPresenter.roundCorners = true
             customPresenter.cornerRadius = CGFloat(radius)
+            customPresenter.roundCorners = true
             customPresenter.backgroundOpacity = 0.5
             customPresenter.dismissOnSwipe = true
             customPresenter.dismissOnSwipeDirection = .top
