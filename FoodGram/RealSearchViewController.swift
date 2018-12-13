@@ -9,28 +9,40 @@
 import UIKit
 import GooglePlaces
 import SDWebImage
+import Pastel
 
 class RealSearchViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var userSearchView: UIView!
-    
+    @IBOutlet weak var pastelView: PastelView!
     var selectedSegment: Int = 0
     @IBAction func segmentControlTapped(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             selectedSegment = 0
             self.collectionView.isHidden = false
+            self.userSearchView?.isHidden = true
+            SearchViewController.thisSearchController.view.isHidden = true
         } else {
+            selectedSegment = 1
             self.collectionView.isHidden = true
-           
+            SearchViewController.thisSearchController.view.isHidden = false
         }
     }
 
-    
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        pastelView.startPastelPoint = .bottomLeft
+        pastelView.endPastelPoint = .topRight
         
+        // Custom Duration
+        pastelView.animationDuration = 5.0
+        
+        // Custom Color
+        pastelView.setColors([#colorLiteral(red: 0.1058823529, green: 0.8078431373, blue: 0.8745098039, alpha: 1), #colorLiteral(red: 0.07936513195, green: 0.303920712, blue: 0.8549019694, alpha: 1)])
+        
+        pastelView.startAnimation()
         MyDatabase.shared.searchCollectionView = self.collectionView
-
+        SearchViewController.thisSearchController.view.isHidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -83,7 +95,6 @@ extension RealSearchViewController: UICollectionViewDataSource {
             self.collectionView.setEmptyMessage("Nothing to show :(")
         } else {
             self.collectionView.restore()
-            self.collectionView.backgroundColor = UIColor(patternImage: UIImage(named: "bg.png")!)
         }
         return count
     }
@@ -145,7 +156,8 @@ extension UICollectionView {
     
     func setEmptyMessage(_ message: String) {
         let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
-        messageLabel.backgroundColor = UIColor(patternImage: UIImage(named: "bg.png")!)
+        messageLabel.backgroundColor = .clear
+        messageLabel.isOpaque = true
         messageLabel.text = message
         messageLabel.textColor = .white
         messageLabel.numberOfLines = 0;
@@ -158,17 +170,5 @@ extension UICollectionView {
     
     func restore() {
         self.backgroundView = nil
-    }
-}
-
-extension UITabBar {
-    override open func sizeThatFits(_ size: CGSize) -> CGSize {
-        super.sizeThatFits(size)
-        guard let window = UIApplication.shared.keyWindow else {
-            return super.sizeThatFits(size)
-        }
-        var sizeThatFits = super.sizeThatFits(size)
-        sizeThatFits.height = window.safeAreaInsets.bottom + 40
-        return sizeThatFits
     }
 }

@@ -164,10 +164,10 @@ open class RAMReel
         self.view.tintColor = theme.textColor
         
         self.textField.font = theme.font
-        self.textField.textColor = theme.textColor
+        self.textField.textColor = UIColor.white
         (self.textField as UITextField).tintColor = theme.textColor
         self.textField.keyboardAppearance = UIKeyboardAppearance.dark
-        self.gradientView.listBackgroundColor = theme.listBackgroundColor
+        self.gradientView.listBackgroundColor = UIColor.white
         
         self.view.layer.mask = self.gradientView.layer
         self.view.backgroundColor = UIColor.clear

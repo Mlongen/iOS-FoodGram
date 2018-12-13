@@ -45,8 +45,8 @@ class TimelineViewController: UICollectionViewController {
     var radius: Int = 20
     override func viewDidLoad() {
         super.viewDidLoad()
-        pastelView.startPastelPoint = .bottomLeft
-        pastelView.endPastelPoint = .topRight
+        pastelView.startPastelPoint = .topRight
+        pastelView.endPastelPoint = .bottomLeft
         
         // Custom Duration
         pastelView.animationDuration = 5.0

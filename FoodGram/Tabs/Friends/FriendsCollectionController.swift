@@ -24,8 +24,8 @@ class FriendsCollectionController: UICollectionViewController {
         layout.itemSize = CGSize(width: width, height: width / 4.8)
         
         // Custom Direction
-        pastelView.startPastelPoint = .bottomLeft
-        pastelView.endPastelPoint = .topRight
+        pastelView.startPastelPoint = .topRight
+        pastelView.endPastelPoint = .bottomLeft
         
         // Custom Duration
         pastelView.animationDuration = 2.0

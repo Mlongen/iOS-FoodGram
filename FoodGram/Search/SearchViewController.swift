@@ -11,26 +11,26 @@ import RAMReel
 import NotificationBannerSwift
 
 class SearchViewController: UIViewController,UICollectionViewDelegate {
-    
+    static var thisSearchController = SearchViewController()
     var dataSource: SimplePrefixQueryDataSource!
     var data: [String]!
     var ramReel: RAMReel<RAMCell, RAMTextField, SimplePrefixQueryDataSource>!
     var result: String!
-    
+
     lazy var profileViewController: ProfileViewController = {
         let profileViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController")
         return profileViewController as! ProfileViewController
     }()
     
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        SearchViewController.thisSearchController = self
         data = Array(MyDatabase.shared.allUsers.keys)
         dataSource = SimplePrefixQueryDataSource(data)
         
         ramReel = RAMReel(frame: view.bounds, dataSource: dataSource, placeholder: "Start by typing…", attemptToDodgeKeyboard: false)
-        
         ramReel.hooks.append {
             self.result = $0
             if (self.data.contains(self.result)) {

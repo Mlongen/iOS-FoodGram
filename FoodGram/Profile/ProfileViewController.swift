@@ -128,18 +128,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
         profileView.layer.shadowPath = UIBezierPath(roundedRect:profileView.bounds, cornerRadius:profileView.layer.cornerRadius).cgPath
     }
     
-    fileprivate func setPublicationViewRadiusAndShadows() {
-        publicationsView.layer.cornerRadius = 10.0
-        publicationsView.layer.masksToBounds = true
-        publicationsView.layer.backgroundColor = UIColor.white.cgColor
-        publicationsView.layer.shadowColor = UIColor.gray.cgColor
-        publicationsView.layer.shadowOffset = CGSize(width: 0, height: 1.0)//CGSizeMake(0, 2.0);
-        publicationsView.layer.shadowRadius = 20.0
-        publicationsView.layer.shadowOpacity = 0.2
-        publicationsView.layer.opacity = 0.90
-        publicationsView.layer.masksToBounds = false
-        publicationsView.layer.shadowPath = UIBezierPath(roundedRect:publicationsView.bounds, cornerRadius:publicationsView.layer.cornerRadius).cgPath
-    }
+
     
     fileprivate func checkFriendShipStatus() {
         // Do any additional setup after loading the view.
@@ -171,8 +160,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        pastelView.startPastelPoint = .bottomLeft
-        pastelView.endPastelPoint = .topRight
+        pastelView.startPastelPoint = .topRight
+        pastelView.endPastelPoint = .bottomLeft
         
         // Custom Duration
         pastelView.animationDuration = 2.0
@@ -189,7 +178,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
         
         setProfileViewRadiusAndShadows()
         
-        setPublicationViewRadiusAndShadows()
         
         MyDatabase.shared.readUserPostsById(userID: thisUserID)
         username?.text = MyDatabase.shared.getUserById(userID: thisUserID)

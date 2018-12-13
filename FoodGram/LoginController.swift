@@ -116,8 +116,8 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
         let pastelView = PastelView(frame: view.bounds)
         
         // Custom Direction
-        pastelView.startPastelPoint = .bottomLeft
-        pastelView.endPastelPoint = .topRight
+        pastelView.startPastelPoint = .topRight
+        pastelView.endPastelPoint = .bottomLeft
         
         // Custom Duration
         pastelView.animationDuration = 5.0

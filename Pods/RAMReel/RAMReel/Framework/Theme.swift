@@ -54,19 +54,19 @@ public struct RAMTheme: Theme {
     public let listBackgroundColor: UIColor
     
     init(
-        textColor: UIColor = UIColor.black,
+        textColor: UIColor = UIColor.white,
         listBackgroundColor: UIColor = UIColor.clear,
         font: UIFont = RAMTheme.defaultFont
         )
     {
-        self.textColor = textColor
-        self.listBackgroundColor = listBackgroundColor
+        self.textColor = UIColor.white
+        self.listBackgroundColor = UIColor.white
         self.font = font
     }
     
     init(_ textColor: UIColor, _ listBackgroundColor: UIColor, _ font: UIFont){
-        self.textColor = textColor
-        self.listBackgroundColor = listBackgroundColor
+        self.textColor = UIColor.white
+        self.listBackgroundColor = UIColor.white
         self.font = font
     }
     fileprivate static var defaultFont: UIFont = RAMTheme.initDefaultFont()
@@ -99,7 +99,7 @@ public struct RAMTheme: Theme {
     - returns: New `RAMTheme` instance.
      */
     public func textColor(_ textColor: UIColor) -> RAMTheme {
-        return RAMTheme(textColor: textColor, listBackgroundColor: self.listBackgroundColor, font: self.font)
+        return RAMTheme(textColor: UIColor.white, listBackgroundColor: UIColor.white, font: self.font)
     }
     
     /**
@@ -109,7 +109,7 @@ public struct RAMTheme: Theme {
      - returns: New `RAMTheme` instance.
      */
     public func listBackgroundColor(_ listBackgroundColor: UIColor) -> RAMTheme {
-        return RAMTheme(textColor: self.textColor, listBackgroundColor: listBackgroundColor, font: self.font)
+        return RAMTheme(textColor: UIColor.white, listBackgroundColor: UIColor.white, font: self.font)
     }
     
     /**
@@ -119,7 +119,7 @@ public struct RAMTheme: Theme {
      - returns: New `RAMTheme` instance.
      */
     public func font(_ font: UIFont) -> RAMTheme {
-        return RAMTheme(textColor: self.textColor, listBackgroundColor: self.listBackgroundColor, font: font)
+        return RAMTheme(textColor: UIColor.white, listBackgroundColor: UIColor.white, font: font)
     }
     
 }
