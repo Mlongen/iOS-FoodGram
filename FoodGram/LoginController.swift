@@ -163,10 +163,10 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
                                 self.loadFriends()
                             }
                         })
-                    } else {
+                    } else if MyDatabase.wasUserNameChecked == 1 {
                         MyDatabase.shared.addUserToDB(user, username: "Default")
                         self.loadFriends()
-                        
+                        self.userChecked = self.userChecked + 1
                         let banner = NotificationBanner(title: "User created succesfully", subtitle: "Logging in...", style: .success)
                         banner.show()
                         
