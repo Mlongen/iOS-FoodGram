@@ -66,8 +66,8 @@ class FriendsCollectionController: UICollectionViewController {
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)//CGSizeMake(0, 2.0);
         cell.layer.shadowRadius = 20.0
-        cell.layer.shadowOpacity = 1
-        cell.layer.opacity = 0.95
+        cell.layer.shadowOpacity = 0.6
+        cell.layer.opacity = 0.80
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         
