@@ -12,6 +12,8 @@ import NotificationBannerSwift
 import YPImagePicker
 import SDWebImage
 import Pastel
+import FBSDKLoginKit
+import FirebaseAuth
 
 
 class ProfileViewController: UIViewController, UICollectionViewDataSource{
@@ -35,14 +37,15 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
         cell.priceLabel.text = MyDatabase.shared.specificProfilePosts[index].price
         cell.ratingLabel.text = "Rating: " + String(MyDatabase.shared.specificProfilePosts[index].rating) + "/10"
         cell.restaurantName.text = MyDatabase.shared.specificProfilePosts[index].location
+        
         cell.layer.cornerRadius = 20.0
         cell.layer.masksToBounds = true
         cell.layer.backgroundColor = UIColor.white.cgColor
-        cell.layer.shadowColor = UIColor.gray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)//CGSizeMake(0, 2.0);
-        cell.layer.shadowRadius = 20.0
-        cell.layer.shadowOpacity = 0.2
-        cell.layer.opacity = 0.80
+        cell.layer.shadowColor = UIColor.white.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 1.8)//CGSizeMake(0, 2.0);
+        cell.layer.shadowRadius = 10.0
+        cell.layer.shadowOpacity = 0.50
+        cell.layer.opacity = 0.95
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         
@@ -63,6 +66,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
     }
     
     @IBAction func logoutAction(_ sender: Any) {
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut() // this is an instance function
+        try! Auth.auth().signOut()
     }
     
     
@@ -119,11 +125,12 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
         profileView.layer.cornerRadius = 20.0
         profileView.layer.masksToBounds = true
         profileView.layer.backgroundColor = UIColor.white.cgColor
-        profileView.layer.shadowColor = UIColor.gray.cgColor
-        profileView.layer.shadowOffset = CGSize(width: 0, height: 1.0)//CGSizeMake(0, 2.0);
-        profileView.layer.shadowRadius = 20.0
-        profileView.layer.shadowOpacity = 0.2
-        profileView.layer.opacity = 0.85
+        profileView.layer.shadowColor = UIColor.white.cgColor
+        profileView.layer.shadowOffset = CGSize(width: 0, height: 1.8)
+
+        profileView.layer.shadowRadius = 10.0
+        profileView.layer.shadowOpacity = 0.50
+        profileView.layer.opacity = 0.95
         profileView.layer.masksToBounds = false
         profileView.layer.shadowPath = UIBezierPath(roundedRect:profileView.bounds, cornerRadius:profileView.layer.cornerRadius).cgPath
     }
@@ -159,6 +166,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.collectionView.reloadData()
 
         pastelView.startPastelPoint = .topRight
         pastelView.endPastelPoint = .bottomLeft

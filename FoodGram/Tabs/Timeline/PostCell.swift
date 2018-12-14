@@ -20,4 +20,8 @@ class PostCell: UICollectionViewCell {
     @IBOutlet weak var restaurantName: UILabel!
     @IBOutlet weak var rating: UILabel!
     @IBOutlet weak var likes: UILabel!
+    
+    override func prepareForReuse() {
+        
+    }
 }

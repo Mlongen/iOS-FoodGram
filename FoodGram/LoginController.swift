@@ -21,10 +21,9 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
     
     @IBOutlet weak var emailField: UITextField!
     
+    @IBOutlet weak var btnSignIn: UIButton!
     
-    @IBOutlet weak var confirmPasswordField: UITextField!
-    @IBOutlet weak var confirmPasswordLabel: UILabel!
-    
+    @IBOutlet weak var btnCreate: UIButton!
     @IBOutlet weak var passwordField: UITextField!
     func loadFriends() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -129,11 +128,10 @@ class LoginController: UIViewController, FBSDKLoginButtonDelegate  {
         view.insertSubview(pastelView, at: 0)
         userChecked = 0
         self.navigationController?.setToolbarHidden(true, animated: false)
-        confirmPasswordField.removeFromSuperview()
-        confirmPasswordLabel.removeFromSuperview()
         let loginButton = FBSDKLoginButton()
-        loginButton.center = view.center
+        loginButton.center = CGPoint(x: view.frame.width/2, y: view.frame.height/1.48)
         loginButton.readPermissions = ["email"]
+        loginButton.layer.opacity = 0.90
         loginButton.delegate = self
         
         view.addSubview(loginButton)

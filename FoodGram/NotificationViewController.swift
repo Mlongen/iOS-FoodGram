@@ -39,11 +39,11 @@ class NotificationViewController: UIViewController, UITableViewDataSource {
         cell.userNameLabel.text = MyDatabase.shared.filteredNotifications[indexPath.row].createdByUser
         cell.layer.cornerRadius = 20.0
         cell.layer.masksToBounds = true
-        cell.layer.shadowColor = UIColor.gray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 3.0)//CGSizeMake(0, 2.0);
+        cell.layer.shadowColor = UIColor.white.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 1.8)//CGSizeMake(0, 2.0);
         cell.layer.shadowRadius = 10.0
-        cell.layer.shadowOpacity = 0.7
-        cell.layer.opacity = 0.85
+        cell.layer.shadowOpacity = 0.50
+        cell.layer.opacity = 0.95
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         var usernameLength = ((cell.userNameLabel.text?.count)!) + 1

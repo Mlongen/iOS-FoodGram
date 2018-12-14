@@ -65,6 +65,7 @@ class TimelineViewController: UICollectionViewController {
         
     }
 
+    
 
     @objc func refresh(){
         MyDatabase.shared.bridgeReload()
@@ -105,6 +106,8 @@ class TimelineViewController: UICollectionViewController {
 
         self.collectionView.reloadData()
     }
+    
+    
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let  cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PostCell
@@ -147,15 +150,16 @@ class TimelineViewController: UICollectionViewController {
             }
         }
         
+        
         cell.layer.cornerRadius = 20.0
         cell.layer.masksToBounds = true
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 2.8)//CGSizeMake(0, 2.0);
+        cell.layer.shadowColor = UIColor.white.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 1.8)//CGSizeMake(0, 2.0);
         cell.layer.shadowRadius = 10.0
-        cell.layer.shadowOpacity = 0.85
+        cell.layer.shadowOpacity = 0.50
                 cell.layer.opacity = 0.95
         cell.layer.masksToBounds = false
-        cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
+//        cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
         cell.profilePic.setRounded()
         cell.rating.text = "Rating: " + String(database.friendPosts[index].rating) + "/10"
         
@@ -164,6 +168,8 @@ class TimelineViewController: UICollectionViewController {
 
     
 }
+
+
 
 //bar buttons
 extension TimelineViewController{
@@ -179,8 +185,9 @@ extension TimelineViewController{
             let customPresenter = Presentr(presentationType: customType)
             customPresenter.transitionType = .coverVerticalFromTop
             customPresenter.dismissTransitionType = .crossDissolve
-            customPresenter.cornerRadius = CGFloat(radius)
+            customPresenter.cornerRadius = 20
             customPresenter.roundCorners = true
+            customPresenter.dropShadow = PresentrShadow(shadowColor: UIColor.white, shadowOpacity: 0.50, shadowOffset: CGSize(width: 0, height: 1.8), shadowRadius: 10)
             customPresenter.backgroundOpacity = 0.5
             customPresenter.dismissOnSwipe = true
             customPresenter.dismissOnSwipeDirection = .top

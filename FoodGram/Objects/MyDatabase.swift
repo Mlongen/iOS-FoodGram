@@ -237,7 +237,7 @@ class MyDatabase: NSObject {
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
                     if let value = snap.value as? Dictionary<String, AnyObject> {
-                        let postID = value["postID"] as? String ?? ""
+                        let postID = value["postId"] as? String ?? ""
                         let userID = self.thisUserDBContext
                         let image = value["image"] as? String ?? ""
                         let creationDate = value["creationDate"] as? String ?? ""
@@ -248,6 +248,8 @@ class MyDatabase: NSObject {
                         
                         let newPost = Post(postId: postID, userId: userID, image: image, postDescription: postDescription, creationDate: creationDate, price: price, location: location, rating: rating)
                         
+
+                        
                         self.filterSpecificProfileDuplicates(post: newPost)
                         
                     }
@@ -256,6 +258,7 @@ class MyDatabase: NSObject {
             self.specificProfilePosts = self.specificProfilePosts.sorted(by: {
                 $0.creationDate.compare($1.creationDate) == .orderedDescending
             })
+            print(self.specificProfilePosts.count)
             MyDatabase.shared.specificProfileCollectionView?.reloadData()
             MyDatabase.shared.specificProfileCollectionView?.refreshControl?.endRefreshing()
         })
